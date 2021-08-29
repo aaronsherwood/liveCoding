@@ -4,3 +4,6 @@
 [submodule "mi-UGens"]
 	path = mi-UGens
 	url = https://github.com/v7b1/mi-UGens.git
+[submodule "ojack-hydra-examples"]
+	path = ojack-hydra-examples
+	url = https://github.com/ojack/hydra-examples.git
