@@ -30,7 +30,7 @@ a = () => shape(3, .4).rotate(Math.random()*100,Math.random()*3-1.75).repeat(n,n
 a().add(a().scrollX(.5/n).scrollY(.5/n)).scale(1,()=>window.innerHeight/window.innerWidth,1).out(o0)
 
 //feedback with scale
-shape(4,.9).diff(src(o0).scale(.95)).out(o1)
+shape(4,.9).diff(src(o0).scale(.95)).out(o0)
 src(o1).diff(src(o0).scale(.99)).out()
 
 //show all oututs
