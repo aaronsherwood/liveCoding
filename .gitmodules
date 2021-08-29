@@ -1,0 +1,9 @@
+[submodule "hydra-examples"]
+	path = hydra-examples
+	url = https://github.com/ojack/hydra-examples.git
+[submodule "tidal-looper"]
+	path = tidal-looper
+	url = https://github.com/thgrund/tidal-looper
+[submodule "mi-UGens"]
+	path = mi-UGens
+	url = https://github.com/v7b1/mi-UGens.git
