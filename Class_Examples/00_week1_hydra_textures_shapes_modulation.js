@@ -1,3 +1,23 @@
+// Hydra Key Commands
+//
+// Evaluate one line of code, put cursor on that line then:
+// Shift+Return
+//
+// Evaluate a block of code:
+// Crl+Return
+//
+// Hide or show code:
+// Ctrl+Shift+H
+//
+// Toggle command palette, then type hydra to turn on hydra:
+// Cmd+Shift+P (OSX)
+// Ctrl+Shift+P (Windows)
+//
+// Open javascript console for more debugging:
+// Cmd+Shift+I  (OSX)
+// Ctrl+Shift+I  (Windows)
+
+
 //oscillator
 osc().out()
 //thresh will take pixels  above a certain brightness value and output white
