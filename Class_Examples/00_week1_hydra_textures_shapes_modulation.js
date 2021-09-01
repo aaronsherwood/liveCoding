@@ -1,4 +1,5 @@
-// Hydra Key Commands
+// Hydra Key Commands (these are for in Atom, for in the browser use Ctrl+Return for one line,
+// Option+Return for code block, & Ctrl+Shift+Enter for all code in editor)
 //
 // Evaluate one line of code, put cursor on that line then:
 // Shift+Return
