@@ -1,0 +1,133 @@
+-- Intro Supercollider, SuperDirt, & Tidalcycles
+
+-- play one sound
+d1 $ sound "bd"
+
+-- stop the sound
+d1 silence
+
+-- what is a cycle? tilda is a rest
+d1 $ sound "bd bd sd ~"
+
+-- sample folders, choose specific samples
+d1 $ sound "bd bd sd:1 ~"
+-- to find the sample folder in supercollider evaulate: Quarks.gui
+
+-- choose some random sounds
+d1 $ sound "bd hh cp mt sd:2 arpy drum odx"
+
+-- slow & fast
+d1 $ slow 2 $ sound "bd bd sd:1 ~"
+d1 $ fast 2 $ sound "bd bd sd:1 ~"
+
+-- subdivisions
+d1 $ sound "bd bd sd:1 [~ bd]"
+
+-- alternate sounds each cycle
+d1 $ sound "bd bd <feel:5 feel:3> [~ bd]"
+
+-- layer a sound
+d2 $ sound "hh hh hh hh"
+
+-- multiply
+d2 $ sound "hh*8"
+
+-- randomly drop a sound
+d1 $ sound "bd bd? <feel:5 feel:3> [~ bd?]"
+d2 $ sound "hh*8?"
+
+-- degradeBy
+d2 $ degradeBy 0.15 $ sound "hh*8"
+
+-- gain
+d2 $ degradeBy 0.15 $ sound "hh*8" # gain "1.5"
+
+-- gain pattern
+d2 $ degradeBy 0.15 $ sound "hh*8" # gain "1.1 0.77 0.785 1.4 0.8 0.77 0.95"
+
+-- reverb
+d1 $ sound "bd bd <sd:1 feel:3> [~ bd?]" # room "0.3"
+-- with pattern
+d1 $ sound "bd bd <sd:1 feel:3> [~ bd?]" # room "0.5 0.2 0.9 0.4"
+d2 $ degradeBy 0.15 $ sound "hh*8" # gain "1.1 0.77 0.785 1.4 0.8 0.77 0.95" # room "0.3"
+
+-- speed (pitch)
+d2 $ degradeBy 0.15 $ sound "hh*8" # gain "1.1 0.77 0.785 1.4 0.8 0.77 0.95" # room "0.3" # speed 2
+-- it's a pattern too of course!
+d2 $ degradeBy 0.15 $ sound "hh*8" # gain "1.1 0.77 0.785 1.4 0.8 0.77 0.95" # room "0.3" # speed "0.5 -1 2 1.5"
+
+-- sometimes with pattern (sometimes without the BY is 50% chance)
+d2 $ sometimes (# speed "0.5 -1 2 1.5") $ sound "hh*8" # gain "1.1 0.77 0.785 1.4 0.8 0.77 0.95" # room "0.3"
+
+-- sometimesBy
+d2 $ sometimesBy 0.4 (# speed "-1 0.5 2 3 4 2 3 1") $ degradeBy 0.15 $ sound "hh*8" # gain "1.1 0.77 0.785 1.4 0.8 0.77 0.95" # room "0.3"
+
+-----------------------------------------
+-----------------------------------------
+
+-- Euclidean rhythms
+-- https://tidalcycles.org/docs/reference/mini_notation/#euclidian-sequences
+d1 $ sound "808bd:4(3,8)" # room 0.5 # krush 9 # speed 1.5
+-- alternate patterns each cycle
+d1 $ sound "<808bd:4(3,8) 808bd:4(5,8) 808bd:4(3,8) 808bd:4>" # room 0.5 # krush 9 # speed 1.5
+-- other way to layer
+-- combine the line before with this:
+d1 $ sound "~ 808:3" # room 0.5 # krush 9 # speed 1.5
+-- now in the same line using [] and a comma separting the two patterns:
+d1 $ sound "[<808bd:4(3,8) 808bd:4(5,8) 808bd:4(3,8) 808bd:4>, ~ 808:3]" # room 0.5 # krush 9 # speed 1.5
+
+-----------------------------------------
+-----------------------------------------
+
+-- % wraps a particular pattern around in the division after the %
+d2 $ s "{808bd:0 808sd:7 808bd:2}%16" # room "0.25"
+
+-- add bit crush
+d2 $ s "{808bd:0 808sd:7 808bd:2}%16" # room "0.25" # crush "3"
+
+-- NO SOUND: Why? if we try to change crush with sine we don't hear anything since crush between 0 & 1 is inaudible
+d2 $ s "{808bd:0 808sd:7 808bd:2}%16" # room "0.25" # crush sine
+
+-- put a range to the sine
+-- the range and sine need to evaluate together
+-- before being sent to crush
+d2 $ s "{808bd:0 808sd:7 808bd:2}%16" # room "0.25" # crush (range 2 8 sine)
+
+-- make the sine oscillation for crush happen over 4 cycles
+d2 $ s "{808bd:0 808sd:7 808bd:2}%16" # room "0.25" # crush (slow 4 (range 2 8 sine))
+
+d2 $ degradeBy 0.3 $ s "{808bd:0 808sd:7 808bd:2}%16" # room "0.25" # crush (slow 4 (range 2 8 sine))
+
+-----------------------------------------
+-----------------------------------------
+
+-- # n
+d3 $ s "tabla2*8" # n "0 1 2 3 4 5 6 7" # room "1" # gain (range 0.85 1 rand)
+
+-- run
+d3 $ s "tabla2*8" # n (run 8) # room "1" # gain (range 0.85 1 rand)
+
+-- # different numbers
+d3 $ s "tabla2*8" # n "30 20 10 6 7 25 11 13" # room "1" # gain (range 0.85 1 rand)
+
+-- run 46
+d3 $ s "tabla2*8" # n (run 46) # room "1" # gain (range 0.85 1 rand)
+
+-- irand
+d3 $ s "tabla2*8" # n (irand 46) # room "1" # gain (range 0.85 1 rand)
+
+-- every
+d3 $ every 8 (fast 2) $ s "tabla2*8" # n (irand 46) # room "1" # gain (range 0.85 1 rand)
+
+-- rotate 1 cycle to the left to make the fill happen at the end of 4 cycles instead of the beginning
+d3 $ rotL 1 $ every 4 (# n "30 20 10 6 7 25 11 13") $ s "tabla2*8" # n (run 8) # room "1" # gain (range 0.85 1 rand)
+
+-- trap hihats and !
+d4 $ fast 2 $ s "hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>" # room 0.7 # gain (range 1 1.2 rand)
+
+-- hush
+hush
+d1 silence
+d2 silence
+d3 silence
+d4 silence
