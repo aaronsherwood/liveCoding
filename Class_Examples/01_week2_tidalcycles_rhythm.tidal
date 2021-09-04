@@ -63,20 +63,21 @@ d2 $ sometimes (# speed "0.5 -1 2 1.5") $ sound "hh*8" # gain "1.1 0.77 0.785 1.
 d2 $ sometimesBy 0.4 (# speed "-1 0.5 2 3 4 2 3 1") $ degradeBy 0.15 $ sound "hh*8" # gain "1.1 0.77 0.785 1.4 0.8 0.77 0.95" # room "0.3"
 
 -----------------------------------------
------------------------------------------
-
 -- Euclidean rhythms
 -- https://tidalcycles.org/docs/reference/mini_notation/#euclidian-sequences
+-----------------------------------------
+
 d1 $ sound "808bd:4(3,8)" # room 0.5 # krush 9 # speed 1.5
 -- alternate patterns each cycle
 d1 $ sound "<808bd:4(3,8) 808bd:4(5,8) 808bd:4(3,8) 808bd:4>" # room 0.5 # krush 9 # speed 1.5
 -- other way to layer
 -- combine the line before with this:
 d1 $ sound "~ 808:3" # room 0.5 # krush 9 # speed 1.5
--- now in the same line using [] and a comma separting the two patterns:
-d1 $ sound "[<808bd:4(3,8) 808bd:4(5,8) 808bd:4(3,8) 808bd:4>, ~ 808:3]" # room 0.5 # krush 9 # speed 1.5
+-- now in the same line using [] and a comma separting the two patterns (plus changing pitch):
+d1 $ sound "[<808bd:4(3,8) 808bd:4(5,8) 808bd:4(3,8) 808bd:4>, ~ 808:3]" # room 0.95 # krush 9 # speed (slow 4 ("<1.5 1>"))
 
 -----------------------------------------
+-- POLY RHYTHMS
 -----------------------------------------
 
 -- % wraps a particular pattern around in the division after the %
@@ -99,6 +100,8 @@ d2 $ s "{808bd:0 808sd:7 808bd:2}%16" # room "0.25" # crush (slow 4 (range 2 8 s
 d2 $ degradeBy 0.3 $ s "{808bd:0 808sd:7 808bd:2}%16" # room "0.25" # crush (slow 4 (range 2 8 sine))
 
 -----------------------------------------
+-- algorithmically choosing samples from banks (# n, run, irand)
+-- simple fills (every & rotL)
 -----------------------------------------
 
 -- # n
@@ -122,10 +125,16 @@ d3 $ every 8 (fast 2) $ s "tabla2*8" # n (irand 46) # room "1" # gain (range 0.8
 -- rotate 1 cycle to the left to make the fill happen at the end of 4 cycles instead of the beginning
 d3 $ rotL 1 $ every 4 (# n "30 20 10 6 7 25 11 13") $ s "tabla2*8" # n (run 8) # room "1" # gain (range 0.85 1 rand)
 
+-----------------------------------------
 -- trap hihats and !
-d4 $ fast 2 $ s "hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>" # room 0.7 # gain (range 1 1.2 rand)
+-----------------------------------------
 
--- hush
+d4 $ fast 1 $ s "hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>" # room 0.7 # gain (range 1 1.2 rand)
+
+-----------------------------------------
+-- shush it
+-----------------------------------------
+
 hush
 d1 silence
 d2 silence
