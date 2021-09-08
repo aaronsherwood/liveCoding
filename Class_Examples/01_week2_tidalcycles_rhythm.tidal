@@ -129,7 +129,7 @@ d3 $ rotL 1 $ every 4 (# n "30 20 10 6 7 25 11 13") $ s "tabla2*8" # n (run 8) #
 -- trap hihats and !
 -----------------------------------------
 
-d4 $ fast 1 $ s "hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>" # room 0.7 # gain (range 1 1.2 rand)
+d4 $ fast 2 $ s "hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>" # room 0.7 # gain (range 1 1.2 rand)
 
 -----------------------------------------
 -- shush it
