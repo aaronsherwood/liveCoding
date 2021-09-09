@@ -1,3 +1,11 @@
+// just one cc value used for noise
+osc(200,0.01,1).rotate(1).layer(osc(30,0,1).saturate().luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(0.5,0.01)).modulate(noise(()=>(cc[0])*3,.1)).out(o0)
+// two values, used for noise and luma
+osc(200,0.01,1).rotate(1).layer(osc(30,0,1).saturate().luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(()=>cc[1],0.01)).modulate(noise(()=>(cc[0])*3,.1)).out(o0)
+//three values, two used for noise and added together, and the third for luma
+osc(200,0.01,1).rotate(1).layer(osc(30,0,1).saturate().luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(()=>cc[1],0.01)).modulate(noise(()=>(cc[0]+cc[2])*3,.1)).out(o0)
+
+
 ///////////////////////////////////////////////////////////////////////
 // register WebMIDI; need to paste this in console
 // access console cmnd + optn + i
