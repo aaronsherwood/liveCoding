@@ -7,3 +7,6 @@
 [submodule "ojack-hydra-examples"]
 	path = ojack-hydra-examples
 	url = https://github.com/ojack/hydra-examples.git
+[submodule "Troop"]
+	path = Troop
+	url = https://github.com/Qirky/Troop
