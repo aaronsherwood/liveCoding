@@ -6,10 +6,10 @@ Live coding is a performing arts form and creativity technique where music and v
 
 ## Usage
 
+### You can do the following to work from the command line or just use the github desktop app: [https://desktop.github.com/](https://desktop.github.com/)
+
 
 ### Initialization (you only need to do these steps once):
-You can do the following to work from the command line or just use the github desktop app: [https://desktop.github.com/](https://desktop.github.com/)
-
 If you haven't installed git on your computer, [install git on your computer](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (or optionally here's [a different set of instructions](https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/)).
 
 Change directory (`cd` on the command line) into the location where you want the class repository to live.
