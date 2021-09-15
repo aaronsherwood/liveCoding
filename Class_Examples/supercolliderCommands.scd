@@ -1,5 +1,3 @@
-SuperDirt.start
-
 // show where sample folder is
 Quarks.gui
 
@@ -8,6 +6,8 @@ ServerOptions.devices;
 
 //set output for zoom (on Mac, might be a little different on windows)
 Server.default.options.outDevice_("ZoomAudioD")
+
+SuperDirt.start
 
 //MIDI
 MIDIClient.init;

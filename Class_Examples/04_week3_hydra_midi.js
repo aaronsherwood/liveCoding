@@ -8,7 +8,8 @@ osc(200,0.01,1).rotate(1).layer(osc(30,0,1).saturate().luma(0.2,.2).color(0,0,0,
 
 ///////////////////////////////////////////////////////////////////////
 // register WebMIDI; need to paste this in console
-// access console cmnd + optn + i
+// access console cmnd + optn + i (macOS)
+// cntl + shft + i (windows)
 navigator.requestMIDIAccess()
     .then(onMIDISuccess, onMIDIFailure);
 
