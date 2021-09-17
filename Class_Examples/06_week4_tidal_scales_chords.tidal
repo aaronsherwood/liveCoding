@@ -40,12 +40,12 @@ d1 $ bite 4 "0 2 1 <2 3>" $ s "sine*8" # note ((scale "pelog" "0 .. 7")+4) # roo
 -- shuffle takes a number and a pattern as input,
 -- divides the pattern into the given number of parts,
 -- and returns a new pattern as a random permutation of the parts, picking one of each per cycle.
--- This could also be called "sampling without replacement".
+-- This could also be called "sampling without replacement". (won't repeat a part)
 d1 $ shuffle 8 $ s "sine*8" # note ((scale "pelog" "0 .. 7")+4) # room 0.4
 
 -- scramble takes a number and a pattern as input,
 -- divides the pattern into the given number of parts,
--- and returns a new pattern by randomly selecting from the parts
+-- and returns a new pattern by randomly selecting from the parts (can repeat parts)
 d1 $ scramble 8 $ s "sine*8" # note ((scale "pelog" "0 .. 7")+4) # room 0.4
 
 -- we can make our own melody too (Ode to Joy)
