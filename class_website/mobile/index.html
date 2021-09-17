@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>LIVE CODING</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="LIVE CODING">
+
+  <link href="https://fonts.googleapis.com/css?family=Chivo:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="../css/fontawesome.css">
+  <link rel="stylesheet" href="../css/codemirror.css">
+  <link rel="stylesheet" href="../css/tomorrow-night-eighties.css">
+  <link rel="stylesheet" href="../css/show-hint.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/modal.css">
+  <link rel="shortcut icon" type="image/png" href="https://cdn.glitch.com/597fe374-3d18-46a5-b99c-ceff1f8ffd79%2Ffavicon.png?1530891352785" />
+  <style>
+    html,
+    body {
+      border: 0px;
+      margin: 0px;
+      padding: 0px;
+    }
+    canvas {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="info-container" class="hidden">
+    <div id="modal">
+      <div id="modal-header">
+        <div>
+        </div>
+        <div style="border-radius: 6px; margin-right: 10px;">
+          <span class="links" id="home" style="color: #ff6ec7;">home</span>
+          <span class="links" id="schedule">schedule</span>
+          <span class="links" id="syllabus">syllabus</span>
+          <i id="run-icon" class="fas fa-play-circle icon" title="Run all code (ctrl+shift+enter)" hidden="true" style="opacity:0; cursor:auto"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div></div>
+  <script src='./p5.min.js'></script>
+  <script src='./p5-wrapper.js'></script>
+  <script src='./hydra-synth.js'></script>
+  <script>
+    let hydra, hydraCanvas;
+    window.onload = function() {
+      const hydra = new Hydra({
+        detectAudio: false,
+        enableStreamCapture: false,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+      if (typeof p1 !== "undefined") {
+        p1.remove()
+      }
+      p1 = new P5()
+
+      s0.init({
+        src: p1.canvas
+      })
+
+      p1.noStroke()
+      p1.fill(100, 80, 200)
+      p1.hide()
+      p1.draw = () => {
+        p1.clear()
+        p1.textSize(50)
+        p1.textAlign(p1.CENTER);
+        p1.text("LIVE CODING", p1.width / 2, p1.height / 2)
+      }
+
+      src(s0)
+        .add(o0, 0.9)
+        .modulate(o0, () => mouse.x * 0.0001)
+        .blend(o0)
+        .modulate(noise(({
+          time
+        }) => ((Math.sin(time * .1) + 1) * .5) * 5))
+        .blend(o0)
+        .blend(o0)
+        .scale(1.1)
+        .hue(0.04)
+        .out()
+    }
+  </script>
+
+  <script>
+    this.homeButton = document.getElementById("home")
+    this.scheduleButton = document.getElementById("schedule")
+    this.syllabusButton = document.getElementById("syllabus")
+
+    this.homeButton.onclick = () => {
+      window.location.href = "../";
+    }
+
+    this.scheduleButton.onclick = () => {
+      window.location.href = "../schedule";
+    }
+
+    this.syllabusButton.onclick = () => {
+      window.location.href = "../syllabus";
+    }
+  </script>
+</body>
+
+</html>

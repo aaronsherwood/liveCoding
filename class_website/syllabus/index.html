@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>LIVE CODING</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="LIVE CODING">
+
+ <link href="https://fonts.googleapis.com/css?family=Chivo:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="../css/fontawesome.css">
+  <link rel="stylesheet" href="../css/codemirror.css">
+  <link rel="stylesheet" href="../css/tomorrow-night-eighties.css">
+  <link rel="stylesheet" href="../css/show-hint.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/modal.css">
+  <link rel="shortcut icon" type="image/png" href="https://cdn.glitch.com/597fe374-3d18-46a5-b99c-ceff1f8ffd79%2Ffavicon.png?1530891352785"/>
+  <style>
+body {
+  background-color: white;
+  background-image: url("https://64.media.tumblr.com/3ef503984acae007c35976a06d977d54/c1be079c1277b690-cf/s500x750/5046dda2aec85eb27b4e6939a6a0c8c22258c4d8.gifv");
+}
+</style>
+<script type="text/javascript">
+  function iframeLoaded() {
+      var iFrameID = document.getElementById('idIframe');
+      if(iFrameID) {
+            iFrameID.height = "";
+            iFrameID.height = window.innerHeight-60;
+      }
+  }
+</script>
+</head>
+<body>
+  <div id="info-container" class="hidden">
+    <div id="modal">
+      <div id="modal-header" style="display: flex;">
+        <div><!--<i class="fas fa-bars icon"></i>--></div>
+        <div style="border-radius: 6px; margin-right: 10px;">
+          <span class = "links" id ="home" >home</span>
+          <span class = "links" id ="schedule" >schedule</span>
+          <span class = "links" id ="syllabus" style="color: #ff6ec7;">syllabus</span>
+          <i id ="run-icon" class="fas fa-play-circle icon" title="Run all code (ctrl+shift+enter)" hidden="true" style="opacity:0; cursor:auto"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="position: fixed; width: 100%;">
+    <div class="baseHTML">
+      <br><br>
+      <!-- <p><b>syllabus</b></p> -->
+      <div style="margin: auto; width: 100%; height: 100%">
+        <iframe src="https://docs.google.com/document/d/e/2PACX-1vR325ZEmiiKVDnDSeGRp6HpUfelxVe3dYuhmuKzXZfCxx-lZyV552qXSTjqfn09nwrNAJuy-_f67jzM/pub?embedded=true&portrait=false" style="width:100%; " frameborder="0"  id="idIframe" onload="iframeLoaded()"></iframe>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script>
+    this.homeButton= document.getElementById("home")
+    this.scheduleButton= document.getElementById("schedule")
+    this.syllabusButton= document.getElementById("syllabus")
+
+    this.homeButton.onclick = () => {
+      window.location.href = "../";
+    }
+
+    this.scheduleButton.onclick = () => {
+      window.location.href = "../schedule";
+    }
+
+    this.syllabusButton.onclick = () => {
+      window.location.href = "../syllabus";
+    }
+  </script>
+</body>
+</html>
