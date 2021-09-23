@@ -11,7 +11,10 @@ SuperDirt.start
 
 //MIDI
 MIDIClient.init;
+
 //Note: you need to put the correct name here, IAC (etc.) is for a Mac
-~midiOut = MIDIOut.newByName("IAC Driver", "Bus 1");
+~midiOut = MIDIOut.newByName("IAC Driver", "Bus 1"); // FOR MAC
+~midiOut = MIDIOut.newByName("loopMIDI Port", "loopMIDI Port"); // FOR WINDOWS
+
 ~dirt.soundLibrary.addMIDI(\midi, ~midiOut);
 ~midiOut.latency = 0.0;
