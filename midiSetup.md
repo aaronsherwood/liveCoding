@@ -1,7 +1,7 @@
 # Mac
 
-## On Mac, you can use the IAC bus to create any number of virtual MIDI buses. This driver can be activated in the Audio MIDI Setup Utility.
-
+## On Mac, you can use the IAC bus to create any number of virtual MIDI buses.
+* This driver can be activated in the Audio MIDI Setup Utility:
   1. Launch Audio MIDI Setup and select Show MIDI Studio from the menu.
   ![open audio midi](./media/openaudiomidi2.png)
   2. Now double-click the IAC Driver icon and check the option Device is online in order to activate it.
