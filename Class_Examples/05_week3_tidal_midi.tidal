@@ -15,7 +15,9 @@ d2 $ ccn "0*128" # ccv (slow 1 (range 127 0 saw)) # s "midi"
 d2 $ rotL 1 $ every 4 (# ccv (fast 2 (range 127 0 saw))) $ ccn "0*128" # ccv (slow 1 (range 127 0 saw)) # s "midi"
 
 -- apply our original rhythm to a saw wave value
-d2 $ ccn "0*128"+"<t(3,8) t(5,8) t(3,8) t>" # ccv (slow 4 (range 127 0 saw)) # s "midi"
+d2 $ ccn "0*128"+"<t(3,8) t(5,8) t(3,8) t*2>" # ccv (slow 2 (range 127 0 saw)) # s "midi"
+-- contrast that with just making a euclidean rhythm be all the way on or off
+d2 $ ccv (stitch "<t(3,8) t(5,8) t(3,8) [t f@3]>" 127 0) # ccn 0 # s "midi"
 
 -- combine the two with two different outs and then add together in hydra
 -- this one sends too cc number 2
