@@ -3,8 +3,8 @@ d1 $ s "[~ cp, hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>]" # room 0.7 # gain (range 1 1.2 r
 
 -- layer things with stack
 d1 $ stack[
-  fast 2 $ s "sine" >| note (arp "updown" (scale "major" ("[0,2,4,6]"+"<0 0 2 3>") + "c5")) # gain 0.8,
-  s "sine" >| note (scale "major" ("[<-7 -5 -3 -1>,0,2](3,8)") + "c5") # gain 0.8
+  fast 2 $ s "sine" >| note (arp "updown" (scale "major" ("[0,2,4,6]"+"<0 0 2 3>") + "c5")) # gain 0.7,
+  s "sine" >| note (scale "major" ("[<-7 -5 -3 -1>,0,2](3,8)") + "c5") # gain 0.7
 ]
 
 d2 $ stack[

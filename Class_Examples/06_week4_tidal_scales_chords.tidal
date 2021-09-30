@@ -88,7 +88,7 @@ d2 $ struct "t(5,8,<0 1>)" $ s "sine" >| note (scale "major" ("[1,-3,6,7,-4] [2,
 d2 $ s "sine" >| note (scale "major" ("[<-7 -5 -3 -1>,0,2](3,8)") + "c5") # room 0.4
 
 -- arp can crate arpeggio patterns, there are dvarious pattern syou can try:
--- up down updown downup up&down down&up converge
+-- up down updown downup converge
 -- diverge disconverge pinkyup pinkyupdown
 -- thumbup thumbupdown
 d1 $ fast 2 $ s "sine" >| note (arp "up" (scale "major" ("[0,2,4,6]") + "c5")) # room 0.4

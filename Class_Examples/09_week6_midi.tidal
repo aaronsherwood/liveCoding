@@ -1,0 +1,32 @@
+-- functions for diferent sections
+
+playSynth = do {
+  -- this midi will select the video
+  d1 $ struct "t(3,8)" $ ccn "0" # ccv "1 1 4" # s "midi";
+  -- the rest is for sound
+  d2 $ stack[
+    fast 2 $ s "sine" >| note (arp "updown" (scale "major" ("[0,2,4,6]"+"<0 0 2 3>") + "c5")) # gain 0.7,
+    s "sine" >| note (scale "major" ("[<-7 -5 -3 -1>,0,2](3,8)") + "c5") # gain 0.7
+  ];
+  d3 silence;
+  d4 $ ccn "1*8" # ccv "0" # s "midi"
+}
+
+drop_it = do
+  -- this midi will select the video
+  d1 $ struct "<t(3,8) t(5,8,1)>" $ ccn "0" # ccv "<[0 3 4 4 3] [0 0 4 4]>" # s "midi"
+  -- the rest is for sound
+  d2 $ s "~ cp" # gain 1.2 # room 0.5
+  d3 $ s "<feel:6(3,8) feel:6(5,8,1)>" # room 0.95 # speed "2 1" # gain 1.3 # squiz 1.1 # up "-2"
+
+
+playSynth
+
+drop_it
+
+-- control ccv like normal bringing in more effects
+d4 $ struct "<t(3,8) t(5,8,1)>" $ ccn "1" # ccv "<[[100 120] 0 127@2 0@1] [0 127]>" # s "midi"
+-- turn effect off
+d4 $ ccn "1*16" # ccv "0" # s "midi"
+
+hush
