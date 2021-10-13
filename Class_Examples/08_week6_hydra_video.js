@@ -14,6 +14,13 @@ vid.src = videos[4]
 // use video within hydra
 s0.init({src: vid})
 
+// wrapping init in a listener might help with loading larger files
+vid.addEventListener(
+"loadeddata", function () {
+  s0.init({ src: vid });
+  console.log("new video")
+}, false);
+
 // main function, belnding a secondary function controlled by cc[1] in
 src(s0)
   .blend(o1,()=>cc[1])

@@ -17,6 +17,7 @@
   let whichSketch=0;
   </script>
   <script src="./bundle.js"></script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="LIVE CODING">
@@ -34,6 +35,7 @@ body {
   background-color: white;
 }
 </style>
+
 </head>
 <body>
   <div id="hydra-ui">
@@ -99,6 +101,35 @@ getMIDIMessage = function(midiMessage) {
     var val = (arr[2]+1)/128.0  // normalize CC values to 0.0 - 1.0
     cc[index]=val
 }
+  </script>
+  <!-- <script src="https://cdn.jsdelivr.net/gh/gibber-cc/tidal.pegjs/dist/pattern.js"></script> -->
+  <script src='pattern.js'></script>
+  <script src='peg-parse-query.js'></script>
+
+  <script>
+
+  let val = null
+  let phase = 0
+  let evts = []
+  let end = -Infinity
+
+  const tidal = function(pattern, cycles) {
+    let p = Pattern(pattern);
+    phase += 1/120
+    if( evts.length <= 0 && phase > end ) {
+      phase = 0
+    	evts = p.query( phase, cycles )
+    }
+    if( evts[0] !== undefined && phase >= evts[0].arc.start.valueOf() ) {
+      const evt = evts.shift()
+      val = evt.value
+      end = evt.arc.end.valueOf()
+    }
+    console.log(val)
+    return val
+  }
+
+
   </script>
 </body>
 </html>
