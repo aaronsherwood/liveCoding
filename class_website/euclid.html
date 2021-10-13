@@ -1,0 +1,129 @@
+<!docype html>
+  <html lang='en'>
+
+  <head>
+    <script src='pattern.js'></script>
+    <script src='peg-parse-query.js'></script>
+    <style>
+      body {
+        background: #000;
+        margin: 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+  </body>
+
+  <script src="Tone_new.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+  <script>
+    var audiogoing = false;
+
+    // setup transport
+    Tone.Transport.bpm.value = 120;
+    Tone.Transport.loop = true;
+    Tone.Transport.loopStart = "0m";
+    Tone.Transport.loopEnd = "1m";
+
+    // to have audio in the browser a user needs to trigger it
+    window.onclick = function() {
+      Tone.start();
+      audiogoing = !audiogoing;
+      if (audiogoing) {
+
+        Tone.Transport.start();
+      } else {
+        Tone.Transport.stop();
+      }
+    }
+
+    const reverb = new Tone.Reverb().toDestination();
+    reverb.set({
+      "wet": .5,
+      "decay": 2
+    })
+
+    var cols = [2];
+    cols[0] = 0;
+    cols[1] = 0;
+
+    var parts = [2];
+
+    const bell = new Tone.MetalSynth({
+      harmonicity: 12,
+      resonance: 80,
+      modulationIndex: 20,
+      envelope: {
+        decay: 0.4,
+      },
+      volume: -20
+    }).connect(reverb);
+
+    const conga = new Tone.MembraneSynth({
+      pitchDecay: 0.008,
+      octaves: 2,
+      envelope: {
+        attack: 0.0006,
+        decay: 0.5,
+        sustain: 0
+      }
+    }).connect(reverb);
+
+    var notes = ["A2", "C#3", "A4", "E3", "G#3", "A3", "C#4", "G#4"]
+
+    var loop1 = new Tone.Loop(function(time) {
+      let ptn = Pattern('255(' + parts[0] + ',8)');
+      let currentDivision = parseInt(ptn.__data.slots.value * Tone.Transport.progress);
+      let evt = ptn.query(0, 1);
+      for (i in evt) {
+        if (evt[i].arc.start.valueOf() * ptn.__data.slots.value == currentDivision) {
+          cols[0] = 255;
+          //Tone.Transport.progress * 220 + 110
+          conga.triggerAttack(notes[currentDivision], time, Math.random() * 0.5 + 0.5);
+        }
+      }
+    }, "8n").start(0);
+
+    var loop2 = new Tone.Loop(function(time) {
+      let ptn = Pattern('255(' + parts[1] + ',16)');
+      let currentDivision = parseInt(ptn.__data.slots.value * Tone.Transport.progress);
+      let evt = ptn.query(0, 1);
+      for (i in evt) {
+        if (evt[i].arc.start.valueOf() * ptn.__data.slots.value == currentDivision) {
+          cols[1] = 255;
+          bell.triggerAttack("A3", time, Math.random() * 0.5 + 0.5);
+        }
+      }
+    }, "16n").start(0);
+
+    // using P5js for the color
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      fill(255);
+      stroke(255);
+    }
+
+    function draw() {
+      background(cols[0], 0, cols[1]);
+
+      for (i in cols)
+        cols[i] -= 10;
+      textSize(24);
+
+      if (!audiogoing) {
+        text("Click to start", 20, 40);
+      } else {
+        parts[0] = parseInt(map(mouseX, 0, window.innerWidth, 2, 8));
+        parts[1] = parseInt(map(mouseY, 0, window.innerHeight, 2, 8));
+        text("Euclidean Pattern 1:\n"+ parts[0] + ", 8 (use mouseX)", 20, 90);
+        text("Euclidean Pattern 2:\n"+ parts[1] + ", 16 (use mouseY)" , 20, 190);
+
+        line(0, mouseY, width, mouseY);
+        line(mouseX, 0, mouseX, height);
+      }
+    }
+  </script>
+
+  </html>
