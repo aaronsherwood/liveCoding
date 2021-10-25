@@ -1,0 +1,7 @@
+// for installing tidal cycles on an m1 chip Mac 
+
+// this one did not
+curl https://raw.githubusercontent.com/tidalcycles/tidal-bootstrap/master/tidal-bootstrap.command -sSf | sh
+
+// this one worked
+curl https://raw.githubusercontent.com/tidalcycles/tidal-bootstrap/master/tidal-bootstrap.command -sSf | arch -x86_64 /bin/bash
