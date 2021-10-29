@@ -10,3 +10,6 @@
 [submodule "Troop"]
 	path = Troop
 	url = https://github.com/Qirky/Troop
+[submodule "flok"]
+	path = flok
+	url = https://github.com/munshkr/flok

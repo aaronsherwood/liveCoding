@@ -40,6 +40,7 @@ src(s0).mult(osc(10,0,1)).out()
 osc(2,0.,1).modulate(noise(3,0.01),1).out(o1)
 src(o2).modulate(src(o1).add(solid(1,1),-0.5),.005).blend(src(o0).add(o0).add(o0).add(o0),0.1).out(o2)
 render(o2)
+p5 = new P5()
 s0.init({src: p5.canvas})
 // in a browser you'll want to hide the canvas
 p5.hide();

@@ -1,0 +1,1 @@
+flok-repl -H wss://flok.clic.cf -s [TOKEN] -t tidal --extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'
