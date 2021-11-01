@@ -1,1 +1,5 @@
-flok-repl -H wss://flok.clic.cf -s [TOKEN] -t tidal --extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'
+For localserver (replace token with yur token):
+`flok-repl -H ws://localhost:3000 -s [TOKEN] -t tidal --extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'`
+
+Use `wss` if using a public server:
+`flok-repl -H wss://www.flok.livecoding.nyuadim.com:3000 -s [TOKEN] -t tidal --extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }' `
