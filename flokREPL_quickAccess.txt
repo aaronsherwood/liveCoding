@@ -1,4 +1,1 @@
 flok-repl -H wss://flok.clic.cf -s [TOKEN] -t tidal --extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'
-
-. $HOME/.ghcup/env
-[ -f "/Users/ags419/.ghcup/env" ] && source "/Users/ags419/.ghcup/env" # ghcup-env
