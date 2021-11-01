@@ -57,8 +57,8 @@ We need the code we copied to connect to Supercollider:
  1. First, quit Atom to make sure you're Supercollider is not connected
     to that Tidal instance.
  2. Next (you might not need to do this), restart the Supercoliider server.
- 3. Take the code URL you copied before and paste this at the end of it `--extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'`
- 4. The complete URL will look something like this: (replace the [TOKEN} part): 
+ 3. Take the code you copied before and paste this at the end of it `--extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'`
+ 4. The complete code will look something like this: (replace the [TOKEN} part): 
 
 	`flok-repl -H ws://localhost:3000 -s [TOKEN] -t tidal --extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'` 
 	
