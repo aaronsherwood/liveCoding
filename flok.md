@@ -11,7 +11,9 @@ Go  [here](https://nodejs.org/)  to download Node.
 
 Right now, the easiest way to use Flok is to install the  `repl`  and  `web`  packages.
 
-~~npm install -g flok-repl flok-web~~ A new version was just uploaded which doesn't work. We need to install older viersions of each. Do both of the following:
+~~npm install -g flok-repl flok-web~~ 
+
+A new version was just uploaded which doesn't work. We need to install older viersions of each. Do both of the following:
 
 `npm i -g flok-web@0.4.4`
 
