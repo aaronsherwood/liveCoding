@@ -1,6 +1,6 @@
 // first part will load the midi javascript stuff
 const s = document.createElement( 'script' )
-s.src = 'https://www.flok.livecoding.nyuadim.com:3000/midi.js'
+s.src = 'https://livecoding.nyuadim.com/public/midi.js'
 document.querySelector( 'head' ).appendChild( s )
 
 /*
