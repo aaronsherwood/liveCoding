@@ -19,8 +19,9 @@ d1 $ gap 16 $ sound "bev" # legato 1
 d1 $ striate 16 $ sound "bev" # cut 1
 
 -- difference between striate and chop
-d1 $ chop 3 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
-d1 $ striate 3 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
+d1 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
+d1 $ chop 4 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
+d1 $ striate 4 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
 
 -- striateBy
 d1 $ slow 32 $ striateBy 32 (1/4) $ sound "bev"
@@ -30,6 +31,7 @@ d1 $ slow 32 $ striate 32 $ sound "bev"
 -- slice
 d1 $ slice 8 "[4 5 1 2 0 3 7 6]" $ sound "breaks125:1" # room 0.25
 d1 $ slice 8 "[<0*8 0*2> 3*4 2 4] [4 .. 7]" $ sound "breaks125:1" # room 0.25
+-- (try with splice too, which does the same thing but pitches the samples too)
 
 -- randslice
 d1 $ randslice 8 $ sound "breaks125:1*8" # room 0.25
@@ -45,16 +47,15 @@ d1 $ loopAt 1 $ sound "breaks125:1(3,8)" # legato 3 # room 0.25
 d2 $ rev $ loopAt 8 $ chop 128 $ sound "bev:1" # room 0.25
 
 -- const
-
 d1  $ slice 8 "[4 5 1 2 0 3 7 6]" $ whenmod 4 3 (const $ jux (# speed 0.5) $ sound "sitar" # room 0.5 # legato "4" ) $ sound "[fm:7]" # room 0.25
 
 -- ambient
 d1 $ jux rev $ slow 8 $ striateBy 64 (1/4) $ sound "bev:1" # room "0.9" # size "0.9" # up "-3" # slow 4 ( gain (range 0.5 1 rand) )
 
-d2 $ jux rev $ every 4 (# speed "-1") $ struct (iter 4 "t(5,8)?") $ note ((scale "majPent" "0 .. 7")+4) # sound "em2" # gain (range 0.86 0.9 rand) # n (irand 2) # room "0.6" # delay "0.5" # delayfb "0.5" # delaytime "0.5"
+d2 $ slow 3 $ jux rev $ every 4 (# speed "-1") $ struct (iter 4 "t(5,8)?") $ note ((scale "majPent" "0 .. 7")+4) # sound "em2" # gain (range 0.86 0.9 rand) # n (irand 2) # room "0.6" # delay "0.5" # delayfb "0.5" # delaytime "0.5"
 
 -- ocean
-d3 $ chop 128 $ jux (# speed "0.5") $ s "[sheffield]"
+d3 $ slow 2 $ chop 128 $ jux (# speed "0.5") $ s "[sheffield]"
   # att 0.1 # hold 10 # rel 0.1
   # gain (
     (slow 2 (segment 128 (range 0.1 0.3333 sine)))
@@ -64,4 +65,4 @@ d3 $ chop 128 $ jux (# speed "0.5") $ s "[sheffield]"
   # room 0.5
   # size 0.5
 
-  hush
+hush
