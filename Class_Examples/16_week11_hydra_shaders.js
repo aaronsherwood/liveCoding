@@ -79,14 +79,14 @@ howMany=20
 new Array(howMany).fill().reduce((a,b)=>
   a.add(particle(Math.random()*howMany)) // a is previous and then use hydra's add function to add another particle
 ,
-  particle(index) //this is the original
+  particle(Math.random()*howMany) //this is the original
 ).out() // send out
 
 // with feedback
 new Array(howMany).fill().reduce((a,b)=>
 a.add(particle(Math.random()*howMany))
 ,
-  particle(index)
+  particle(Math.random()*howMany)
 ).blend(src(o0).scale(1.01),.9).out()
 
 // wrap it all up in a function
@@ -94,7 +94,7 @@ boom = ()=> {
   new Array(howMany).fill().reduce((a,b)=>
   a.add(particle(Math.random()*howMany))
   ,
-    particle(index)
+    particle(Math.random()*howMany)
   ).blend(src(o0).scale(1.01),.9).out()
 }
 
