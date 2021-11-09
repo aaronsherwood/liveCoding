@@ -1,22 +1,4 @@
-setcps (100/60/4)
-
-d1 $ degradeBy (perlin - 1.0) $ swingBy (1/7) 8 $ whenmod 4 3 (fast "<1.5 2 0.75 0.5>") $ ghost $ s "[<east*8? east*4>, east(5,8)?, tabla2*4]" # n (shuffle 32 (run 32)) # gain (range 0.8 1.1 (rand)) # room 0.4 # nudge "0.02"
-
-d2 $ swingBy (1/7) 8 $ whenmod 4 3 (fast 2 ) $ struct "t(<8 3 5 7 8>,<16 8>)" $ s "midi*16" # up ((scale "hijaz" "0 1 5 -1 4 3")+"<gs4@2 [cs4 gs4]>") # gain (range 0.9 1.2 rand) # sustain rand
-
-d3 $ s "<pluck:13 [~ pluck:1@3] ~ pluck:3(3,8)?>" # up "< 0@3 <0 [0 2]> >" # krush 10 # gain 1.1 # room 0.9
-
-once $ s "em2:2"
-
-clutchIn 1 8 silence
-d2 silence
-d3 silence
-
-hush
-
 -- long samples
-
-setcps (135/60/4)
 
 -- play a long sample
 d1 $ sound "bev"
