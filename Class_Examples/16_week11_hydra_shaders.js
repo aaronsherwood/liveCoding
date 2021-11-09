@@ -89,16 +89,51 @@ a.add(particle(Math.random()*howMany))
   particle(Math.random()*howMany)
 ).blend(src(o0).scale(1.01),.9).out()
 
-// wrap it all up in a function
-boom = ()=> {
-  new Array(howMany).fill().reduce((a,b)=>
-  a.add(particle(Math.random()*howMany))
-  ,
-    particle(Math.random()*howMany)
-  ).blend(src(o0).scale(1.01),.9).out()
-}
+setFunction({
+  name: 'mosaic',
+  type: 'coord',
+  inputs: [
+    {
+      type: 'float',
+      name: 'amt',
+      default: 0.1,
+    },
+    {
+      type: 'float',
+      name: 'squares',
+      default: 10.,
+    },
+    {
+      type: 'float',
+      name: 'power',
+      default: 0.,
+    },
+    {
+      type: 'float',
+      name: 'side',
+      default: 0.5,
+    }
+    ],
+  glsl: `
+  // copy texture coord
+  vec2 uv = _st;
+  // correct for window aspect to make squares
+  float aspect = resolution.x / resolution.y;
+  uv.x *= aspect;
+  amt *= pow(side-_st.x, power);
+  float offset = amt;
+  // tile will be used to offset the texture coordinates
+  // taking the fract will give us repeating patterns
+  vec2 tile = fract(uv * squares) * amt;
+  return _st + tile - offset;
+`})
 
-// you can then use p5 to trigger the function like we did for videos (not illustrated here)
-boom()
+noise(3).mult(osc(10,0,.7)).mosaic().out()
+// params: amount, square count, power
+noise(3).mult(osc(10,0,.7)).mosaic(1,30,3).out()
+// params: amount, square count, power, which side (0-1)
+noise(3).mult(osc(10,0,.7)).mosaic(.1,30,3,0).out()
+// compare to pixelate
+noise(3).mult(osc(10,0,.7)).pixelate(10).out()
 
 hush()
