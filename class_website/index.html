@@ -134,6 +134,7 @@
 
         this.val = null;
         this.phase = 0;
+        this.pPhase = 0;
         this.evts = [];
         this.end = -Infinity;
         console.log("new tidal!")
@@ -143,15 +144,18 @@
         if (cycles == null)
           cycles = 1;
         let p = Pattern(pattern);
-        this.phase += 1 / 120
-        if (this.evts.length <= 0 && this.phase >= this.end) {
-          this.phase = 0
-          this.evts = p.query(this.phase, cycles)
+        this.pPhase = this.phase;
+        this.phase =time%cycles
+        if (this.evts.length <= 0 && (this.phase >= this.end || this.pPhase > this.phase)) {
+          this.evts = p.query(0, cycles)
+
         }
 
         if (this.evts[0] !== undefined && this.phase >= this.evts[0].arc.start.valueOf()) {
           const evt = this.evts.shift()
           this.val = evt.value
+          if (evt.value.type=="number")//for euclid
+            this.val = evt.value.value
           this.end = evt.arc.end.valueOf()
           if (msg != null && audiogoing) {
 
@@ -162,7 +166,7 @@
             let m = {
               s: sample,
               n: sampleNum,
-              speed: spd
+              speed: s
             };
             webDirt.playSample(m);
           }
