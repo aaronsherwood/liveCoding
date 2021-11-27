@@ -15,6 +15,7 @@ class Tidal {
     this.pPhase = 0;
     this.evts = [];
     this.end = -Infinity;
+    this.euclid = false;
     console.log("new tidal!")
   }
 
@@ -31,16 +32,25 @@ class Tidal {
     }
 
     if (this.evts[0] !== undefined && this.phase >= this.evts[0].arc.start.valueOf()) {
-
       const evt = this.evts.shift()
       this.val = evt.value
-      if (evt.value.type == "number") //for euclid
+      if (evt.value.type == "number"){ //for euclid
         this.val = evt.value.value
+        this.euclid=true;
+      } else {
+        this.euclid=false;
+      }
 
       this.end = evt.arc.end.valueOf()
-    } else this.val = null;
+      this.value=null;
+
+    } else if (this.euclid) this.val = null;
+
     return this.val
+
   }
+
+
 
   sound(pattern, spd, gn, samp, cycles) {
     if (cycles == null)

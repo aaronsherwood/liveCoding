@@ -137,6 +137,7 @@
         this.pPhase = 0;
         this.evts = [];
         this.end = -Infinity;
+        this.euclid = false;
         console.log("new tidal!")
       }
 
@@ -144,6 +145,7 @@
         if (cycles == null)
           cycles = 1;
         let p = Pattern(pattern);
+    
         this.pPhase = this.phase;
 
         this.phase = time%cycles
@@ -156,8 +158,12 @@
 
           const evt = this.evts.shift()
           this.val = evt.value
-          if (evt.value.type=="number")//for euclid
+          if (evt.value.type == "number"){ //for euclid
             this.val = evt.value.value
+            this.euclid=true;
+          } else {
+            this.euclid=false;
+          }
 
           this.end = evt.arc.end.valueOf()
           if (msg != null && audiogoing) {
@@ -177,7 +183,7 @@
             };
             webDirt.playSample(m);
           }
-        } else this.val = null;
+        } else if (this.euclid) this.val = null;
         return this.val
       }
 
@@ -185,8 +191,8 @@
         if (cycles == null)
           cycles = 1;
 
-        let p = Pattern(String(pattern));
-
+        let p = Pattern(pattern);
+        console.log(p)
         this.pPhase = this.phase;
         this.phase =time%cycles
         if (this.evts.length <= 0 && (this.pPhase > this.phase)) {//this.phase >= this.end ||
@@ -207,13 +213,16 @@
           if (audiogoing) {
 
             let sample = this.val.split(':')[0]
+
             let sampleNum = parseInt(this.val.split(':')[1]);
+
             let s = 1;
             let g = 1;
 
             if (spd != null) s = spd;
             if (gn != null) g = gn;
             if (samp != null) sampleNum = samp;
+
             let m = {
               s: sample,
               n: sampleNum,
@@ -223,6 +232,7 @@
               // delaytime: 0.5,
               // delayfeedback: 0.5
             };
+
             webDirt.playSample(m);
           }
         }
