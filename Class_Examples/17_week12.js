@@ -44,3 +44,29 @@ s0.initVideo("https://media4.giphy.com/media/ydyPHV9Fw79TplUhMq/giphy.mp4")
 // 3. https://media2.giphy.com/media/ny7UCd6JETnmE/giphy.mp4
 
 s0.initVideo("https://media2.giphy.com/media/ny7UCd6JETnmE/giphy.mp4")
+
+// SPEED
+// change the speed hydra loops at, default is 1
+speed = 0.5
+
+// UPDATE
+// hydra has an update function that goes at the same speed as the rest of its loops
+// use as follows:
+
+update = ()=>{
+	//do stuff in here
+}
+
+//example:
+speed = 0.5
+
+counter=0
+ptime=0
+update = ()=>{
+ mod = time%1
+ if ( ptime > mod)
+  counter = (counter+1)%3
+ ptime = mod
+}
+
+shape(()=>counter+3).rotate(()=>(Math.cos(time)+1)*.5*6.28).scale(1,()=>height/width).out()
