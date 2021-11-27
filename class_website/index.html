@@ -145,17 +145,20 @@
           cycles = 1;
         let p = Pattern(pattern);
         this.pPhase = this.phase;
-        this.phase =time%cycles
-        if (this.evts.length <= 0 && (this.phase >= this.end || this.pPhase > this.phase)) {
-          this.evts = p.query(0, cycles)
 
+        this.phase = time%cycles
+
+        if (this.evts.length <= 0 && (this.pPhase > this.phase)) {//this.phase >= this.end ||
+          this.evts = p.query(0, cycles)
         }
 
         if (this.evts[0] !== undefined && this.phase >= this.evts[0].arc.start.valueOf()) {
+
           const evt = this.evts.shift()
           this.val = evt.value
           if (evt.value.type=="number")//for euclid
             this.val = evt.value.value
+
           this.end = evt.arc.end.valueOf()
           if (msg != null && audiogoing) {
 
@@ -167,13 +170,70 @@
               s: sample,
               n: sampleNum,
               speed: s
+              // delay: 0.1,
+              // delaytime: 0.5,
+              // delayfeedback: 0.5,
+              // gain: Math.random()*.3+.7
             };
             webDirt.playSample(m);
           }
         }
         return this.val
       }
+
+      sound(pattern, spd, gn, samp, cycles) {
+        if (cycles == null)
+          cycles = 1;
+
+        let p = Pattern(String(pattern));
+
+        this.pPhase = this.phase;
+        this.phase =time%cycles
+        if (this.evts.length <= 0 && (this.pPhase > this.phase)) {//this.phase >= this.end ||
+          this.evts = p.query(0, cycles)
+
+        }
+
+        if (this.evts[0] !== undefined && this.phase >= this.evts[0].arc.start.valueOf()) {
+          const evt = this.evts.shift()
+
+            this.val = evt.value
+
+          if (evt.value.type=="number" || evt.value.type=="string")//for euclid
+            this.val = evt.value.value
+
+          this.end = evt.arc.end.valueOf()
+
+          if (audiogoing) {
+
+            let sample = this.val.split(':')[0]
+            let sampleNum = parseInt(this.val.split(':')[1]);
+            let s = 1;
+            let g = 1;
+
+            if (spd != null) s = spd;
+            if (gn != null) g = gn;
+            if (samp != null) sampleNum = samp;
+            let m = {
+              s: sample,
+              n: sampleNum,
+              speed: s,
+              gain: g,
+              // delay: 0.1,
+              // delaytime: 0.5,
+              // delayfeedback: 0.5
+            };
+            webDirt.playSample(m);
+          }
+        }
+        return this.val
+      }
+
+
     }
+
+
+
 
     tidal = [];
     for (let i = 0; i < 100; i++) {

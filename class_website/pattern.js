@@ -147,7 +147,7 @@ function peg$parse(input, options) {
         if( options.enclose === true && value.type !== 'group' ) {
           out = { type:'group', values:[ value ] }
         }
-        
+
         return out
       },
       peg$c1 = function(_valuesstart, _valuesend) {
@@ -155,18 +155,18 @@ function peg$parse(input, options) {
         const values = _valuesend
 
         let out
-        
+
         if( values.type === undefined ) {
           // getting nested arrays with feet...
           out = {
             values:Array.isArray( values[0] ) ? values[0] : values,
-            type:'group' 
+            type:'group'
           }
         }else{
           out = values
           out.type = 'group'
         }
-       
+
         addLoc( out, location() )
 
         return out
@@ -179,10 +179,10 @@ function peg$parse(input, options) {
       peg$c7 = function(values) {
         const out = {
           values,
-          type:'group' 
+          type:'group'
         }
-        
-        return addLoc( out, location() ) 
+
+        return addLoc( out, location() )
       },
       peg$c8 = peg$otherExpectation("term"),
       peg$c9 = function(body) {return body},
@@ -195,13 +195,13 @@ function peg$parse(input, options) {
       peg$c16 = function(value, pulses, slots, rotation) {
         const result = {
           type:'bjorklund',
-          pulses, 
-          slots, 
+          pulses,
+          slots,
           value,
           'rotation': rotation.length > 0 ? rotation[ 0 ] : null
         }
-       
-        const withLoc = addLoc( result, location() ) 
+
+        const withLoc = addLoc( result, location() )
         //withLoc.value.uid = withLoc.uid
         return withLoc
       },
@@ -223,8 +223,8 @@ function peg$parse(input, options) {
             end: rate.location.end
           }
         }
-        
-        return r 
+
+        return r
       },
       peg$c24 = "/",
       peg$c25 = peg$literalExpectation("/", false),
@@ -259,16 +259,16 @@ function peg$parse(input, options) {
       peg$c29 = "}",
       peg$c30 = peg$literalExpectation("}", false),
       peg$c31 = function(left, right) {
-        const result = { 
+        const result = {
           'left':{
             type:'group',
             values:left
-          }, 
+          },
           'right':{
             type:'group',
             values:right,
           },
-          type: 'polymeter' 
+          type: 'polymeter'
         }
 
         addLoc( result.left, location() )
@@ -325,7 +325,7 @@ function peg$parse(input, options) {
       peg$c43 = peg$otherExpectation("word"),
       peg$c44 = /^[letter number]/,
       peg$c45 = peg$classExpectation(["l", "e", "t", "t", "e", "r", " ", "n", "u", "m", "b", "e", "r"], false, false),
-      peg$c46 = function(value) { 
+      peg$c46 = function(value) {
         return addLoc( { type:typeof value, value, }, location() )
       },
       peg$c47 = function(l) {
@@ -2337,13 +2337,13 @@ function peg$parse(input, options) {
 
 
     const addLocations = options.addLocations
-   
+
     let uid = 0
     const addLoc = function( value, location ) {
       if( addLocations === true ) {
         value.location = location
       }
-      
+
       if( options.addUID === true ) {
         value.uid = uid++
       }
@@ -5027,16 +5027,19 @@ const Fraction = require( 'fraction.js' )
 /* The Pattern object is used to parse a pattern
  * a single time and then query it repeatedly, assuming
  * different start and end times for each query. A priority
- * queue is used to sort the events... 
+ * queue is used to sort the events...
 */
 const Pattern = ( patternString, opts ) => {
   if( typeof patternString !== 'string' )
     throw 'You must provide a string to generate the pattern from'
 
   let __data
+
   try{
     __data = parse( patternString, opts )
+
   }catch( e ) {
+    console.log(`${patternString}. ${e.toString()}`)
     throw `We were unable to parse the pattern ${patternString}. ${e.toString()}`
   }
 
@@ -5051,10 +5054,10 @@ const Pattern = ( patternString, opts ) => {
       if( typeof start !== 'object' ) start = Fraction( start )
       if( typeof duration !== 'object' ) duration = Fraction( duration )
 
-      ptrn.events = query( 
-        ptrn.__data, 
+      ptrn.events = query(
+        ptrn.__data,
         start,
-        duration 
+        duration
       )
       .sort( ptrn.__sort )
 
@@ -5063,10 +5066,10 @@ const Pattern = ( patternString, opts ) => {
 
     print() {
       if( ptrn.events !== null ) {
-        ptrn.events.forEach( v => 
-          console.log( 
-            `${v.arc.start.toFraction()} - ${v.arc.end.toFraction()}: [ ${v.value.toString()} ]` 
-          ) 
+        ptrn.events.forEach( v =>
+          console.log(
+            `${v.arc.start.toFraction()} - ${v.arc.end.toFraction()}: [ ${v.value.toString()} ]`
+          )
         )
       }else{
         console.log( 'No events have been generated from the pattern; have you queried it yet?' )
@@ -5082,7 +5085,7 @@ module.exports = Pattern
 },{"../dist/tidal.js":1,"./queryArc.js":18,"fraction.js":4}],18:[function(require,module,exports){
 const Fraction = require( 'fraction.js' )
 const util     = require( 'util' )
-const bjork    = require( 'bjork' ) 
+const bjork    = require( 'bjork' )
 const log      = util.inspect
 const srand    = require( 'seedrandom' )
 
@@ -5094,9 +5097,9 @@ const rnd = function( phase ) {
 /* queryArc
  *
  * Generates events for provided pattern, starting at
- * an initial phase, subdivides queries in individual 
+ * an initial phase, subdivides queries in individual
  * cycles if duration of query is greater than 1 cycle.
- * Filters events outside of the the intended range. 
+ * Filters events outside of the the intended range.
  * Remaps events to be relative to the initial phase.
  */
 const queryArc = function( pattern, phase, duration ) {
@@ -5109,26 +5112,26 @@ const queryArc = function( pattern, phase, duration ) {
 
   // if we're querying an arc that is less than or equal to one cycle in length..
   if( duration.valueOf() <= 1 ) {
-    eventList = processPattern( 
-      pattern, 
-      duration, 
-      adjustedPhase, 
-      null, 
-      null, 
-      false//shouldRemap( pattern ) 
+    eventList = processPattern(
+      pattern,
+      duration,
+      adjustedPhase,
+      null,
+      null,
+      false//shouldRemap( pattern )
     )
   }else{
     // for longer arcs we need to query one cycle at a time
     eventList = []
     let count = 0
     for( let i = adjustedPhase.valueOf(); i < adjustedPhase.add( duration ).valueOf(); i++ ) {
-      eventList = eventList.concat( 
-        processPattern( 
-          pattern, 
+      eventList = eventList.concat(
+        processPattern(
+          pattern,
           Fraction(1),
-          adjustedPhase.add( count++ ), 
-          null, 
-          null, 
+          adjustedPhase.add( count++ ),
+          null,
+          null,
           false
         )
       )
@@ -5137,8 +5140,8 @@ const queryArc = function( pattern, phase, duration ) {
 
   // prune any events that fall before our start phase or after our end phase
   eventList = eventList.filter( evt => {
-    return (evt.arc.start.valueOf() >= start.valueOf() 
-        && evt.arc.start.valueOf()  <  end.valueOf() ) 
+    return (evt.arc.start.valueOf() >= start.valueOf()
+        && evt.arc.start.valueOf()  <  end.valueOf() )
   })
   // remap events to make their arcs relative to initial phase argument
   .map( evt => {
@@ -5146,7 +5149,7 @@ const queryArc = function( pattern, phase, duration ) {
     evt.arc.end   = evt.arc.end.sub( start )
     return evt
   })
- 
+
   //console.log( 'eventList:', log(eventList,{depth:4}) )
   return eventList
 }
@@ -5157,17 +5160,17 @@ const processPattern = ( pattern, duration, phase, phaseIncr=null, override = nu
   //if( phaseIncr !== null ) debugger
   const state = []
   state.phase = phase
-  let events = handlers[ pattern.type ]( 
-    state, 
-    pattern, 
-    /*shouldReset( pattern ) === true ? Fraction(0) :*/ phase.clone(), 
+  let events = handlers[ pattern.type ](
+    state,
+    pattern,
+    /*shouldReset( pattern ) === true ? Fraction(0) :*/ phase.clone(),
     // XXX this is confusing. we are getting around a problem
     // with polymeters where duplicate events are generated by
     // not passing a phaseIncr... it's not needed since there's an
     // override. But this doesn't seem like correct way to solve
     // this problem and will probably cause future problems...
-    phaseIncr !== null ? duration.div( phaseIncr ) : duration, 
-    override 
+    phaseIncr !== null ? duration.div( phaseIncr ) : duration,
+    override
   )
 
   // if needed, remap arcs for events
@@ -5178,8 +5181,8 @@ const processPattern = ( pattern, duration, phase, phaseIncr=null, override = nu
       arc: getMappedArc( v.arc, phase.clone(), phaseIncr )
     }) )
   }
- 
-  return events 
+
+  return events
 }
 // placeholder for potentially adding more goodies (parent arc etc.) later
 const Arc = ( start, end ) => ({ start, end })
@@ -5193,31 +5196,31 @@ const shouldRemap = pattern => shouldNotRemap.indexOf( pattern.type ) === -1
 // map arc time values to appropriate durations
 const getMappedArc = ( arc, phase, phaseIncr ) => {
   let mappedArc
-  
+
   if( phase.mod( phaseIncr ).valueOf() !== 0 ) {
-    mappedArc = Arc( 
-      arc.start.mul( phaseIncr ).add( phase ), 
-      arc.end.mul( phaseIncr ).add( phaseIncr.mod( phase ) ) 
+    mappedArc = Arc(
+      arc.start.mul( phaseIncr ).add( phase ),
+      arc.end.mul( phaseIncr ).add( phaseIncr.mod( phase ) )
     )
   }else{
-    mappedArc = Arc( 
-      arc.start.mul( phaseIncr ).add( phase ), 
-      arc.end.mul( phaseIncr ).add( phase ) 
+    mappedArc = Arc(
+      arc.start.mul( phaseIncr ).add( phase ),
+      arc.end.mul( phaseIncr ).add( phase )
     )
   }
-  
+
   return mappedArc
 }
 
 // if initial phase is in the middle of an arc, advance to the end by calculating the difference
 // between the current phase and the start of the next arc, and increasing phase accordingly.
-const adjustPhase = ( phase, phaseIncr, end ) => phase.valueOf() === 0 
-  ? Fraction(0) 
+const adjustPhase = ( phase, phaseIncr, end ) => phase.valueOf() === 0
+  ? Fraction(0)
   : phase.sub( phase.mod( phaseIncr ) )
 
 // check to see if phase should advance to next event, or, if next event is too far in the future, to the
 // end of the current duration being requested.
-const advancePhase = ( phase, phaseIncr, end ) => phase + phaseIncr <= end ? phase.add( phaseIncr ) : end 
+const advancePhase = ( phase, phaseIncr, end ) => phase + phaseIncr <= end ? phase.add( phaseIncr ) : end
 
 // calculate the duration of the current event being processed.
 const calculateDuration = ( phase, phaseIncr, end ) => phase + phaseIncr <= end ? phaseIncr : end.sub( phase )
@@ -5240,11 +5243,11 @@ const getIndex = ( pattern, phase ) => {
 // in addition to 'fast', phase resets are also necessary when indexing subpatterns,
 // which are currently arrays with no defined .type property, hence the inclusion of
 // undefined in the array below
-const shouldResetPhase = [ 'repeat', undefined, 'group', 'layers' ] 
+const shouldResetPhase = [ 'repeat', undefined, 'group', 'layers' ]
 
 // XXX does these need to look at all parents recursively? Right now we're only using one generation...
 const shouldReset = pattern => {
-  const reset = shouldResetPhase.indexOf( pattern.type ) > -1 
+  const reset = shouldResetPhase.indexOf( pattern.type ) > -1
   const parent = pattern.parent !== undefined && shouldResetPhase.indexOf( pattern.parent.type ) > -1
 
   return reset && parent
@@ -5265,7 +5268,7 @@ const getPhaseIncr = pattern => {
         incr = Fraction( 1, pattern.values.length )
         //let len = 0
         //pattern.values.forEach( v => len += v.type === 'slow' ? v.rate.value : 1 )
-        //incr = Fraction( 1, len ) 
+        //incr = Fraction( 1, len )
       }
       break;
 
@@ -5281,23 +5284,23 @@ const handlers = {
   group( state, pattern, phase, duration, overrideIncr=null ) {
     const start     = phase.clone(),
           end       = start.add( duration ),
-          phaseIncr = overrideIncr === null 
-            ? getPhaseIncr( pattern ) 
+          phaseIncr = overrideIncr === null
+            ? getPhaseIncr( pattern )
             : overrideIncr
-          
+
     let eventList = []
 
-    //console.log( 
-    //  'type:',  pattern.type, 
+    //console.log(
+    //  'type:',  pattern.type,
     //  'phase:', phase.toFraction(),
     //  'incr:',  phaseIncr.toFraction(),
     //  'dur:',   duration.toFraction()
     //)
-    
+
     while( phase.compare( end ) < 0 ) {
       // if pattern is a list, read using current phase, else read directly
-      const member = Array.isArray( pattern.values ) === true 
-        ? pattern.values[ getIndex( pattern, phase ) ] 
+      const member = Array.isArray( pattern.values ) === true
+        ? pattern.values[ getIndex( pattern, phase ) ]
         : pattern.value
 
       // get duration of current event being processed
@@ -5305,16 +5308,16 @@ const handlers = {
 
       // if value is not a numeric or string constant (if it's a pattern)...
       if( member === undefined || (isNaN( member.value ) && typeof member.value !== 'string') ) {
-        // query the pattern and remap time values appropriately 
+        // query the pattern and remap time values appropriately
         if( member !== undefined ) member.parent = pattern
         //console.log( 'processing ', pattern.type, member.type, dur.toFraction(),  phaseIncr.toFraction() )
-        const events = processPattern( 
-          member, 
-          Fraction(1), 
-          //member.type !== 'slow' ? Fraction(0) : phase.clone(), 
+        const events = processPattern(
+          member,
+          Fraction(1),
+          //member.type !== 'slow' ? Fraction(0) : phase.clone(),
           Fraction(0),
           null, //getPhaseIncr(member),
-          null, 
+          null,
           false//shouldRemap( member )
         )
         .map( evt => {
@@ -5327,22 +5330,22 @@ const handlers = {
       }else{
         // XXX shouldn't we just process all patterns???
         // member does not need further processing, so add to event list
-        const evt = { 
-          value:member.value, 
+        const evt = {
+          value:member.value,
           arc:Arc( phase, phase.add( dur ) ),
         }
-        if( member.uid !== undefined ) evt.uid = member.uid 
+        if( member.uid !== undefined ) evt.uid = member.uid
 
         eventList.push( evt )
       }
 
       // assuming we are starting / ending at a regular phase increment value...
-      
+
       if( phase.mod( phaseIncr ).valueOf() === 0 ) {
         phase = advancePhase( phase, phaseIncr, end )
       }else{
         // advance phase to next phase increment
-        phase = phase.add( phaseIncr.sub( phase.mod( phaseIncr ) ) ) 
+        phase = phase.add( phaseIncr.sub( phase.mod( phaseIncr ) ) )
       }
     }
 
@@ -5350,14 +5353,14 @@ const handlers = {
     eventList = eventList.filter( evt => {
       return evt.arc.start.valueOf() >= start.valueOf() && evt.arc.start.valueOf() < end.valueOf()
     })
-   
+
     return state.concat( eventList )
   },
 
   bjorklund( state, pattern, phase, duration ) {
     const onesAndZeros = bjork( pattern.pulses.value, pattern.slots.value )
     let rotation = pattern.rotation !== null ? pattern.rotation.value : 0
-    
+
     // rotate right
     if( rotation > 0 ) {
       while( rotation > 0 ) {
@@ -5373,7 +5376,7 @@ const handlers = {
         rotation++
       }
     }
-    
+
     const slotDuration = duration.div( pattern.slots.value )
     const valueIsValue = pattern.value.type === 'number' || pattern.value.type === 'string'
 
@@ -5384,10 +5387,10 @@ const handlers = {
         const startPhase = phase.add( slotDuration.mul( i ) )
         evt = {
           shouldInclude,
-          // XXX is there a case where we should use more than 
+          // XXX is there a case where we should use more than
           // the first value by querying the value pattern?
           value:valueIsValue ? pattern.value : processPattern( pattern.value, slotDuration, startPhase )[0].value,
-          arc:Arc( startPhase, startPhase.add( slotDuration ) ) 
+          arc:Arc( startPhase, startPhase.add( slotDuration ) )
         }
       }else{
         evt = { shouldInclude }
@@ -5405,9 +5408,9 @@ const handlers = {
 
     events.forEach( evt => {
       evt.uid = pattern.value.uid
-      state.push( evt ) 
+      state.push( evt )
     })
-    
+
     return state
   },
 
@@ -5419,13 +5422,13 @@ const handlers = {
       group.count = group.count === undefined ? 0 : group.count + 1
 
       const subpattern = group.values[ group.count % group.values.length ]
-      const dur = duration.valueOf() <= 1 ? Fraction(1) : duration 
-      const durDiff = duration.mul( dur ) 
+      const dur = duration.valueOf() <= 1 ? Fraction(1) : duration
+      const durDiff = duration.mul( dur )
 
-      const events = processPattern( 
-        subpattern, 
+      const events = processPattern(
+        subpattern,
         dur,
-        Fraction(0), 
+        Fraction(0),
         null,
         null,null,true
       ).map( evt => {
@@ -5433,7 +5436,7 @@ const handlers = {
         evt.arc.end = evt.arc.end.mul( duration ).add( phase )
 
         return evt
-      })  
+      })
 
       state.push( ...events )
     })
@@ -5447,14 +5450,14 @@ const handlers = {
       if( pattern.uid !== undefined ) evt.uid = pattern.uid
       state.push(evt)
     //}
-    return state 
+    return state
   },
 
   string( state, pattern, phase, duration ) {
     const evt = { arc:Arc( phase, phase.add( duration ) ), value:pattern.value }
     if( pattern.uid !== undefined ) evt.uid = pattern.uid
     state.push(evt)
-    return state 
+    return state
   },
 
   degrade( state, pattern, phase, duration ) {
@@ -5462,8 +5465,8 @@ const handlers = {
     const rnum = Math.random()
     //console.log( 'rnd:', rnum, state.phase.toFraction() )
     if( rnum > .5 ) {
-      const evt = { 
-        arc:Arc( phase, phase.add( duration ) ), 
+      const evt = {
+        arc:Arc( phase, phase.add( duration ) ),
         value:pattern.value.value
       }
 
@@ -5474,7 +5477,7 @@ const handlers = {
       state.push( evt )
     }
 
-    return state 
+    return state
   },
 
   polymeter( state, pattern, phase, duration ) {
@@ -5484,7 +5487,7 @@ const handlers = {
     const left  = processPattern( pattern.left, duration, phase.clone(), duration, incr, false )
 
     pattern.right.options = { overrideIncr: true, incr }
-    const right = processPattern( pattern.right, duration, phase.clone(), duration, incr, false ) 
+    const right = processPattern( pattern.right, duration, phase.clone(), duration, incr, false )
 
     return state.concat( left ).concat( right )
   },
@@ -5495,11 +5498,11 @@ const handlers = {
       const incr = getPhaseIncr( group )
       const events = processPattern( group, duration.clone(), phase.clone(), duration, null, false)
       // not sure why excess events are generated, but they need to be filtered...
-      .filter( evt => 
-        evt.arc.start.valueOf() >= phase.valueOf() 
+      .filter( evt =>
+        evt.arc.start.valueOf() >= phase.valueOf()
         && evt.arc.start.valueOf() < phase.add( duration ).valueOf()
       )
-      
+
       //console.log( 'group:', util.inspect( group, { depth:3 }) )
       //console.log( 'state:', util.inspect( events, { depth:3 }))
       state = state.concat( events )
@@ -5527,11 +5530,11 @@ const handlers = {
         //  pattern.value,
         //  duration.mul( speed ),
         //  phase.div( speed )
-        //)       
+        //)
         events = queryArc(
           pattern.value,
           Fraction(0),
-          duration.div( speed ) 
+          duration.div( speed )
         ).map( evt => {
           const diff = evt.arc.end.sub( evt.arc.start )
           evt.arc.start = evt.arc.start.add( phase )
@@ -5572,20 +5575,20 @@ const handlers = {
     // the general process of increasing the speed of a pattern is to query
     // for a longer duration according to the speed, and the scale the resulting
     // events.
-    
+
     // following explanation from yaxu for how subpatterns work with rates...
-    // https://talk.lurk.org/channel/tidal?msg=z5ck73H9EvxQwMqq6 
+    // https://talk.lurk.org/channel/tidal?msg=z5ck73H9EvxQwMqq6
     // re: pattern a*[2 4 8]
-    // "Anyway what happens in this kind of situation is that it splits the cycle in three, 
+    // "Anyway what happens in this kind of situation is that it splits the cycle in three,
     // each a window on what would have happened if you'd have sped things up by the given number
     // so for the first third you'd get a third of two a's
     // for the second third you'd get the second third of four a's..."
-    
+
     const speed = pattern.rate.value
     const events = queryArc(
       pattern.value,
       Fraction(0),
-      duration.mul( speed ) 
+      duration.mul( speed )
     ).map( evt => {
       evt.arc.start = evt.arc.start.div( speed ).add( phase )
       evt.arc.end   = evt.arc.end.div( speed ).add( phase )
@@ -5594,7 +5597,7 @@ const handlers = {
 
     // XXX account for having a speeds pattern!!!!
     /*
-    
+
     const incr = Fraction(1, speeds.length)
     const speeds = queryArc( pattern.rate, Fraction(0), Fraction(1) )
 
@@ -5602,36 +5605,36 @@ const handlers = {
       let speed = speeds[ i ].value
 
       if( pattern.operator === '*' ) {
-        //events = queryArc( 
+        //events = queryArc(
         //  pattern.value,
-        //  phase.clone(), //Fraction( 0 ), 
+        //  phase.clone(), //Fraction( 0 ),
         //  Fraction( speed ).mul( duration )
         //)
         events = processPattern(
           pattern.value,
           duration.mul( speed ),
           phase.clone()//Fraction( speed ).mul( duration )
-          //phase.clone() 
+          //phase.clone()
         )
-          
+
         // remap events to correct time spans
         .map( evt => {
           evt.arc.start = evt.arc.start.div( speed )//.add( phase )
           evt.arc.end   = evt.arc.end.div( speed )//.add( phase )
           return evt
         })
-        //.filter( evt => 
-        //  evt.arc.start.compare( incr.mul( i ) ) >= 0 
-        //    && evt.arc.start.compare( incr.mul( i+1 ) ) < 0 
+        //.filter( evt =>
+        //  evt.arc.start.compare( incr.mul( i ) ) >= 0
+        //    && evt.arc.start.compare( incr.mul( i+1 ) ) < 0
         //))
         // add to previous events
         .concat( events )
       }else{
         speed = 1/speed
         //console.log( 'phase:', phase.mul( speed ) )
-        events = processPattern( 
-          pattern.value, 
-          duration.mul( Fraction( speed ) ), 
+        events = processPattern(
+          pattern.value,
+          duration.mul( Fraction( speed ) ),
           phase.mul( speed ),
           getPhaseIncr( pattern ).mul( speed ), null, false
         )
@@ -5651,9 +5654,9 @@ const handlers = {
           return evt
         })
         // remove events don't fall in the current window
-        .filter( evt => 
-          evt.arc.start.compare( incr.mul(i) ) >= 0 && 
-          evt.arc.start.compare( incr.mul(i+1) ) <= 0 
+        .filter( evt =>
+          evt.arc.start.compare( incr.mul(i) ) >= 0 &&
+          evt.arc.start.compare( incr.mul(i+1) ) <= 0
         )
         // add to previous events
         .concat( events )
