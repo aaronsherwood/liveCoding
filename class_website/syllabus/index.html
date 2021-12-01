@@ -41,6 +41,7 @@ body {
           <span class = "links" id ="home" >home</span>
           <span class = "links" id ="schedule" >schedule</span>
           <span class = "links" id ="syllabus" style="color: #ff6ec7;">syllabus</span>
+          <span class="links" id="blog">blog</span>
           <i id ="run-icon" class="fas fa-play-circle icon" title="Run all code (ctrl+shift+enter)" hidden="true" style="opacity:0; cursor:auto"></i>
         </div>
       </div>
@@ -57,21 +58,26 @@ body {
   </div>
   </div>
   <script>
-    this.homeButton= document.getElementById("home")
-    this.scheduleButton= document.getElementById("schedule")
-    this.syllabusButton= document.getElementById("syllabus")
+  this.homeButton= document.getElementById("home")
+  this.scheduleButton= document.getElementById("schedule")
+  this.syllabusButton= document.getElementById("syllabus")
+  this.blogButton= document.getElementById("blog")
 
-    this.homeButton.onclick = () => {
-      window.location.href = "../";
-    }
+  this.homeButton.onclick = () => {
+    window.location.href = "../";
+  }
 
-    this.scheduleButton.onclick = () => {
-      window.location.href = "../schedule";
-    }
+  this.scheduleButton.onclick = () => {
+    window.location.href = "../schedule";
+  }
 
-    this.syllabusButton.onclick = () => {
-      window.location.href = "../syllabus";
-    }
+  this.syllabusButton.onclick = () => {
+    window.location.href = "../syllabus";
+  }
+
+  this.blogButton.onclick = () => {
+    window.location.href = "https://blog.livecoding.nyuadim.com";
+  }
   </script>
 </body>
 </html>

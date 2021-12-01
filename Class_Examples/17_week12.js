@@ -25,6 +25,23 @@ window.loadScript = (url = "") => {
 
 // then do the loadScript call as at top in hydra after pasting that
 
+// Loading shaders online
+// You can use github to store your shader files
+// Get the raw version of the file and use that URL
+
+p5 = new P5({width: window.innerWidth, height:window.innerHeight, mode: 'WEBGL'})
+shader = p5.loadShader("https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/Class_Examples/shaders/basic.vert", "https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/Class_Examples/shaders/ocean.frag");
+
+p5.draw = ()=>{
+  shader.setUniform("time", time);
+  shader.setUniform("resolution", [p5.width, p5.height]);
+  shader.setUniform("mouse",[p5.mouseX, p5.mouseY]);
+  p5.shader(shader);
+  p5.rect(0, 0, width, height);
+}
+s0.init({src: p5.canvas})
+src(s0).out()
+
 
 // GIPHY
 // you can load gifs from giphy as mp4s
@@ -62,6 +79,7 @@ speed = 0.5
 
 counter=0
 ptime=0
+
 update = ()=>{
  mod = time%1
  if ( ptime > mod)

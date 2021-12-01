@@ -139,18 +139,20 @@ noise(1, .5).mult(osc(10, 0, .7)).pixelate(10).out()
 
 p5 = new P5({width: window.innerWidth, height:window.innerHeight, mode: 'WEBGL'})
 shader = p5.loadShader("/Users/ags419/Documents/Code/classes/liveCoding/Class_Examples/shaders/basic.vert", "/Users/ags419/Documents/Code/classes/liveCoding/Class_Examples/shaders/ocean.frag");
+p5.pixelDensity(1);
 
 p5.draw = ()=>{
-  shader.setUniform("time", time);
-  shader.setUniform("resolution", [p5.width, p5.height]);
-  shader.setUniform("mouse",[p5.mouseX, p5.mouseY]);
-  p5.shader(shader);
-  p5.rect(0, 0, width, height);
+    shader.setUniform("time", time);
+    shader.setUniform("resolution", [width, height]);
+    shader.setUniform("mouse",[p5.mouseX, p5.mouseY]);
+    p5.shader(shader);
+    p5.rect(0, 0, pg0.width, pg0.height);
 }
 p5.hide();
 s0.init({src: p5.canvas})
-src(s0).out()
+src(s0).mult(osc(10,0,.6)).out()
 
 hush()
+
 
 // try to port this one together this: https://www.shadertoy.comview/lscczl
