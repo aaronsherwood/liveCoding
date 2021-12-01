@@ -25,7 +25,7 @@ float distance_from_sphere(in vec3 p, in vec3 c, float r)
 
 float map_the_world(in vec3 p)
 {
-    float displacement = sin(4. * p.x *(sin(time*.1-3.3)+1.5)) * sin(4. * p.y *(cos(time)+1.5)) * sin(4. * p.z *(sin(time*0.9)+1.5)) * 0.05;
+    float displacement = sin(5. * p.x *(sin(time*.1-3.3)+1.5)) * sin(5. * p.y *(cos(time)+1.5)) * sin(5. * p.z *(sin(time*0.9)+1.5)) * 0.05;
     float sphere_0 = distance_from_sphere(p, vec3(0.0), 1.0);
 
     return sphere_0 + displacement;
