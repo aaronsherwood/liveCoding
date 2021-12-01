@@ -92,7 +92,7 @@ void main(void)
     uv.y*=xdim;
 
 
-    vec3 camera_position = vec3(0.0, 0.0, -3.0);
+    vec3 camera_position = vec3(0.0, 0.0, -5.0);
     vec3 ro = camera_position;
     vec3 rd = vec3(uv, 1.0);
 
