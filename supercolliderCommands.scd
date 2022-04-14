@@ -5,7 +5,7 @@ Quarks.gui
 ServerOptions.devices;
 
 //set output for zoom (on Mac, might be a little different on windows)
-Server.default.options.outDevice_("Crestron")
+Server.default.options.outDevice_("External Headphones")
 
 SuperDirt.start
 
