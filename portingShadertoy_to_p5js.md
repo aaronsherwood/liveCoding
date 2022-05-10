@@ -2,7 +2,7 @@
 ## * Note: this only covers porting the simplest shaders.
 
 ### Find replace
-Find the following and replace all the instances of the first iterm with the second:
+Find the following and replace all the instances of the first item with the second:
  - iTime => time
  - iResolution => resolution
  - iMouse => mouse
