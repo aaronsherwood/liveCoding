@@ -1,0 +1,21 @@
+{
+  "name": "22_tidal_midi_p5_basic",
+  "version": "1.0.0",
+  "description": "* Download and install [Node.js](https://nodejs.org/) if you don't have it already.\r * On the command line, navigate to the folder that contains all the files for the example.\r * Do: `npm update` (just once)\r * Start the server: `node server.js`\r    - (All node modules are included)\r * Navigate in a browser to `localhost:8000`",
+  "main": "osc.js",
+  "dependencies": {
+    "connect": "^3.6.5",
+    "http": "^0.0.0",
+    "node-osc": "^2.1.0",
+    "serve-static": "^1.13.1",
+    "socket.io": "^1.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

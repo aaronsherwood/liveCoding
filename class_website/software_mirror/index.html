@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" width="device-width," initial-scale="1.0," maximum-scale="1.0," user-scalable="0" />
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let time = new Date().getDay();
+      let url_string = window.location.href;
+      let url = new URL(url_string);
+      let sources = [
+        "https://livecoding.nyuadim.com/?sketch_id=glitch2&show-code=false",
+        "https://livecoding.nyuadim.com/sbm_visuals/14_delay/",
+        "https://livecoding.nyuadim.com/?sketch_id=whoami2&show-code=false",
+        "https://livecoding.nyuadim.com/?sketch_id=dance&show-code=false",
+        "https://livecoding.nyuadim.com/sbm_visuals/31_dilated_shapes/",
+        "https://livecoding.nyuadim.com/?sketch_id=dance2&show-code=false"]
+      let mode = parseInt(url.searchParams.get("mode"));
+      console.log("mode: "+mode);
+      let whichSource = time%3; 
+      if (mode!=null && !isNaN(mode)) whichSource=mode%sources.length;
+
+      let iframe = document.createElement('iframe');
+      iframe.src = sources[whichSource];
+      iframe.width = window.innerWidth; 
+      iframe.height = window.innerHeight; 
+      iframe.frameborder = 0; 
+      iframe.allow = "camera *;microphone *";
+      document.body.appendChild(iframe);
+    </script>
+  </body>
+</html>
