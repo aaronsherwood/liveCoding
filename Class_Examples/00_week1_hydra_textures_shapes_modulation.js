@@ -30,17 +30,12 @@ a = () => shape(3, .4).rotate(Math.random()*100,Math.random()*3-1.75).repeat(n,n
 //(scroll makes things duplicate "scrolled" across the screen, the screen has 0 in the middle and extends to -1 & 1 on either side in the x dimension)
 a().add(a().scrollX(.5/n).scrollY(.5/n)).scale(1,()=>window.innerHeight/window.innerWidth,1).out(o0)
 
-//feedback with scale
-shape(4,.9).diff(src(o0).scale(.95)).out(o0)
-src(o1).diff(src(o0).scale(.99)).out()
-
-//show all oututs
-render()
-//show one output
-render(o0)
+// noise and voronoi
+noise().out()
+voronoi().out()
 
 //clear the screen
-solid().out()
+hush()
 
 //modulate
 osc(40,0,1).modulate(noise(3,0.05)).out()
@@ -59,7 +54,10 @@ shape(2).modulate(osc(10).pixelate(10)).out()
 //modulate scale
 shape(2).modulateScale(osc(10).pixelate(10),0.9,0.01).out()
 
+//show all oututs
 render()
+//show one output
+render(o0)
 
 //modulate by a shape
 //start with osc
@@ -99,9 +97,7 @@ src(o2).modulate(src(o1),.01).blend(o0,.1).out(o2)
 src(o2).modulate(src(o1).add(solid(1,1),-0.5),0.01).blend(o0,0.1).out(o2)
 //blend it together
 src(o2).mult(o1).out(o3)
-//try with luma
-src(o2).luma(.3,.3).mult(o1).out(o3)
 
 render(o0)
 
-solid().out()
+hush()
