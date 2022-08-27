@@ -1,28 +1,7 @@
-// Hydra Key Commands (these are for in Atom, for in the browser use Ctrl+Return for one line,
-// Option+Return for code block, & Ctrl+Shift+Enter for all code in editor)
-//
-// Evaluate one line of code, put cursor on that line then:
-// Shift+Return
-//
-// Evaluate a block of code:
-// Crl+Return
-//
-// Hide or show code:
-// Ctrl+Shift+H
-//
-// Toggle command palette, then type hydra to turn on hydra:
-// Cmd+Shift+P (OSX)
-// Ctrl+Shift+P (Windows)
-//
-// Open javascript console for more debugging:
-// Cmd+Shift+I  (OSX)
-// Ctrl+Shift+I  (Windows)
-
-
 //oscillator
 osc().out()
-//thresh will take pixels  above a certain brightness value and output white
-//obelow the value will output black
+//thresh will take pixels above a certain brightness value and output white
+//below the value will output black
 osc().thresh().out()
 //similar to thresh but with multiple bands
 osc().posterize().out()
@@ -48,6 +27,7 @@ n = 4
 //create a function that repeats the triangle 4x4 and has a random rotation for that whole grid
 a = () => shape(3, .4).rotate(Math.random()*100,Math.random()*3-1.75).repeat(n,n)
 //add in the same grid to itself, but slightly offest by using scroll
+//(scroll makes things duplicate "scrolled" across the screen, the screen has 0 in the middle and extends to -1 & 1 on either side in the x dimension)
 a().add(a().scrollX(.5/n).scrollY(.5/n)).scale(1,()=>window.innerHeight/window.innerWidth,1).out(o0)
 
 //feedback with scale
@@ -78,6 +58,8 @@ shape(2).modulate(osc(10)).out()
 shape(2).modulate(osc(10).pixelate(10)).out()
 //modulate scale
 shape(2).modulateScale(osc(10).pixelate(10),0.9,0.01).out()
+
+render()
 
 //modulate by a shape
 //start with osc
@@ -119,3 +101,7 @@ src(o2).modulate(src(o1).add(solid(1,1),-0.5),0.01).blend(o0,0.1).out(o2)
 src(o2).mult(o1).out(o3)
 //try with luma
 src(o2).luma(.3,.3).mult(o1).out(o3)
+
+render(o0)
+
+solid().out()
