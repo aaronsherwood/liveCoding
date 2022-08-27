@@ -43,6 +43,7 @@
           <span class="links" id="home" style="color: #ff6ec7;">home</span>
           <span class="links" id="schedule">schedule</span>
           <span class="links" id="syllabus">syllabus</span>
+          <span class="links" id="blog">blog</span>
           <i id="run-icon" class="fas fa-play-circle icon" title="Run all code (ctrl+shift+enter)" hidden="true" style="opacity:0; cursor:auto"></i>
         </div>
       </div>
@@ -100,6 +101,7 @@
     this.homeButton = document.getElementById("home")
     this.scheduleButton = document.getElementById("schedule")
     this.syllabusButton = document.getElementById("syllabus")
+    this.blogButton= document.getElementById("blog")
 
     this.homeButton.onclick = () => {
       window.location.href = "../";
@@ -112,6 +114,11 @@
     this.syllabusButton.onclick = () => {
       window.location.href = "../syllabus";
     }
+
+    this.blogButton.onclick = () => {
+      window.location.href = "https://blog.livecoding.nyuadim.com/category/fall-22/";;
+    }
+
   </script>
 </body>
 
