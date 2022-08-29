@@ -20,7 +20,7 @@ brew install ghc
 ```
 brew install cabal-install
 ```
-- install cabal and the tidalcycles library:
+- install cabal tidalcycles library:
 ```
 cabal update
 cabal install tidal --lib
