@@ -13,7 +13,7 @@ and start chrome from command line with these flags disbaling security:
 <PATH_TO_CHROME> –allow-file-access-from-files --disable-web-security --user-data-dir=”~/temp”
 
 then we need to start another server to serve the videos
-first navigate in the commadn line to the folder where your videos are
+first navigate in the command line to the folder where your videos are
 then use python to start a simple server:
 for python2 do: python -m "SimpleHTTPServer"
 for python3 do : python -m "http.server"
@@ -65,3 +65,31 @@ p5.draw = ()=>{
     prev=cc[2];
   }
 }
+
+// LOADING VIDEOS REMOTELY
+// only some websites will allow you to load a video from them
+// our blog is setup to do this
+
+//Loading a video with no sound is very easy:
+s0.initVideo("https://blog.livecoding.nyuadim.com/wp-content/uploads/299.mp4")
+src(s0).out()
+
+//you can also load from giphy (and load your videos up on giphy):
+s0.initVideo("https://media2.giphy.com/media/ny7UCd6JETnmE/giphy.mp4")
+src(s0).out()
+
+//If you want sound from the video (click mouse for sound)
+vid = document.createElement('video')
+vid.crossOrigin = 'anonymous'
+vid.autoplay = true
+vid.loop = true
+vid.muted = true // mute in order to load without user interaction
+const onload = vid.addEventListener('loadeddata', () => {
+  vid.play()
+  s0.init({src: vid})
+  src(s0).out(o0)
+})
+vid.src = "https://blog.livecoding.nyuadim.com/wp-content/uploads/299.mp4"
+window.addEventListener("click", function(event) {
+  vid.muted = false
+})
