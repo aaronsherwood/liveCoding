@@ -8,7 +8,6 @@
 ```
 curl https://raw.githubusercontent.com/tidalcycles/tidal-bootstrap/master/tidal-bootstrap.command -sSf | sh
 ```
-- log out of computer and then back in
 - install homebrew:
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -35,6 +34,7 @@ cabal install tidal --lib
 
 Testing if it works
 
+- Log out of computer and then back in
 - Open Supercollider
 - Type in
 ```
