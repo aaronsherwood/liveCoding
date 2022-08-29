@@ -10,7 +10,8 @@ curl https://raw.githubusercontent.com/tidalcycles/tidal-bootstrap/master/tidal-
 ```
 - log out of computer and then back in
 - install homebrew:
-```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 - install haskell:
 ```
