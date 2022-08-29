@@ -1,7 +1,5 @@
 # C3-116 installation
 
-////////////////////////////////////////////////
-
 ## TIDALCYCLES
 
 - install tidal with automatic script:
@@ -49,8 +47,6 @@ SuperDirt.start
   d1 $ s "bd bd sd ~"
   ```
   - evaluate by doing shift+enter
-
-////////////////////////////////////////////////
 
 ## HYDRA
 
