@@ -29,6 +29,6 @@ Testing if it works
 ## HYDRA
 
 In Atom Preferences
-Click: + Install
-Type in: hydra
-Then install: atom-hydra
+- Click: + Install
+- Type in: hydra
+- Then install: atom-hydra
