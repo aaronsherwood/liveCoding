@@ -9,6 +9,9 @@
 - install homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 - install haskell: `brew install ghc`
 - install cabal: `brew install cabal-install`
+- install cabal and the tidalcycles library:
+`cabal update
+cabal install tidal --lib`
 - open Atom
 - go to Preferences >> Packages >> tidalcycles >> Settings
 - under GHCI Path put this in the blank space: `/usr/local/bin`
