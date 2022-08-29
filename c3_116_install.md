@@ -1,8 +1,8 @@
-C3-116 installation
+# C3-116 installation
 
 ////////////////////////////////////////////////
 
-TIDALCYCLES
+## TIDALCYCLES
 
 - install tidal with automatic script: `curl https://raw.githubusercontent.com/tidalcycles/tidal-bootstrap/master/tidal-bootstrap.command -sSf | sh`
 - log out of computer and then back in
@@ -21,12 +21,12 @@ Testing if it works
 - (the numbers in left hand corner should be green when ready)
 - In Atom:
   - create a new file called "test.tidal" and save
-  - in the file type in: d1 $ s "bd bd sd ~"
+  - in the file type in: `d1 $ s "bd bd sd ~"`
   - evaluate by doing shift+enter
 
 ////////////////////////////////////////////////
 
-HYDRA
+## HYDRA
 
 In Atom Preferences
 Click: + Install
