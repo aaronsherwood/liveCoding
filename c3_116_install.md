@@ -11,7 +11,7 @@
 - install cabal: `brew install cabal-install`
 - open Atom
 - go to Preferences >> Packages >> tidalcycles >> Settings
-- under GHCI Path put this in the blank space: /usr/local/bin
+- under GHCI Path put this in the blank space: `/usr/local/bin`
 
 Testing if it works
 
@@ -30,5 +30,5 @@ Testing if it works
 
 In Atom Preferences
 - Click: + Install
-- Type in: hydra
+- Type in: `hydra`
 - Then install: atom-hydra
