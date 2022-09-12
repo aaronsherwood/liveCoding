@@ -29,19 +29,19 @@ new Array(10).fill().reduce((a,b)=>a.colorama(.02),gradient(.1)).mult(src(s0).th
 // added to pixelate gives interesting results
 osc().modulate(noise().pixelate()).colorama().out()
 
-// hue used with feedback - becasue we shift the hue ever so slightly and then feed it back the simple blue starts shifting
+// hue used with feedback - because we shift the hue ever so slightly and then feed it back the simple blue starts shifting
 src(o0).modulateRotate(noise(1,0.01),0.03).hue(0.003).layer(shape(2,0.0125).luma().color(0,0,1)).out(o0)
 
 //luma is like thresh but preserves the color of the bright parts
 // it also returns a transparent image (rather than black) so it's good for layering
-// first arguement is fro threshold, second is for blurriness
+// first arguement is for threshold, second is for blurriness
 osc(200,0.01,1).rotate(1).layer(osc(30,0,1).luma(0.5,0.01)).out(o0)
 // second arguement can create shadow effect (see hydra book for how this works)
-osc(200,0.01,1).rotate(1).layer(osc(30,0,1).saturate(0).luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(0.5,0.01)).out(o0)
+osc(200,0.01,1).rotate(1).layer(osc(30,0,1).luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(0.5,0.01)).out(o0)
 // modulate with noise
-osc(200,0.01,1).rotate(1).layer(osc(30,0,1).saturate(0).luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(0.5,0.01)).modulate(noise(3,.1)).out(o0)
+osc(200,0.01,1).rotate(1).layer(osc(30,0,1).luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(0.5,0.01)).modulate(noise(3,.1)).out(o0)
 // with sine
-osc(200,0.01,1).rotate(1).layer(osc(30,0,1).saturate(0).luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(0.5,0.01)).modulate(noise(()=>(Math.sin(time)*.5+.5)*3,.1)).out(o0)
+osc(200,0.01,1).rotate(1).layer(osc(30,0,1).luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(0.5,0.01)).modulate(noise(()=>(Math.sin(time)*.5+.5)*3,.1)).out(o0)
 
 // using a color palette from coolors.co
 //this is all setup code
