@@ -42,7 +42,7 @@ d3 $ qtrigger 3 $ seqP [
   (1,2, s "feel:2*8"),
   (2,3, s "feel:2*16"),
   (3,4, s "feel:2*32")
-] # room 0.3 # hpf (slow 4 (3000*saw + 100)) # speed (slow 4 (range 1 2 saw))
+] # room 0.3 # hpf (slow 4 (1000*saw + 100)) # speed (slow 4 (range 1 2 saw))
 
 -- put together with rising percussion pitch
 d2 $ qtrigger 2 $ stack[
@@ -61,7 +61,7 @@ do {
     (1,2, s "feel:2*8"),
     (2,3, s "feel:2*16"),
     (3,4, s "feel:2*32")
-  ] # room 0.3 # hpf (slow 4 (3000*saw + 100)) # speed (slow 4 (range 1 2 saw))
+  ] # room 0.3 # hpf (slow 4 (1000*saw + 100)) # speed (slow 4 (range 1 2 saw))
 }
 
 -- put it all together (more complicated)
