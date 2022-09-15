@@ -41,6 +41,7 @@ body {
           <span class = "links" id ="home" >home</span>
           <span class = "links" id ="schedule" >schedule</span>
           <span class = "links" id ="syllabus" style="color: #ff6ec7;">syllabus</span>
+          <span class="links" id="github">github</span>
           <span class="links" id="blog">blog</span>
           <i id ="run-icon" class="fas fa-play-circle icon" title="Run all code (ctrl+shift+enter)" hidden="true" style="opacity:0; cursor:auto"></i>
         </div>
@@ -61,6 +62,7 @@ body {
   this.homeButton= document.getElementById("home")
   this.scheduleButton= document.getElementById("schedule")
   this.syllabusButton= document.getElementById("syllabus")
+  this.githubButton= document.getElementById("github")
   this.blogButton= document.getElementById("blog")
 
   this.homeButton.onclick = () => {
@@ -73,6 +75,14 @@ body {
 
   this.syllabusButton.onclick = () => {
     window.location.href = "../syllabus";
+  }
+
+  this.githubButton.onclick = () => {
+    // window.location.href = "https://github.com/aaronsherwood/liveCoding";
+    window.open(
+      'https://github.com/aaronsherwood/liveCoding',
+      '_blank' // <- This is what makes it open in a new window.
+    );
   }
 
   this.blogButton.onclick = () => {

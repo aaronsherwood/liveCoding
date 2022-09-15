@@ -6,13 +6,8 @@ osc(200,0.01,1).rotate(1).layer(osc(30,0,1).luma(0.2,.2).color(0,0,0,1)).layer(o
 osc(200,0.01,1).rotate(1).layer(osc(30,0,1).luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(()=>cc[1],0.01)).modulate(noise(()=>(cc[0]+cc[2])*3,.1)).out(o0)
 solid().out()
 
-// to load webmidi access
-const s = document.createElement( 'script' )
-s.src = 'https://livecoding.nyuadim.com/public/midi.js'
-document.querySelector( 'head' ).appendChild( s )
-
 ///////////////////////////////////////////////////////////////////////
-// otherwise you would need to paste this in console
+// to enable WebMidi need to paste this in console
 // access console cmnd + optn + i (macOS)
 // cntl + shft + i (windows)
 navigator.requestMIDIAccess()
