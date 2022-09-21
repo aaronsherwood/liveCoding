@@ -1,6 +1,7 @@
 // first part will load the midi javascript stuff
 const s = document.createElement( 'script' )
-s.src = 'https://livecoding.nyuadim.com/public/midi.js'
+// change the next line to the file location on your computer
+s.src = '/Users/ags419/Documents/Code/classes/liveCoding/midi.js'
 document.querySelector( 'head' ).appendChild( s )
 
 /*
