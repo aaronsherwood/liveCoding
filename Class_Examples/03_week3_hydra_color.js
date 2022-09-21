@@ -36,8 +36,12 @@ src(o0).modulateRotate(noise(1,0.01),0.03).hue(0.003).layer(shape(2,0.0125).luma
 // it also returns a transparent image (rather than black) so it's good for layering
 // first arguement is for threshold, second is for blurriness
 osc(200,0.01,1).rotate(1).layer(osc(30,0,1).luma(0.5,0.01)).out(o0)
-// second arguement can create shadow effect (see hydra book for how this works)
+
+// take the second osc and create shadow effect (see hydra book for how this works)
+osc(30,0,1).luma(0.2,.2).color(0,0,0,1).layer(osc(30,0,1).luma(0.5,0.01)).out(o0)
+// layer that ontop of the first osc
 osc(200,0.01,1).rotate(1).layer(osc(30,0,1).luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(0.5,0.01)).out(o0)
+
 // modulate with noise
 osc(200,0.01,1).rotate(1).layer(osc(30,0,1).luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(0.5,0.01)).modulate(noise(3,.1)).out(o0)
 // with sine
