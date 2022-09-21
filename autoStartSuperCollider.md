@@ -1,6 +1,6 @@
 # Setup SuperDirt and MIDI to start when supercollider loads
 
-Open SuperCollider. Click on File > Open startup file. Paste the following text-file in the new buffer that just appeared. OMMENT OUT THE MIDI LINE WHICH IS NOT FOR YOU COMPUTER (Mac or Windows). Save and viola! 
+Open SuperCollider. Click on File > Open startup file. Paste the following text-file in the new buffer that just appeared. COMMENT OUT THE MIDI LINE WHICH IS NOT FOR YOUR COMPUTER (Mac or Windows). Save and viola! 
 
 
 ```
@@ -24,8 +24,7 @@ s.reboot { // server options are only updated on reboot
         //MIDI
         MIDIClient.init;
 
-        //Note: you need to put the correct name here, IAC (etc.) is for a Mac
-        // Comment out the one that is not for you
+        //Comment out the one that is not for your computer:
         ~midiOut = MIDIOut.newByName("IAC Driver", "Bus 1"); // FOR MAC
         ~midiOut = MIDIOut.newByName("loopMIDI Port", "loopMIDI Port"); // FOR WINDOWS
 
