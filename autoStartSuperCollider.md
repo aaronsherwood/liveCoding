@@ -1,6 +1,6 @@
 # Setup SuperDirt and MIDI to start when supercollider loads
 
-Open SuperCollider. Click on File > Open startup file. Paste the following text-file in the new buffer that just appeared then save. MAKE SURE TO COMMENT OUT THE MIDI LINE WHICH IS NOT FOR YOU COMPUTER (Mac or Windows).
+Open SuperCollider. Click on File > Open startup file. Paste the following text-file in the new buffer that just appeared. OMMENT OUT THE MIDI LINE WHICH IS NOT FOR YOU COMPUTER (Mac or Windows). Save and viola! 
 
 
 ```
