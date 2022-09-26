@@ -22,10 +22,10 @@ gradient(0.1).colorama(0.1).colorama(0.1).colorama(0.1).colorama(0.1).colorama(0
 //mult it by some shapes
 gradient(0.1).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).mult(shape(4,0.5).repeat(10,10)).out()
 //javascript shorthand to append 10 coloramas to one gradient
-new Array(10).fill().reduce((a,b)=>a.colorama(.01),gradient(.1)).mult(shape(4,0.5).repeat(10,10)).out()
+new Array(10).fill().reduce((a)=>a.colorama(.01),gradient(.1)).mult(shape(4,0.5).repeat(10,10)).out()
 // mix that with a thresholded webcam image (you might not need the invert depending on what's dark and light in your webcam image)
 s0.initCam()
-new Array(10).fill().reduce((a,b)=>a.colorama(.02),gradient(.1)).mult(src(s0).thresh(.3).invert()).out()
+new Array(10).fill().reduce((a)=>a.colorama(.02),gradient(.1)).mult(src(s0).thresh(.3).invert()).out()
 // added to pixelate gives interesting results
 osc().modulate(noise().pixelate()).colorama().out()
 
