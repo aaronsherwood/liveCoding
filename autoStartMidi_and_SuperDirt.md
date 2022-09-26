@@ -1,6 +1,6 @@
 # Setup SuperDirt and MIDI to start when supercollider loads
 
-Open SuperCollider. Click on File > Open startup file. Paste the following text-file in the new buffer that just appeared. COMMENT OUT THE MIDI LINE WHICH IS NOT FOR YOUR COMPUTER (Mac or Windows). Save and viola! 
+Open SuperCollider. Click on File > Open startup file. Paste the following text-file in the new buffer that just appeared. COMMENT OUT THE MIDI LINE WHICH IS NOT FOR YOUR COMPUTER (Mac or Windows). Save and viola!
 
 
 ```
@@ -44,4 +44,20 @@ s.reboot { // server options are only updated on reboot
     s.latency = 0.3; // increase this if you get "late" messages
 };
 );
+```
+
+# Set MIDI to automatically be loaded in Atom
+
+In Atom:
+* Go to: Preferences >> Packages
+* Search for Hydra
+* Click anywhere in the Hydra grey box. This should bring you to an Atom-Hydra settings page in Atom.
+* Click View Code
+* Navigate to node_modules >> hydra-synth >> hydra-synth.js (make sure it's not the nydra-synth.js in the src folder, we want to be in the main hydra-synth folder)
+* In hydra-synth.js, paste in the following after `this._initCanvas(canvas)`. Be sure to put the full file path to the midi.js file on your computer:
+```
+const s = document.createElement( 'script' )
+// change the next line to the file location on your computer
+s.src = 'PUT_YOUR_FILE_PATH_HERE/liveCoding/midi.js'
+document.querySelector( 'head' ).appendChild( s )
 ```
