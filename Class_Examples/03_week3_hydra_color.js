@@ -57,7 +57,7 @@ c=(u,i,j)=>{
 }
 colorize=(x,u,y=0,z=1)=>b(x,u,0,y,z).layer(b(x,u,1,y,z)).layer(b(x,u,2,y,z)).layer(b(x,u,3,y,z)).layer(b(x,u,4,y,z))
 
-// this is what we actual runs
+// this is what we actual run
 // takes exactly five colors, in hex values separated by -
 url='https://coolors.co/8ecae6-219ebc-023047-ffb703-fb8500'
 func=()=>osc(20,0.02,0).modulate(noise()).mult(shape(4,.3,.4).repeat(4,4))
