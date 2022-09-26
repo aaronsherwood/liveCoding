@@ -76,14 +76,14 @@ particle(Math.random()).out()
 
 //particle system
 howMany = 20
-new Array(howMany).fill().reduce((a, b) =>
+new Array(howMany).fill().reduce((a) =>
   a.add(particle(Math.random() * howMany)) // a is previous and then use hydra's add function to add another particle
   ,
   particle(Math.random() * howMany) //this is the original
 ).out() // send out
 
 // with feedback
-new Array(howMany).fill().reduce((a, b) =>
+new Array(howMany).fill().reduce((a) =>
   a.add(particle(Math.random() * howMany)),
   particle(Math.random() * howMany)
 ).blend(src(o0).scale(1.01), .9).out()
@@ -143,7 +143,7 @@ shader = p5.loadShader("/Users/ags419/Documents/Code/classes/liveCoding/Class_Ex
 p5.pixelDensity(1);
 
 p5.draw = ()=>{
-    shader.setUniform("time", time);
+    shader.setUniform("time", time*0.3);
     shader.setUniform("resolution", [width, height]);
     shader.setUniform("mouse",[p5.mouseX, p5.mouseY]);
     p5.shader(shader);
