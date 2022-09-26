@@ -22,6 +22,10 @@ gradient(0.1).colorama(0.1).colorama(0.1).colorama(0.1).colorama(0.1).colorama(0
 //mult it by some shapes
 gradient(0.1).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).colorama(0.01).mult(shape(4,0.5).repeat(10,10)).out()
 //javascript shorthand to append 10 coloramas to one gradient
+/*
+The reduce() method executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
+syntax: reduce(callbackFn, initialValue)
+*/
 new Array(10).fill().reduce((a)=>a.colorama(.01),gradient(.1)).mult(shape(4,0.5).repeat(10,10)).out()
 // mix that with a thresholded webcam image (you might not need the invert depending on what's dark and light in your webcam image)
 s0.initCam()
