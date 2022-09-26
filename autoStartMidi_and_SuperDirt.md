@@ -53,7 +53,7 @@ In Atom:
 * Search for Hydra
 * Click anywhere in the Hydra grey box. This should bring you to an Atom-Hydra settings page in Atom.
 * Click View Code
-* Navigate to node_modules >> hydra-synth >> hydra-synth.js (make sure it's not the nydra-synth.js in the src folder, we want to be in the main hydra-synth folder)
+* Navigate to node_modules >> hydra-synth >> hydra-synth.js (make sure it's not the hydra-synth.js in the src folder, we want to be in the main hydra-synth folder)
 * In hydra-synth.js, paste in the following after `this._initCanvas(canvas)`. Be sure to put the full file path to the midi.js file on your computer:
 ```
 const s = document.createElement( 'script' )
