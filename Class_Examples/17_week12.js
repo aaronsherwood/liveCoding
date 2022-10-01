@@ -1,10 +1,12 @@
 // in our class flok website there is a loadscript function
 // use it to load hydra code you've prepared ahead of time
+// load scripts up on github then use cdn.jsdeliver.net in the following way:
+// https://cdn.jsdelivr.net/gh/user/repo@version/file
 
-// you can do this right in the hydra window, no need for console
-loadScript("https://livecoding.nyuadim.com/public/test.js")
+// you can use this in flok to load scripts:
+loadScript("https://cdn.jsdelivr.net/gh/aaronsherwood/livecoding/test.js")
 
-// you will most likely not have this in your local flok instances (it won't work in atom either)
+// you will most likely not have this in your local flok instances (it won't work at all in atom either)
 // in your local flok you can make the function by pasting this into the console:
 window.loadScript = (url = "") => {
 	const p = new Promise((res, rej) => {
