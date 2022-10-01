@@ -6,10 +6,12 @@ visuals = [
   ()=>shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).out(),
   ()=>shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert().out(),
   ()=>shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).out(),
-  ()=>shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).modulate(noise(3,0.05),.05).pixelate(20,100).out(),
-  ()=>shape(3,0.3,0.1).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.05,0.5)).modulate(noise(4,0.05),.05).out()
+  ()=>{src(s0)
+    .blend(src(o0).diff(s0).scale(.9999)
+  	.modulatePixelate(noise(10,0.001).pixelate(16,16),1024),1)
+    .out()},//shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).modulate(noise(3,0.05),.03).pixelate(40,100).out(),
+  ()=>shape(3,0.3,0.1).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).modulate(noise(3,0.05),.03).out()
 ]
-
 
 visuals[0]()
 
