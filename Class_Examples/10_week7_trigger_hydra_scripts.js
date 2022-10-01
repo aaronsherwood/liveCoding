@@ -7,7 +7,8 @@ visuals = [
   shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert(),
   shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)),
   shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).modulate(noise(2,0.05),.05).pixelate(20,100),
-  shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).modulate(noise(2,0.05),.05)]
+  shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).modulate(noise(2,0.05),.05)
+]
 
 whichVisual = 0
 visuals[whichVisual].out()
@@ -27,7 +28,7 @@ hush()
 update = ()=> {}
 
 // or you could use a switch case
-update = () =>{
+update = ()=> {
   // very important! only change source once, when necessary
   if (whichVisual != ccActual[0]){
     whichVisual = ccActual[0];
