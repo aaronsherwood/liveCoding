@@ -33,6 +33,31 @@ update = () =>{
   }
 }
 
+// can use to switch between different hydra scripts too!
+update = () =>{
+  // very important! only change source once, when necessary
+  if (whichVid != ccActual[0]){
+    whichVid = ccActual[0];
+    switch (whichVid){
+      case 0:
+      shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).out()
+      break;
+      case 1:
+      shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert().out()
+      break;
+      case 2:
+      shape(3,0.3,0.1).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).out()
+      break;
+      case 3:
+      shape(3,0.3,0.1).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).modulate(noise(2,0.05),.05).pixelate(20,100).out()
+      break;
+      case 4:
+      shape(3,0.3,0.1).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).modulate(noise(2,0.05),.05).out()
+      break;
+    }
+  }
+}
+
 solid().out()
 
 // wrapping init in a listener might help with loading larger files
