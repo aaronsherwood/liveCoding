@@ -9,7 +9,7 @@ visuals = [
   ()=>{src(s0)
     .blend(src(o0).diff(s0).scale(.9999)
   	.modulatePixelate(noise(10,0.001).pixelate(16,16),1024),1)
-    .out()},//shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).modulate(noise(3,0.05),.03).pixelate(40,100).out(),
+    .out()},
   ()=>shape(3,0.3,0.1).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).modulate(noise(3,0.05),.03).out()
 ]
 
