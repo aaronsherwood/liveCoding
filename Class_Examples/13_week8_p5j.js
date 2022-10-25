@@ -57,33 +57,3 @@ p5.draw = ()=>{
     p5.ellipse(p5.noise(cc[0]*2)*p5.width,cc[0]*p5.height,300,300);
   }
 }
-
-// video control
-vid = document.createElement('video')
-vid.autoplay = true
-vid.loop = true
-
-// BE SURE TO CHANGE THE FOLDER NAME
-// BE SURE TO PUT A SLASH AFTER THE FOLDER NAME TOO
-basePath = "/Users/ags419/Documents/Code/classes/liveCoding/media/"
-videos = [basePath+"0.mp4", basePath+"1.mp4", basePath+"2.mp4", basePath+"3.mp4", basePath+"4.mp4"]
-
-// choose video source from array
-vid.src = videos[0]
-// use video within hydra
-s1.init({src: vid})
-
-// cc[1] will be zero always during the "A" section
-// thus making the scale value not change
-src(s1).scale(()=>-1*cc[0]*cc[1]+1).out()
-render(o0)
-let whichVideo = -1;
-update = ()=> {
-  // only change the video when the number from tidal changes,
-  // otherwise the video wil keep triggering from the beginning and look like it's not playing
-  // cc[2] is for changing the video
-  if (cc[2]!=whichVideo){
-    vid.src = videos[ccActual[2]]
-    whichVideo=cc[2];
-  }
-}

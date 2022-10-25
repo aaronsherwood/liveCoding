@@ -27,7 +27,7 @@ for (let i=0; i<videoNames.length; i++){
 // choose video source from array
 whichVid = 4
 // use video within hydra (we can also use initVideo and then jsut the filepath, but this will add a video element every time: s0.initVideo("videoFilePathAndName") )
-s0.init({src: vids[whichVid]})
+s0.init({src: vids[0]})
 
 // main function, blending a secondary function controlled by cc[1] in
 src(s0)
