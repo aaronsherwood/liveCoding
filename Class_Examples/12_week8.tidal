@@ -4,6 +4,5 @@ d1 $ whenmod 24 16 (# speed (slow 2 (range 0.5 4 square))) $ s "[808bd:2(7,16)?,
 -- cc
 d2 $ whenmod 24 16 (# ccn ("0*128"+"<t(7,16) t t(7,16) t>")) $ ccn "0*128" # ccv (slow 2 (range 0 127 saw)) # s "midi"
 d3 $ whenmod 24 16 (# ccv "127") $ ccn "1*128" # ccv 0 # s "midi"
-d4 $ ccn "2*128" # ccv "<0 127 0 127>" # s "midi"
 
 hush
