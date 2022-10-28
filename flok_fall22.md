@@ -13,7 +13,7 @@ Right now, the easiest way to use Flok is to install the  `repl`  and  `web`  pa
 
 npm install -g flok-repl flok-web
 
-~~A new version was just uploaded which~~ If that doesn't work: We need to install older versions of each. Do both of the following:
+If that doesn't work: We need to install older versions of each. Do both of the following:
 
 `npm i -g flok-web@0.4.4`
 
@@ -36,19 +36,23 @@ There is a flok server on our class site:
 
 [https://www.flok.livecoding.nyuadim.com/](https://www.flok.livecoding.nyuadim.com/)
 
-When working in a group one person will need to start a server and share the url. Once you have the url, type in *tidal, hydra* when prompted to enable both of those for use:
+### Server
 
-![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/typeIN.png)
+When working in a group one person will need to start a server and share the url.
 
-Copy this code on the next screen:
+Type in tidal, hydra when prompted to enable both of those for use:
 
-![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/copythispart.png)
+![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok1.png)
 
-Then click Join!
+Copy the url and share with your collaborators:
+
+![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok2.png)
+
+Then everyone should copy the code at the bottom on the next screen. This is how you will connect the browser to supercollider:
+
+![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok3.png)
 
 ### To Connect to Tidalcycles:
-
-We need the code we copied to connect to Supercollider:
 
  1. First, quit Atom to make sure you're Supercollider is not connected
     to that Tidal instance.
