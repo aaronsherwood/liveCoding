@@ -48,13 +48,11 @@ Copy the url and share with your collaborators:
 
 ![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok2.png)
 
-Then everyone should copy this code on the next screen:
+Then everyone should copy the code at the bottom on the next screen. This is how you will connect the browser to supercollider:
 
 ![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok3.png)
 
 ### To Connect to Tidalcycles:
-
-We need the code we copied to connect to Supercollider:
 
  1. First, quit Atom to make sure you're Supercollider is not connected
     to that Tidal instance.
