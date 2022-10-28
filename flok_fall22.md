@@ -36,11 +36,9 @@ There is a flok server on our class site:
 
 [https://www.flok.livecoding.nyuadim.com/](https://www.flok.livecoding.nyuadim.com/)
 
-### Server
-
 When working in a group one person will need to start a server and share the url.
 
-Type in tidal, hydra when prompted to enable both of those for use:
+After everyone has the url, type in *tidal, hydra* when prompted to enable both of those for use:
 
 ![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok1.png)
 
