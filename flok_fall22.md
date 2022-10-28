@@ -52,6 +52,8 @@ Then everyone should copy the code at the bottom on the next screen. This is how
 
 ![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok3.png)
 
+Then click Join!
+
 ### To Connect to Tidalcycles:
 
  1. First, quit Atom to make sure you're Supercollider is not connected
