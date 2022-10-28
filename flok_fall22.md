@@ -38,11 +38,11 @@ There is a flok server on our class site:
 
 When working in a group one person will need to start a server and share the url.
 
-After everyone has the url, type in *tidal, hydra* when prompted to enable both of those for use:
+Type in *tidal, hydra* when prompted to enable both of those for use:
 
 ![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok1.png)
 
-Copy the url and share with your collaborators:
+Then copy the url and share with your collaborators:
 
 ![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok2.png)
 
