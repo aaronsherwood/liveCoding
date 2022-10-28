@@ -13,7 +13,7 @@ Right now, the easiest way to use Flok is to install the  `repl`  and  `web`  pa
 
 npm install -g flok-repl flok-web
 
-~~A new version was just uploaded which~~ If that doesn't work: We need to install older versions of each. Do both of the following:
+If that doesn't work: We need to install older versions of each. Do both of the following:
 
 `npm i -g flok-web@0.4.4`
 
