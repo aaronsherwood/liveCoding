@@ -42,11 +42,15 @@ When working in a group one person will need to start a server and share the url
 
 Type in tidal, hydra when prompted to enable both of those for use:
 
-![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/typeIN.png)
+![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok1.png)
 
-Copy this code on the next screen:
+Copy the url and share with your collaborators:
 
-![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/copythispart.png)
+![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok2.png)
+
+Then everyone should copy this code on the next screen:
+
+![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok3.png)
 
 ### To Connect to Tidalcycles:
 
