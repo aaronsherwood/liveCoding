@@ -79,12 +79,12 @@ src(s0).out()
 src(s0).blend( src(o0).diff(s0).scale(1.01),[0,2]).out(o0);
 
 // sink playback rate with hydra's rate
-vid.playbackRate = vid.duration*.5
+// multiply it by 0.5 to make it go half as fast
+vid.playbackRate = vid.duration*0.5
 
-// if you want ot get the start of the video to sink up you can use p5
-p5 = new P5
+// if you want ot get the start of the video to sink up you can use update
 prevTime = 0;
-p5.draw =()=>{
+update =()=>{
   if (time%2 < prevTime)
     vid.currentTime=0
   prevTime = time%2
