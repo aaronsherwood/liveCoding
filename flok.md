@@ -11,13 +11,13 @@ Go  [here](https://nodejs.org/)  to download Node.
 
 Right now, the easiest way to use Flok is to install the  `repl`  and  `web`  packages.
 
-~~npm install -g flok-repl flok-web~~ 
+`sudo npm install -g flok-repl flok-web` 
 
 A new version was just uploaded which doesn't work. We need to install older viersions of each. Do both of the following:
 
-`npm i -g flok-web@0.4.4`
+`sudo npm i -g flok-web@0.4.4`
 
-`npm i -g flok-repl@0.4.5`
+`sudo npm i -g flok-repl@0.4.5`
 
 Then try to start your own server:
 
@@ -27,6 +27,8 @@ If that gives you an error about *ghci command not found* then paste the followi
 
 `echo '. $HOME/.ghcup/env' >> "$HOME/.zshrc"` 
 *(If you have an older Mac OS you may need to change the `.zshrc` part of that command to `.bashrc`)*
+
+You may also need to add ghci to PATH: `PATH=$PATH:~/.ghcup/bin/`
 
 ## Usage
 
@@ -65,8 +67,30 @@ We need the code we copied to connect to Supercollider:
 	`flok-repl -H ws://localhost:3000 -s [TOKEN] -t tidal --extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'` 
 	
 	Paste that into the command line (a different window from the server window) to connect to Supercollider.
+	
+You can change the flok-repl code to automatically load the correct BootTidal.hs without having to paste that extra bit on at the end:
+ 1. Find out where flok-repl is: `which flok-repl` 
+ 2. `cd` to that directory (aka `cd /usr/local/bin/`)
+ 3. Right click on flok-repl and select "Show Original" (for Mac, it should be something similar on Windows)
+ 4. Go up a directory level and then open *lib/repl/tidal.js* in Atom or another text editor
+ 5. Search for the defaultBootScript() function and change the function to return your correct BootTidal.hs file location: `return '~/.atom/packages/tidalcycles/lib/BootTidal.hs'// path.join(this.dataDir(), 'BootTidal.hs');` (the original part code is left there but commented out
+
+### MIDI
+
+You can evaluate the following lines of code on the hydra side in flok to enable midi:
+
+```
+// enable WebMidi
+const s = document.createElement( 'script' )
+s.src = 'https://cdn.rawgit.com/aaronsherwood/liveCoding/main/midi.js'
+document.querySelector( 'head' ).appendChild( s )
+```
 	 
-### Class site server
+### Flok server
+
+Flok:
+
+[https://flok.clic.cf/](https://flok.clic.cf/)
 
 There is also a flok server on our class site:
 
