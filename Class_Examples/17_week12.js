@@ -25,6 +25,11 @@ window.loadScript = (url = "") => {
 	return p;
 };
 
+// to load midi:
+const s = document.createElement( 'script' )
+s.src = 'https://cdn.rawgit.com/aaronsherwood/liveCoding/main/midi.js'
+document.querySelector( 'head' ).appendChild( s )
+
 // then do the loadScript call as at top in hydra after pasting that
 
 // Loading shaders online
