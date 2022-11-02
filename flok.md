@@ -74,8 +74,23 @@ You can change the flok-repl code to automatically load the correct BootTidal.hs
  3. Right click on flok-repl and select "Show Original" (for Mac, it should be something similar on Windows)
  4. Go up a directory level and then open *lib/repl/tidal.js* in Atom or another text editor
  5. Search for the defaultBootScript() function and change the function to return your correct BootTidal.hs file location: `return '~/.atom/packages/tidalcycles/lib/BootTidal.hs'// path.join(this.dataDir(), 'BootTidal.hs');` (the original part code is left there but commented out
+
+### MIDI
+
+You can evaluate the following lines of code on the hydra side in flok to enable midi:
+
+```
+// enable WebMidi
+const s = document.createElement( 'script' )
+s.src = 'https://cdn.rawgit.com/aaronsherwood/liveCoding/main/midi.js'
+document.querySelector( 'head' ).appendChild( s )
+```
 	 
-### Class site server
+### Flok server
+
+Flok:
+
+[https://flok.clic.cf/](https://flok.clic.cf/)
 
 There is also a flok server on our class site:
 
