@@ -62,7 +62,7 @@ We need the code we copied to connect to Supercollider:
     to that Tidal instance.
  2. Next (you might not need to do this), restart the Supercoliider server.
  3. **For some OSX Users:** Take the code you copied before and paste this at the end of it `--extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'`
- 	- The complete code will look something like this: (replace the [TOKEN} part): 
+ 	The complete code will look something like this: (replace the [TOKEN} part): 
 
 	`flok-repl -H ws://localhost:3000 -s [TOKEN] -t tidal --extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'` 
 	
