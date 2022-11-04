@@ -98,7 +98,7 @@ You only need to do this once.
 
 ### Windows 10, 11:
 
-Find the "flok-repl.js" under `C:\Users\\[USERNAME]\AppData\Roaming\npm\node_modules\flok-repl\bin`
+Find the *flok-repl.js* file under `C:\Users\\[USERNAME]\AppData\Roaming\npm\node_modules\flok-repl\bin`
 
 Go to Line 76 (or around 76), find: 
 
