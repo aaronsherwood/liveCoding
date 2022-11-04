@@ -116,8 +116,10 @@ if (extra) {
 Comment that entire if statement out and then add the following:
 
 ```
-extraOptions.bootScript = "C:/Users/[USERNAME]/.atom/packages/tidalcycles/lib/BootTidal.hs"; //Modify it and check if it is the adress of your BootTidal.hs file 
-extraOptions.useStack = true;//add it if you use Stack to boot Tidal.
+//Modify it and check if it is the adress of your BootTidal.hs file 
+extraOptions.bootScript = "C:/Users/[USERNAME]/.atom/packages/tidalcycles/lib/BootTidal.hs"; 
+//add it if you use Stack to boot Tidal.
+extraOptions.useStack = true;
 ```
 
 That entire section of code should now look like:
@@ -126,7 +128,9 @@ That entire section of code should now look like:
 const { extra } = program;
 let extraOptions = config.extra || {};
 
-extraOptions.bootScript = "C:/Users/[USERNAME]/.atom/packages/tidalcycles/lib/BootTidal.hs"; //Modify it and check if it is the adress of your BootTidal.hs file 
+//Modify it and check if it is the adress of your BootTidal.hs file 
+extraOptions.bootScript = "C:/Users/[USERNAME]/.atom/packages/tidalcycles/lib/BootTidal.hs"; 
+//add it if you use Stack to boot Tidal.
 extraOptions.useStack = true;
 
 // if (extra) {
