@@ -9,26 +9,30 @@ Go  [here](https://nodejs.org/)  to download Node.
 
 ## [](https://github.com/munshkr/flok#install)Install
 
-Right now, the easiest way to use Flok is to install the  `repl`  and  `web`  packages.
-
-`sudo npm install -g flok-repl flok-web` 
-
-A new version was just uploaded which doesn't work. We need to install older viersions of each. Do both of the following:
-
-`sudo npm i -g flok-web@0.4.4`
+Do the following on the command line:
 
 `sudo npm i -g flok-repl@0.4.5`
 
-Then try to start your own server:
+Then try the following to test if install happened properly. It should print out th eflok version you installed:
 
-`flok-web` 
+`flok-repl -V` 
 
-If that gives you an error about *ghci command not found* then paste the following into the command line (you'll need to open a new terminal window afterwards to see the effect), then try `flok-web` again:
+## GHCI Error
+
+### OSX
+
+If you get an error about *ghci command not found* then paste the following into the command line (you'll need to open a new terminal window afterwards to see the effect), then try `flok-web` again:
 
 `echo '. $HOME/.ghcup/env' >> "$HOME/.zshrc"` 
 *(If you have an older Mac OS you may need to change the `.zshrc` part of that command to `.bashrc`)*
 
 You may also need to add ghci to PATH: `PATH=$PATH:~/.ghcup/bin/`
+
+### Windows
+
+If you installed GHCI via Stack you will need to add the following at the end of the code pasted in to the terminal to start the repl each time:
+
+`--extra '{ "useStack": true }'`
 
 ## Usage
 
