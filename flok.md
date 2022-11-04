@@ -113,7 +113,9 @@ if (extra) {
 }
 ```
 
-Comment that entire if statement out and then add the following:
+Comment that entire if statement out. 
+
+Then add the following:
 
 ```
 //Modify it and check if it is the adress of your BootTidal.hs file 
