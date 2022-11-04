@@ -17,23 +17,6 @@ Then try the following to test if install happened properly. It should print out
 
 `flok-repl -V` 
 
-## GHCI Error
-
-### OSX
-
-If you get an error about *ghci command not found* then paste the following into the command line (you'll need to open a new terminal window afterwards to see the effect), then try `flok-web` again:
-
-`echo '. $HOME/.ghcup/env' >> "$HOME/.zshrc"` 
-*(If you have an older Mac OS you may need to change the `.zshrc` part of that command to `.bashrc`)*
-
-You may also need to add ghci to PATH: `PATH=$PATH:~/.ghcup/bin/`
-
-### Windows
-
-If you installed GHCI via Stack you will need to add the following at the end of the code pasted in to the terminal to start the repl each time:
-
-`--extra '{ "useStack": true }'`
-
 ## Usage
 
 ### Server
@@ -99,4 +82,23 @@ Flok:
 There is also a flok server on our class site:
 
 [https://www.flok.livecoding.nyuadim.com/](https://www.flok.livecoding.nyuadim.com/)
+
+## GHCI Error
+
+### OSX
+
+If you get an error about *ghci command not found* then paste the following into the command line (you'll need to open a new terminal window afterwards to see the effect), then try `flok-web` again:
+
+`echo '. $HOME/.ghcup/env' >> "$HOME/.zshrc"` 
+*(If you have an older Mac OS you may need to change the `.zshrc` part of that command to `.bashrc`)*
+
+You may also need to add ghci to PATH: `PATH=$PATH:~/.ghcup/bin/`
+
+You only need to do this once.
+
+### Windows
+
+If you installed GHCI via Stack you will need to add the following at the end of the code pasted in to the terminal to start the repl each time:
+
+`--extra '{ "useStack": true }'`
 
