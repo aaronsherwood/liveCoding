@@ -70,7 +70,8 @@ src(o0).blend( src(o1).diff(o0).scale(1.01),1.05).layer(o1).out(o0);
 vid = document.createElement('video')
 vid.autoplay = true
 vid.loop = true
-vid.src = "/Users/ags419/Documents/Code/classes/liveCoding/media/stylegan.mp4"
+vid.src = "https://blog.livecoding.nyuadim.com/wp-content/uploads/stylegan.mp4"
+vid..crossOrigin="anonymous"
 
 s0.init({src: vid})
 
