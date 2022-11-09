@@ -96,9 +96,53 @@ You may also need to add ghci to PATH: `PATH=$PATH:~/.ghcup/bin/`
 
 You only need to do this once.
 
-### Windows
+### Windows 10, 11:
 
-If you installed GHCI via Stack you will need to add the following at the end of the code pasted in to the terminal to start the repl each time:
+Find the *flok-repl.js* file under `C:\Users\\[USERNAME]\AppData\Roaming\npm\node_modules\flok-repl\bin`
 
-`--extra '{ "useStack": true }'`
+Go to Line 76 (or around 76), find: 
 
+```
+if (extra) {
+  try {
+    extraOptions = Object.assign(extraOptions, JSON.parse(extra));
+  } catch {
+    console.error('Invalid extra options JSON object:', extra);
+    process.exit(1);
+  }
+}
+```
+
+Comment that entire if statement out. 
+
+Then add the following:
+
+```
+//Modify it and check if it is the adress of your BootTidal.hs file 
+extraOptions.bootScript = "C:/Users/[USERNAME]/.atom/packages/tidalcycles/lib/BootTidal.hs"; 
+//add it if you use Stack to boot Tidal.
+extraOptions.useStack = true;
+```
+
+That entire section of code should now look like:
+
+```
+const { extra } = program;
+let extraOptions = config.extra || {};
+
+//Modify it and check if it is the adress of your BootTidal.hs file 
+extraOptions.bootScript = "C:/Users/[USERNAME]/.atom/packages/tidalcycles/lib/BootTidal.hs"; 
+//add it if you use Stack to boot Tidal.
+extraOptions.useStack = true;
+
+// if (extra) {
+//   try {
+//     extraOptions = Object.assign(extraOptions, JSON.parse(extra));
+//   } catch {
+//     console.error('Invalid extra options JSON object:', extra);
+//     process.exit(1);
+//   }
+// }
+```
+
+There is no need to include `--extra` any longer when pasting code into the command line to start flok-repl.
