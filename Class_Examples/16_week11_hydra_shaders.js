@@ -13,11 +13,40 @@ setFunction({
     }
   ],
   glsl: `
-  return vec4(1.,0.,0.,1.);
+  return vec4(1.,0.,0.,1.); // try with _st.x and _st.y
 `
 })
 simpleShader().out()
 
+setFunction({
+    name: 'two_sides',
+    type: 'src',
+    inputs: [
+    {
+      type: 'sampler2D',
+      name: 'tex0',
+      default: NaN,
+    },
+    {
+      type: 'sampler2D',
+      name: 'tex1',
+      default: NaN,
+    }
+    ],
+    glsl: `
+    vec4 a = texture2D(tex0, _st);
+    vec4 b = texture2D(tex1, _st);
+    vec4 combined;
+	if (_st.x<0.5)
+		combined = a;
+	else
+		combined = b;
+    return combined;
+    `
+})
+voronoi().out(o1)
+osc(30,0.1,0.7).out(o2)
+two_sides(o1,o2).out()
 
 // glow circle
 setFunction({
@@ -62,14 +91,13 @@ setFunction({
 `
 })
 
+p5 = new P5()
 
-glowCircle(() => mouse.x, () => mouse.y, 50).out()
+
+glowCircle(() => p5.mouseX, () => p5.mouseY, 50).out()
 
 // parameters have defalts, ut we can also change them
-glowCircle(() => mouse.x, () => mouse.y, 50, .1, .5, .3).out()
-
-
-p5 = new P5()
+glowCircle(() => p5.mouseX, () => p5.mouseY, 50, .1, .5, .3).out()
 
 particle = (offset) => glowCircle(() => p5.noise(time * .1 + offset) * width, () => p5.noise(time * .1 - offset) * height, 10)
 particle(Math.random()).out()
@@ -114,16 +142,16 @@ setFunction({
   ],
   glsl: `
   // copy texture coord
-  vec2 st = uv;
+  vec2 uv = _st;
   // correct for window aspect to make squares
   float aspect = resolution.x / resolution.y;
-  st.x *= aspect;
-  amt *= pow(side-uv.x, power);
+  uv.x *= aspect;
+  amt *= pow(side-_st.x, power);
   float offset = amt;
   // tile will be used to offset the texture coordinates
   // taking the fract will give us repeating patterns
-  vec2 tile = fract(st * squares) * amt;
-  return uv + tile - offset;
+  vec2 tile = fract(uv * squares) * amt;
+  return _st + tile - offset;
 `
 })
 
@@ -156,4 +184,4 @@ src(s0).out()
 hush()
 
 
-// try to port this one together this: https://www.shadertoy.comview/lscczl
+// try to port this one together this: https://www.shadertoy.com/view/lscczl

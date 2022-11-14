@@ -46,6 +46,8 @@ d1 $ loopAt 1 $ s "breaks125:1" # room 0.25
 d1 $ loopAt 1 $ sound "breaks125:1(3,8)" # legato 3 # room 0.25
 d2 $ rev $ loopAt 8 $ chop 128 $ sound "bev:1" # room 0.25
 
+d2 silence
+
 -- const
 d1  $ slice 8 "[4 5 1 2 0 3 7 6]" $ whenmod 4 3 (const $ jux (# speed 0.5) $ sound "sitar" # room 0.5 # legato "4" ) $ sound "[fm:7]" # room 0.25
 
