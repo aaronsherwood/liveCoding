@@ -1,0 +1,4 @@
+d1 $ ccv (segment 32 (range 0 127 $ slow 1 saw)) # ccn "0" # s "midi"
+d2 $ ccv (segment 32 (range 0 127 $ slow 4 tri)) # ccn "1" # s "midi"
+d3 $ s "[808bd:1(5,16,<0 1>), 808:1*16?, ~ 808:3 ~ 808:3]" # room "0.3" # speed "[8,4,1]" # note ("<[0 -1] [-1 <0 -5>]>"+"-2.5") # gain 0.9
+d4 $ jux (striate 2) $ sometimes (rev) $ every 4 (const $ sound "arpy*12" # n (run 11) # speed "1" # gain (range 0.8 1 rand) # speed 2) $ sound "arpy*8" # n (run 8) # room "0.3" # gain (range 0.8 1 rand) # speed (2)

@@ -155,13 +155,12 @@ setFunction({
 `
 })
 
-noise(1, .5).mult(osc(10, 0, .7)).mosaic().out()
-// params: amount, square count, power
-noise(1, .5).mult(osc(10, 0, .7)).mosaic(1, 30, 3).out()
-// params: amount, square count, power, which side (0-1)
-noise(1, .5).mult(osc(10, 0, .7)).mosaic(.1, 30, 3, 0).out()
-// compare to pixelate
-noise(1, .5).mult(osc(10, 0, .7)).pixelate(10).out()
+s0.initCam()
+
+// params: amount, square count, power, which side (0-1
+src(s0).mosaic(1, 20, 2, 0.5).out()
+
+src(s0).mosaic(()=>cc[0], 20, ()=>cc[1]*2, 0.5).out()
 
 ///// SHADERS in P5js \\\\\
 
