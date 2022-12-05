@@ -25,6 +25,10 @@ window.loadScript = (url = "") => {
 	return p;
 };
 
+test() // test2() and test3()
+
+
+
 // to load midi:
 const s = document.createElement( 'script' )
 s.src = 'https://cdn.rawgit.com/aaronsherwood/liveCoding/main/midi.js'
@@ -38,6 +42,7 @@ document.querySelector( 'head' ).appendChild( s )
 
 p5 = new P5({width: window.innerWidth, height:window.innerHeight, mode: 'WEBGL'})
 shader = p5.loadShader("https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/Class_Examples/shaders/basic.vert", "https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/Class_Examples/shaders/ocean.frag");
+p5.hide() // REMEMBER TO DO HIDE!
 
 p5.draw = ()=>{
   shader.setUniform("time", time);
@@ -49,7 +54,9 @@ p5.draw = ()=>{
 s0.init({src: p5.canvas})
 src(s0).out()
 
+p5.remove() // REMEMBER TO REMOVE P5!
 
+hush()
 // GIPHY
 // you can load gifs from giphy as mp4s
 
