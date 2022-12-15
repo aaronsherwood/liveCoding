@@ -11,9 +11,9 @@ Go  [here](https://nodejs.org/)  to download Node.
 
 Do the following on the command line:
 
-`sudo npm i -g flok-repl@0.4.5`
+`sudo npm i -g flok-repl@0.4.5 flok-web@0.4.4`
 
-Then try the following to test if install happened properly. It should print out th eflok version you installed:
+Then try the following to test if install happened properly. It should print out the flok version you installed:
 
 `flok-repl -V` 
 
