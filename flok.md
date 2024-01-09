@@ -11,11 +11,11 @@ Go  [here](https://nodejs.org/)  to download Node.
 
 Do the following on the command line:
 
-`sudo npm i -g flok-repl@0.4.5 flok-web@0.4.4`
+`sudo npm i -g flok-repl@1.0.0-alpha.10 flok-web`
 
 Then try the following to test if install happened properly. It should print out the flok version you installed:
 
-`flok-repl -V` 
+`flok-repl -V`
 
 ## Usage
 
@@ -49,14 +49,14 @@ We need the code we copied to connect to Supercollider:
     to that Tidal instance.
  2. Next (you might not need to do this), restart the Supercoliider server.
  3. **For some OSX Users:** Take the code you copied before and paste this at the end of it `--extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'`
- 	The complete code will look something like this: (replace the [TOKEN} part): 
+ 	The complete code will look something like this: (replace the [TOKEN} part):
 
-	`flok-repl -H ws://localhost:3000 -s [TOKEN] -t tidal --extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'` 
-	
+	`flok-repl -H ws://localhost:3000 -s [TOKEN] -t tidal --extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'`
+
 	Paste that into the command line (a different window from the server window) to connect to Supercollider.
-	
+
 You can change the flok-repl code to automatically load the correct BootTidal.hs without having to paste that extra bit on at the end:
- 1. Find out where flok-repl is: `which flok-repl` 
+ 1. Find out where flok-repl is: `which flok-repl`
  2. `cd` to that directory (aka `cd /usr/local/bin/`)
  3. Right click on flok-repl and select "Show Original" (for Mac, it should be something similar on Windows)
  4. Go up a directory level and then open *lib/repl/tidal.js* in Atom or another text editor
@@ -72,7 +72,7 @@ const s = document.createElement( 'script' )
 s.src = 'https://cdn.rawgit.com/aaronsherwood/liveCoding/main/midi.js'
 document.querySelector( 'head' ).appendChild( s )
 ```
-	 
+
 ### Flok server
 
 Flok:
@@ -89,7 +89,7 @@ There is also a flok server on our class site:
 
 If you get an error about *ghci command not found* then paste the following into the command line (you'll need to open a new terminal window afterwards to see the effect), then try `flok-web` again:
 
-`echo '. $HOME/.ghcup/env' >> "$HOME/.zshrc"` 
+`echo '. $HOME/.ghcup/env' >> "$HOME/.zshrc"`
 *(If you have an older Mac OS you may need to change the `.zshrc` part of that command to `.bashrc`)*
 
 You may also need to add ghci to PATH: `PATH=$PATH:~/.ghcup/bin/`
@@ -100,7 +100,7 @@ You only need to do this once.
 
 Find the *flok-repl.js* file under `C:\Users\\[USERNAME]\AppData\Roaming\npm\node_modules\flok-repl\bin`
 
-Go to Line 76 (or around 76), find: 
+Go to Line 76 (or around 76), find:
 
 ```
 if (extra) {
@@ -113,13 +113,13 @@ if (extra) {
 }
 ```
 
-Comment that entire if statement out. 
+Comment that entire if statement out.
 
 Then add the following:
 
 ```
-//Modify it and check if it is the adress of your BootTidal.hs file 
-extraOptions.bootScript = "C:/Users/[USERNAME]/.atom/packages/tidalcycles/lib/BootTidal.hs"; 
+//Modify it and check if it is the adress of your BootTidal.hs file
+extraOptions.bootScript = "C:/Users/[USERNAME]/.atom/packages/tidalcycles/lib/BootTidal.hs";
 //add it if you use Stack to boot Tidal.
 extraOptions.useStack = true;
 ```
@@ -130,8 +130,8 @@ That entire section of code should now look like:
 const { extra } = program;
 let extraOptions = config.extra || {};
 
-//Modify it and check if it is the adress of your BootTidal.hs file 
-extraOptions.bootScript = "C:/Users/[USERNAME]/.atom/packages/tidalcycles/lib/BootTidal.hs"; 
+//Modify it and check if it is the adress of your BootTidal.hs file
+extraOptions.bootScript = "C:/Users/[USERNAME]/.atom/packages/tidalcycles/lib/BootTidal.hs";
 //add it if you use Stack to boot Tidal.
 extraOptions.useStack = true;
 
