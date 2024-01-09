@@ -45,13 +45,17 @@ Then click Join!
 
 We need the code we copied to connect to Supercollider:
 
- 1. First, quit Atom to make sure you're Supercollider is not connected
+ 1. First, quit Pulsar to make sure you're Supercollider is not connected
     to that Tidal instance.
  2. Next (you might not need to do this), restart the Supercoliider server.
- 3. **For some OSX Users:** Take the code you copied before and paste this at the end of it `--extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'`
+ 3. **If you want a custom BootTidal.hs file:** Take the code you copied before and paste this at the end of it `--extra '{ "bootScript": "~/Documents/Code/tidalscripts/BootTidal.hs" }'`
  	The complete code will look something like this: (replace the [TOKEN} part):
 
-	`flok-repl -H ws://localhost:3000 -s [TOKEN] -t tidal --extra '{ "bootScript": "~/.atom/packages/tidalcycles/lib/BootTidal.hs" }'`
+	`npx flok-repl@1.0.0-alpha.10 -H wss://www.flok.livecoding.nyuadim.com:3000 \
+    -s varying-salmon-blackbird-ed20ba61 \
+    -t tidal \
+    -T user:aaron \
+    --extra '{ "bootScript": "~/Documents/Code/tidalscripts/BootTidal.hs" }'`
 
 	Paste that into the command line (a different window from the server window) to connect to Supercollider.
 
@@ -60,7 +64,7 @@ You can change the flok-repl code to automatically load the correct BootTidal.hs
  2. `cd` to that directory (aka `cd /usr/local/bin/`)
  3. Right click on flok-repl and select "Show Original" (for Mac, it should be something similar on Windows)
  4. Go up a directory level and then open *lib/repl/tidal.js* in Atom or another text editor
- 5. Search for the defaultBootScript() function and change the function to return your correct BootTidal.hs file location: `return '~/.atom/packages/tidalcycles/lib/BootTidal.hs'// path.join(this.dataDir(), 'BootTidal.hs');` (the original part code is left there but commented out
+ 5. Search for the defaultBootScript() function and change the function to return your correct BootTidal.hs file location: `return '~/Documents/Code/tidalscripts/BootTidal.hs'// path.join(this.dataDir(), 'BootTidal.hs');` (the original part code is left there but commented out
 
 ### MIDI
 
@@ -72,16 +76,6 @@ const s = document.createElement( 'script' )
 s.src = 'https://cdn.rawgit.com/aaronsherwood/liveCoding/main/midi.js'
 document.querySelector( 'head' ).appendChild( s )
 ```
-
-### Flok server
-
-Flok:
-
-[https://flok.clic.cf/](https://flok.clic.cf/)
-
-There is also a flok server on our class site:
-
-[https://www.flok.livecoding.nyuadim.com/](https://www.flok.livecoding.nyuadim.com/)
 
 ## GHCI Error
 
