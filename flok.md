@@ -23,9 +23,9 @@ Then try the following to test if install happened properly. It should print out
 
 When working in a group one person will need to start a server and share the url. There is a flok server on our class site:
 
-[https://www.flok.livecoding.nyuadim.com/](https://www.flok.livecoding.nyuadim.com/)
+[https://www.flok.livecoding.nyuadim.com:3000/](https://www.flok.livecoding.nyuadim.com:3000/)
 
-Or you can use: [https://flok.clic.cf/](https://flok.clic.cf/) *(you will need to enable midi for hydra on this one, see near the end of this document for instructions)*
+Or you can use: [https://next.flok.cc/](https://next.flok.cc/) *(you will need to enable midi for hydra on this one, see near the end of this document for instructions)*
 
 Type in *tidal, hydra* when prompted to enable both of those for use:
 
