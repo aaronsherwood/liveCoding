@@ -31,15 +31,14 @@ Type in *tidal, hydra* when prompted to enable both of those for use:
 
 ![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok1.png)
 
-Then copy the url and share with your collaborators:
+Click Save Changes, then copy the url and share with your collaborators:
 
 ![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok2.png)
 
-You can press the REPLs button in the upper left corner to copy the script to connect the browser to supercollider:
+You can press the REPLs button in the upper right corner to copy the script to connect the browser to supercollider:
 
 ![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok3.png)
 
-Then click Join!
 
 ### To Connect to Tidalcycles:
 
