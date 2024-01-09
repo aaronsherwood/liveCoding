@@ -35,7 +35,7 @@ Then copy the url and share with your collaborators:
 
 ![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok2.png)
 
-Then everyone should copy the code at the bottom on the next screen. This is how you will connect the browser to supercollider:
+You can press the REPLs button in the upper left corner to copy the script to connect the browser to supercollider:
 
 ![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok3.png)
 
@@ -57,7 +57,7 @@ We need the code we copied to connect to Supercollider:
     -T user:aaron \
     --extra '{ "bootScript": "~/Documents/Code/tidalscripts/BootTidal.hs" }'`
 
-	Paste that into the command line (a different window from the server window) to connect to Supercollider.
+Paste the code you copied from the site (with the addition of the custom boot file or not) into the command line (a different window from the server window) to connect to Supercollider.
 
 You can change the flok-repl code to automatically load the correct BootTidal.hs without having to paste that extra bit on at the end:
  1. Find out where flok-repl is: `which flok-repl`
