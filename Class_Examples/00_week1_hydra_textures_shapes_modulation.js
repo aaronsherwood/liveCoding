@@ -23,12 +23,13 @@ osc(40,.1,.75).thresh().kaleid(3).scale(1,()=>window.innerHeight/window.innerWid
 
 //triangles grid on screen
 //number of divisions (will be 4 X 4)
-n = 4
+let n = 4
 //create a function that repeats the triangle 4x4 and has a random rotation for that whole grid
 a = () => shape(3, .4).rotate(Math.random()*100,Math.random()*3-1.75).repeat(n,n)
 //add in the same grid to itself, but slightly offest by using scroll
 //(scroll makes things duplicate "scrolled" across the screen, the screen has 0 in the middle and extends to -1 & 1 on either side in the x dimension)
 a().add(a().scrollX(.5/n).scrollY(.5/n)).scale(1,()=>window.innerHeight/window.innerWidth,1).out(o0)
+
 
 // noise and voronoi
 noise().out()
