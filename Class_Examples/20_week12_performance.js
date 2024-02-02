@@ -4,7 +4,7 @@
 // https://cdn.jsdelivr.net/gh/user/repo@version/file
 
 // you can use this in flok to load scripts:
-loadScript("https://cdn.jsdelivr.net/gh/aaronsherwood/livecoding/test.js")
+loadScript("https://cdn.rawgit.com/aaronsherwood/liveCoding/main/test.js")
 
 // or locally in pulsar
 loadScript("/Users/ags419/Documents/Code/liveCoding/test.js")
@@ -30,7 +30,7 @@ window.loadScript = (url = "") => {
 
 test() // test2() and test3()
 
-
+visuals[0]()
 
 // to load midi:
 const s = document.createElement( 'script' )
