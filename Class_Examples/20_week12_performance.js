@@ -6,6 +6,9 @@
 // you can use this in flok to load scripts:
 loadScript("https://cdn.jsdelivr.net/gh/aaronsherwood/livecoding/test.js")
 
+// or locally in pulsar
+loadScript("/Users/ags419/Documents/Code/liveCoding/test.js")
+
 // you will most likely not have this in your local flok instances (it won't work at all in atom either)
 // in your local flok you can make the function by pasting this into the console:
 window.loadScript = (url = "") => {

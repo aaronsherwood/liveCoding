@@ -9,7 +9,7 @@ osc(200,0.01,1).rotate(1).layer(osc(30,0,1).luma(0.2,.2).color(0,0,0,1)).layer(o
 // another way to load the midi js file to enable WebMidi
 const s = document.createElement( 'script' )
 // change the next line to the file location on your computer
-s.src = '/Users/ags419/Documents/Code/classes/liveCoding/midi.js'
+s.src = '/Users/ags419/Documents/Code/liveCoding/midi.js'
 document.querySelector( 'head' ).appendChild( s )
 
 ///////////////////////////////////////////////////////////////////////

@@ -28,8 +28,7 @@ let n = 4
 a = () => shape(3, .4).rotate(Math.random()*100,Math.random()*3-1.75).repeat(n,n)
 //add in the same grid to itself, but slightly offest by using scroll
 //(scroll makes things duplicate "scrolled" across the screen, the screen has 0 in the middle and extends to -1 & 1 on either side in the x dimension)
-a().add(a().scrollX(.5/n).scrollY(.5/n)).scale(1,()=>window.innerHeight/window.innerWidth,1).out(o0)
-
+a().add(a().scrollX(()=>.5/n).scrollY(()=>.5/n)).scale(1,()=>window.innerHeight/window.innerWidth,1).out(o0)
 
 // noise and voronoi
 noise().out()

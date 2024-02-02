@@ -23,7 +23,7 @@ visuals = [
 visuals[0]()
 
 // can use update and switch case with midi:
-whichVisual = 4
+var whichVisual = 0
 update = () =>{
   // very important! only change source once, when necessary
   if (whichVisual != ccActual[0]){

@@ -1,3 +1,5 @@
+setcps (135/60/4)
+
 -- layer things in one line
 d1 $ s "[~ cp, hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>]" # room 0.7 # gain (range 1 1.2 rand)
 
@@ -37,7 +39,7 @@ d1 silence
 drop_It_All_Over_The___FLOOR
 
 -- build up with snares
-d3 $ qtrigger 3 $ seqP [
+d3 $ qtrigger $ seqP [
   (0, 1, s "feel:2*4"),
   (1,2, s "feel:2*8"),
   (2,3, s "feel:2*16"),
@@ -45,18 +47,18 @@ d3 $ qtrigger 3 $ seqP [
 ] # room 0.3 # hpf (slow 4 (1000*saw + 100)) # speed (slow 4 (range 1 2 saw))
 
 -- put together with rising percussion pitch
-d2 $ qtrigger 2 $ stack[
+d2 $ qtrigger $ stack[
   s "~ cp" # room 0.5,
   fast 2 $ s "hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>" # room 0.7 # gain (range 1 1.2 rand)
 ] # speed (slow 4 (range 1 2 saw))
 
 -- put it all together
 do {
-  d2 $ qtrigger 2 $ stack[
+  d2 $ qtrigger $ stack[
     s "~ cp" # room 0.5,
     fast 2 $ s "hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>" # room 0.7 # gain (range 1 1.2 rand)
   ] # speed (slow 4 (range 1 2 saw));
-  d3 $ qtrigger 3 $ seqP [
+  d3 $ qtrigger  $ seqP [
     (0, 1, s "feel:2*4"),
     (1,2, s "feel:2*8"),
     (2,3, s "feel:2*16"),
@@ -84,8 +86,8 @@ d1 $ kickFill
 
 -- verse (with qtrigger and filterWhen to trigger on time, another example of this at the end)
 we_playin_out_HeAh = do {
-  d1 $ qtrigger 1 $ filterWhen (>=0) $ verse;
-  d2 $ qtrigger 2 $ filterWhen (>=0) $ versePercussion;
+  d1 $ qtrigger $ filterWhen (>=0) $ verse;
+  d2 $ qtrigger $ filterWhen (>=0) $ versePercussion;
   d3 silence;
   d4 silence
 }
@@ -93,21 +95,21 @@ we_playin_out_HeAh = do {
 -- build
 
 oh_Yeaahhh = do {
-  d1 $ qtrigger 1 $ seqP [
+  d1 $ qtrigger $ seqP [
     (0, 3, verse),
     (3,4, kickFill),
     (4,8, s "~ cp" # gain 1.2 # room 0.5)
   ];
-  d2 $ qtrigger 2 $ seqP [
+  d2 $ qtrigger $ seqP [
     (0,4, hihatBuild)
   ];
-  d3 $ qtrigger 3 $ seqP [
+  d3 $ qtrigger $ seqP [
     (0, 1, s "feel:2*4"),
     (1,2, s "feel:2*8"),
     (2,3, s "feel:2*16"),
     (3,4, s "feel:2*32")
   ] # room 0.3 # hpf (slow 4 (1000*saw + 100)) # speed (slow 4 (range 1 4 saw));
-  d4 $ qtrigger 4 $ seqP [
+  d4 $ qtrigger $ seqP [
     (4,8, s "<feel:6(3,8) feel:6(5,8,1)>" # room 0.95 # speed "2 1" # gain 1.3 # squiz 1.1 # up "-2")
   ]
 }
@@ -133,7 +135,7 @@ do
   d2 $ s "808bd:1 cp ~ cp" # speed 4
 
 do
-  d1 $ qtrigger 1 $ filterWhen (>=0) $ s "bd bd sd ~"
-  d2 $ qtrigger 2 $ filterWhen (>=0) $ s "808bd:1 cp ~ cp" # speed 4
+  d1 $ qtrigger $ filterWhen (>=0) $ s "bd bd sd ~"
+  d2 $ qtrigger $ filterWhen (>=0) $ s "808bd:1 cp ~ cp" # speed 4
 
 hush
