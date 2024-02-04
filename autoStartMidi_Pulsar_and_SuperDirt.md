@@ -51,7 +51,7 @@ s.reboot { // server options are only updated on reboot
 
 # Set MIDI to automatically be loaded in Atom
 
-In Atom:
+In Pulsar:
 * Go to: Preferences >> Packages
 * Search for Hydra
 * Click anywhere in the Hydra grey box. This should bring you to an Atom-Hydra settings page in Atom.
