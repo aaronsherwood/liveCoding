@@ -51,8 +51,8 @@ s.reboot { // server options are only updated on reboot
 
 # Set MIDI to automatically be loaded in Atom
 
-In Atom:
-* Go to: Preferences >> Packages
+In Pulsar:
+* Go to: Settings >> Packages
 * Search for Hydra
 * Click anywhere in the Hydra grey box. This should bring you to an Atom-Hydra settings page in Atom.
 * Click View Code
@@ -64,3 +64,23 @@ const s = document.createElement( 'script' )
 s.src = 'PUT_YOUR_FILE_PATH_HERE/liveCoding/midi.js'
 document.querySelector( 'head' ).appendChild( s )
 ```
+* You can also add this right after the MIDI code, we will use it later in the semester:
+```
+window.loadScript = (url = "") => {
+    	const p = new Promise((res, rej) => {
+    		var script = document.createElement("script");
+    		script.onload = function () {
+    			console.log(`loaded script ${url}`);
+    			res();
+    		};
+    		script.onerror = (err) => {
+    			console.log(`error loading script ${url}`, "log-error");
+    			res()
+    		};
+    		script.src = url;
+    		document.head.appendChild(script);
+    	});
+    	return p;
+    };
+```
+* Restart Pulsar
