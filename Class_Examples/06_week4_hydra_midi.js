@@ -34,12 +34,14 @@ function onMIDIFailure() {
 
 //create an array to hold our cc values and init to a normalized value
 var cc=Array(128).fill(0.5)
+var ccActual=Array(128).fill(0)
 
 getMIDIMessage = function(midiMessage) {
     var arr = midiMessage.data
     var index = arr[1]
     //console.log('Midi received on cc#' + index + ' value:' + arr[2])    // uncomment to monitor incoming Midi
-    var val = (arr[2]+1)/128.0  // normalize CC values to 0.0 - 1.0
-    cc[index]=val
+    var val = (arr[2])/127.0  // normalize CC values to 0.0 - 1.0
+    cc[index] = val
+    ccActual[index] = arr[2]
 }
 ///////////////////////////////////////////////////////////////////////

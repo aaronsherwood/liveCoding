@@ -91,19 +91,20 @@ setFunction({
 `
 })
 
-p5 = new P5()
 
-
-glowCircle(() => p5.mouseX, () => p5.mouseY, 50).out()
+glowCircle(() => mouse.x, () => mouse.y, 50).out()
 
 // parameters have defalts, ut we can also change them
-glowCircle(() => p5.mouseX, () => p5.mouseY, 50, .1, .5, .3).out()
+glowCircle(() => mouse.x, () => mouse.y, 50, .1, .5, .3).out()
 
-particle = (offset) => glowCircle(() => p5.noise(time * .1 + offset) * width, () => p5.noise(time * .1 - offset) * height, 10)
+let p5 = new P5()
+let particle = (offset) => glowCircle(() => p5.noise(time * .1 + offset) * width, () => p5.noise(time * .1 - offset) * height, 10)
 particle(Math.random()).out()
 
 //particle system
-howMany = 20
+let p5 = new P5()
+let particle = (offset) => glowCircle(() => p5.noise(time * .1 + offset) * width, () => p5.noise(time * .1 - offset) * height, 10)
+let howMany = 20
 new Array(howMany).fill().reduce((a) =>
   a.add(particle(Math.random() * howMany)) // a is previous and then use hydra's add function to add another particle
   ,
@@ -111,6 +112,9 @@ new Array(howMany).fill().reduce((a) =>
 ).out() // send out
 
 // with feedback
+let p5 = new P5()
+let particle = (offset) => glowCircle(() => p5.noise(time * .1 + offset) * width, () => p5.noise(time * .1 - offset) * height, 10)
+let howMany = 20
 new Array(howMany).fill().reduce((a) =>
   a.add(particle(Math.random() * howMany)),
   particle(Math.random() * howMany)
@@ -155,20 +159,23 @@ setFunction({
 `
 })
 
-s0.initCam()
 
 // params: amount, square count, power, which side (0-1
-src(s0).mosaic(1, 20, 2, 0.5).out()
+render(o1)
+src(o0).mosaic(1, 20, 2, 0.5).out(o1)
 
-src(s0).mosaic(()=>cc[0], 20, ()=>cc[1]*2, 0.5).out()
+render()
+
+src(o0).mosaic(()=>cc[0], 20, 2, ()=>cc[1]).out(o1)
 
 ///// SHADERS in P5js \\\\\
 
+// NEED TO COPY AND PASTE THIS INTO CONSOLE OR LOAD IN SEPARATE SCRIPT
 p5 = new P5({width: window.innerWidth, height:window.innerHeight, mode: 'WEBGL'})
-shader = p5.loadShader("/Users/ags419/Documents/Code/classes/liveCoding/Class_Examples/shaders/basic.vert", "/Users/ags419/Documents/Code/classes/liveCoding/Class_Examples/shaders/ocean.frag");
+shader = p5.loadShader("/Users/ags419/Documents/Code/liveCoding/Class_Examples/shaders/basic.vert", "/Users/ags419/Documents/Code/liveCoding/Class_Examples/shaders/ocean.frag");
+
 // need to set the pixel density
 p5.pixelDensity(1);
-
 p5.draw = ()=>{
     shader.setUniform("time", time*0.3);
     shader.setUniform("resolution", [width, height]);
@@ -179,6 +186,7 @@ p5.draw = ()=>{
 p5.hide();
 s0.init({src: p5.canvas})
 src(s0).out()
+render(o0)
 
 hush()
 
