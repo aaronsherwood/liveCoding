@@ -64,4 +64,23 @@ const s = document.createElement( 'script' )
 s.src = 'PUT_YOUR_FILE_PATH_HERE/liveCoding/midi.js'
 document.querySelector( 'head' ).appendChild( s )
 ```
+* You can also add this right after the MIDI code, we will use it later in the semester:
+```
+window.loadScript = (url = "") => {
+    	const p = new Promise((res, rej) => {
+    		var script = document.createElement("script");
+    		script.onload = function () {
+    			console.log(`loaded script ${url}`);
+    			res();
+    		};
+    		script.onerror = (err) => {
+    			console.log(`error loading script ${url}`, "log-error");
+    			res()
+    		};
+    		script.src = url;
+    		document.head.appendChild(script);
+    	});
+    	return p;
+    };
+```
 * Restart Pulsar
