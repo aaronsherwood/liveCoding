@@ -22,4 +22,23 @@ update = () =>{
   }
 }
 
+//seek certain time stamp in video
+vids[2].currentTime=0
+
+// gets you the duration of a video
+vids[2].duration
+
+s0.init({src: vids[2]})
+src(s0).out()
+let whichStamp=0
+update = () =>{
+  // need to change the timestamp only if it is different
+  // otherwise it doesn't work
+  let messageFromTidal = cc[0]*vids[2].duration
+  if (messageFromTidal != whichStamp){
+    whichStamp = messageFromTidal;
+    vids[2].currentTime=whichStamp
+  }
+}
+
 solid().out()

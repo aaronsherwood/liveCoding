@@ -29,3 +29,7 @@ d4 $ struct "<t(3,8) t(5,8,1)>" $ ccv "<[[100 120] 0 127@2 0@1] [0 127]>" # ccn 
 d4 $ ccv "0*16" # ccn "1" # s "midi"
 
 hush
+
+-- choose timestamp in video example
+d5 $ ccv "0 100" # ccn "0" # s "midi"
+d6 $ s "[[808bd:1] feel:4, <feel:1*16 [feel:1!7 [feel:1*6]]>]" # room 0.4 # krush 15 # speed (slow "<2 3>" (range 4 0.5 saw))

@@ -1,6 +1,6 @@
 -- harmony and melody quick overview: http://tidalcycles.org/docs/reference/harmony_melody/
 
--- some sample folders have different pitcehd sounds which can be used for melodies
+-- some sample folders have different pitched sounds which can be used for melodies
 d1 $ s "arpy*16" # n (run 16) # room 0.4
 
 -- major scale by numbers, each number is a semitone
@@ -33,7 +33,7 @@ d1 $ palindrome $ s "sine*8" # note ((scale "pelog" "0 .. 7")+4) # room 0.4
 -- applying the given function to each part in turn (one part per cycle)
 d1 $ chunk 4 (# note ((scale "pelog" "-7 .. 0")+4)) $ s "sine*8" # note ((scale "pelog" "0 .. 7")+4) # room 0.4
 
--- bite function allows you o slice each cycle into a given number of equal sized bits,
+-- bite function allows you to slice each cycle into a given number of equal sized bits,
 -- and then pattern those bits by number.
 d1 $ bite 4 "0 2 1 <2 3>" $ s "sine*8" # note ((scale "pelog" "0 .. 7")+4) # room 0.4
 
