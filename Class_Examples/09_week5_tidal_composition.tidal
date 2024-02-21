@@ -39,7 +39,7 @@ d1 silence
 drop_It_All_Over_The___FLOOR
 
 -- build up with snares
-d3 $ qtrigger $ seqP [
+d3 $ qtrigger $ filterWhen (>=0) $ seqP [
   (0, 1, s "feel:2*4"),
   (1,2, s "feel:2*8"),
   (2,3, s "feel:2*16"),
@@ -47,18 +47,18 @@ d3 $ qtrigger $ seqP [
 ] # room 0.3 # hpf (slow 4 (1000*saw + 100)) # speed (slow 4 (range 1 2 saw))
 
 -- put together with rising percussion pitch
-d2 $ qtrigger $ stack[
+d2 $ qtrigger $ filterWhen (>=0) $ stack[
   s "~ cp" # room 0.5,
   fast 2 $ s "hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>" # room 0.7 # gain (range 1 1.2 rand)
 ] # speed (slow 4 (range 1 2 saw))
 
 -- put it all together
 do {
-  d2 $ qtrigger $ stack[
+  d2 $ qtrigger $ filterWhen (>=0) $ stack[
     s "~ cp" # room 0.5,
     fast 2 $ s "hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>" # room 0.7 # gain (range 1 1.2 rand)
   ] # speed (slow 4 (range 1 2 saw));
-  d3 $ qtrigger  $ seqP [
+  d3 $ qtrigger $ filterWhen (>=0) $ seqP [
     (0, 1, s "feel:2*4"),
     (1,2, s "feel:2*8"),
     (2,3, s "feel:2*16"),
@@ -95,24 +95,31 @@ we_playin_out_HeAh = do {
 -- build
 
 oh_Yeaahhh = do {
-  d1 $ qtrigger $ seqP [
+  d1 $ qtrigger $ filterWhen (>=0) $ seqP [
     (0, 3, verse),
     (3,4, kickFill),
     (4,8, s "~ cp" # gain 1.2 # room 0.5)
   ];
-  d2 $ qtrigger $ seqP [
+  d2 $ qtrigger $ filterWhen (>=0) $ seqP [
     (0,4, hihatBuild)
   ];
-  d3 $ qtrigger $ seqP [
+  d3 $ qtrigger $ filterWhen (>=0) $ seqP [
     (0, 1, s "feel:2*4"),
     (1,2, s "feel:2*8"),
     (2,3, s "feel:2*16"),
     (3,4, s "feel:2*32")
   ] # room 0.3 # hpf (slow 4 (1000*saw + 100)) # speed (slow 4 (range 1 4 saw));
-  d4 $ qtrigger $ seqP [
+  d4 $ qtrigger $ filterWhen (>=0) $ seqP [
     (4,8, s "<feel:6(3,8) feel:6(5,8,1)>" # room 0.95 # speed "2 1" # gain 1.3 # squiz 1.1 # up "-2")
   ]
 }
+
+--redo drop with qtrigger
+drop_It_All_Over_The___FLOOR = do
+  d1 $ qtrigger $ filterWhen (>=0) $ s "~ cp" # gain 1.2 # room 0.5
+  d2 $ qtrigger $ filterWhen (>=0) silence
+  d3 $ qtrigger $ filterWhen (>=0) silence
+  d4 $ qtrigger $ filterWhen (>=0) $ s "<feel:6(3,8) feel:6(5,8,1)>" # room 0.95 # speed "2 1" # gain 1.3 # squiz 1.1 # up "-2"
 
 -- verse
 we_playin_out_HeAh
