@@ -138,8 +138,8 @@ do {
 
 -- how to use qtrigger with filterWhen
 do
-  d1 $ s "bd bd sd ~"
-  d2 $ s "808bd:1 cp ~ cp" # speed 4
+  d1 $ qtrigger $ filterWhen (>=0) $ s "bd bd sd ~"
+  d2 $ qtrigger $ filterWhen (>=0) $ s "808bd:1 cp ~ cp" # speed 4
 
 do
   d1 $ qtrigger $ filterWhen (>=0) $ s "bd bd sd ~"

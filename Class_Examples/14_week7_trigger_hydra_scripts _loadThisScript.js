@@ -1,9 +1,9 @@
 visuals = [
-  ()=>{shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).out(o0)},
+  ()=>{shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).out()},
   ()=>shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert().out(),
   ()=>shape(3,0.3,0.025).scale(1,innerHeight/innerWidth).invert().add(osc(30,0.01,0.5)).out(),
-  ()=>{src(s0)
-    .blend(src(o0).diff(s0).scale(.999)
+  ()=>{solid()
+    .blend(src(o0).diff(solid()).scale(.999)
   	.modulatePixelate(noise(10,0.01).pixelate(16,16),1024),1)
     .out()},
   ()=>{

@@ -174,6 +174,7 @@ src(o0).mosaic(()=>cc[0], 20, 2, ()=>cc[1]).out(o1)
 p5 = new P5({width: window.innerWidth, height:window.innerHeight, mode: 'WEBGL'})
 shader = p5.loadShader("/Users/ags419/Documents/Code/liveCoding/Class_Examples/shaders/basic.vert", "/Users/ags419/Documents/Code/liveCoding/Class_Examples/shaders/ocean.frag");
 
+
 // need to set the pixel density
 p5.pixelDensity(1);
 p5.draw = ()=>{

@@ -104,8 +104,15 @@ d1 $ fast 2 $ s "sine" >| note (arp "updown" (scale "major" ("[0,2,4,6]"+"<0 0 2
 d1 $ fast 2 $ s "supersaw" >| note (arp "updown" (scale "major" ("[0,2,4,6]"+"<0 0 2 3>") + "f4")) # room 0.4
 d1 $ s "superhoover" >| note ((scale "major" "<[2 2 3 4] [4 3 2 1] [0 0 1 2] [[2@3 1] 1]>" + "f4")) # room 0.4
 
+-- with a filter sweep
+d1 $ slow 2 $ s "moog:2"
+  >| note (scale "<minor hexSus yu spanish>" ("[<-7 -5 -3 -1>,0,2]*<1 8 16 32>") + "[c5,c6]")
+  # legato 1
+  # lpfbus 1 (segment 1000 (slow 4 (range 100 3000 saw)))
+  # lpq 0.4
+
 -- just some drum sounds for fun
 d3 $ s "~ cp" # room 0.5
-d4 $ fast 2 $ s "hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>" # room 0.7 # gain (range 1 1.2 rand)
+d4 $ fast 2 $ s "hh*2 hh*2 hh*2 <hh*6 [hh*2]!3>" # room 0.7 # gain (range 1.2 1.4 rand)
 
 hush
