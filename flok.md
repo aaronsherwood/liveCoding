@@ -3,7 +3,7 @@ Web-based P2P collaborative editor for live coding music and graphics from here:
 
 ## Requirements
 
-Flok is written in TypeScript and Nodejs. You will need to have installed Node versions 10+. The LTS version (currently 14) is recommended.
+Flok is written in TypeScript and Nodejs. You will need to have installed Node versions 10+.
 
 Go  [here](https://nodejs.org/)  to download Node.
 
