@@ -11,7 +11,7 @@ Go  [here](https://nodejs.org/)  to download Node.
 
 Do the following on the command line:
 
-`sudo npm i -g flok-repl@1.0.0-alpha.10 flok-web`
+`npm install -g flok-web@latest flok-repl@latest` ~`sudo npm i -g flok-repl@1.0.0-alpha.10 flok-web`~
 
 Then try the following to test if install happened properly. It should print out the flok version you installed:
 
