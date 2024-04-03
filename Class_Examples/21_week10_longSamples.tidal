@@ -13,7 +13,7 @@ d1 $ sound "bev ~ bev ~" # legato 1
 d1 $ chop 16 $ sound "bev" # cut 1
 
 -- gap
-d1 $ chop 16 $ sound "bev" # legato 1
+d1 $ gap 16 $ sound "bev" # legato 1
 
 -- striate
 d1 $ striate 16 $ sound "bev" # cut 1
