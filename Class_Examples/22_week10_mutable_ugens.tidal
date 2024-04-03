@@ -41,3 +41,6 @@ d1 $ s "bd arpy sd hh" # up "-5"
   # cloudsblend 1 0.75 0.66 0.4
   # cloudsmode 2 --"<0 1 2 3>"
   # cloudsgain "2"
+
+-- midi control of hydra
+d2 $ ccv (segment 128 (slow 2 (range 0 127 saw))) # ccn 0 # s "midi"
