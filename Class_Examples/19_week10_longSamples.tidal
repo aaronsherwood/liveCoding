@@ -13,7 +13,7 @@ d1 $ sound "bev ~ bev ~" # legato 1
 d1 $ chop 16 $ sound "bev" # cut 1
 
 -- gap
-d1 $ gap 16 $ sound "bev" # legato 1
+d1 $ chop 16 $ sound "bev" # legato 1
 
 -- striate
 d1 $ striate 16 $ sound "bev" # cut 1
@@ -21,14 +21,36 @@ d1 $ striate 16 $ sound "bev" # cut 1
 -- difference between striate and chop
 d1 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
 d1 $ chop 4 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
-d1 $ striate 4 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
+d1 $ striate 1024 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
 
 -- striateBy
-d1 $ slow 32 $ striateBy 32 (1/4) $ sound "bev"
+d1 $ slow 32 $ striateBy 32 (1/4) $ sound "bev" # cut 1
 -- without by
 d1 $ slow 32 $ striate 32 $ sound "bev"
 
--- slice
+-- granular synthesis
+--staccato (try 2000, 3000, 5000)
+d1 $ slow 128 $ striateBy (2000) (1/128) $ sound "bev:1"
+-- smeared with reverb, reversing patten in left channel, changing striate chop amount
+d1 $ jux rev $ slow 128 $ striateBy (2000+(irand 3000)) (1/128) $ sound "bev:1" # room 0.95 # size 0.95
+
+-- ambient
+d1 $ jux rev $ slow 8 $ striateBy 64 (1/4) $ sound "bev:1" # room "0.9" # size "0.9" # up "-3" # slow 4 ( gain (range 0.5 1 rand) )
+
+d2 $ slow 3 $ jux rev $ sometimes (# speed "-1") $ struct (iter 4 "t(5,8)?") $ note ((scale "minPent" "-5..7")+1) # sound "em2" # gain (range 0.86 0.9 rand) # n 1 # room "0.6" # delay "0.5" # delayfb "0.5" # delaytime "0.5"
+
+-- ocean
+d3 $ slow 2 $ chop 128 $ jux (# speed "0.5") $ s "[sheffield]"
+  # att 0.1 # hold 10 # rel 0.1
+  # gain (
+    (slow 2 (segment 128 (range 0.1 0.3333 sine)))
+    + (slow 3 (segment 128 (range 0.1 0.3333 cosine)))
+    + (slow 5 (segment 128 (range 0.1 0.3333 tri)))
+    )
+  # room 0.5
+  # size 0.5
+
+-- slice/splice
 d1 $ slice 8 "[4 5 1 2 0 3 7 6]" $ sound "breaks125:1" # room 0.25
 d1 $ slice 8 "[<0*8 0*2> 3*4 2 4] [4 .. 7]" $ sound "breaks125:1" # room 0.25
 -- (try with splice too, which does the same thing but pitches the samples too)
@@ -37,6 +59,7 @@ d1 $ slice 8 "[<0*8 0*2> 3*4 2 4] [4 .. 7]" $ sound "breaks125:1" # room 0.25
 d1 $ randslice 8 $ sound "breaks125:1*8" # room 0.25
 
 -- loopAt
+-- some beats to hear the beat
 d3 $ s "808:1*8" # room 0.5 # gain (range 0.8 1 rand) # legato 1
 d4 $ s "808bd:1" # room 0.5 # gain 1.2
 
@@ -50,21 +73,5 @@ d2 silence
 
 -- const
 d1  $ slice 8 "[4 5 1 2 0 3 7 6]" $ whenmod 4 3 (const $ jux (# speed 0.5) $ sound "sitar" # room 0.5 # legato "4" ) $ sound "[fm:7]" # room 0.25
-
--- ambient
-d1 $ jux rev $ slow 8 $ striateBy 64 (1/4) $ sound "bev:1" # room "0.9" # size "0.9" # up "-3" # slow 4 ( gain (range 0.5 1 rand) )
-
-d2 $ slow 3 $ jux rev $ every 4 (# speed "-1") $ struct (iter 4 "t(5,8)?") $ note ((scale "majPent" "0 .. 7")+4) # sound "em2" # gain (range 0.86 0.9 rand) # n (irand 2) # room "0.6" # delay "0.5" # delayfb "0.5" # delaytime "0.5"
-
--- ocean
-d3 $ slow 2 $ chop 128 $ jux (# speed "0.5") $ s "[sheffield]"
-  # att 0.1 # hold 10 # rel 0.1
-  # gain (
-    (slow 2 (segment 128 (range 0.1 0.3333 sine)))
-    + (slow 3 (segment 128 (range 0.1 0.3333 cosine)))
-    + (slow 5 (segment 128 (range 0.1 0.3333 tri)))
-    )
-  # room 0.5
-  # size 0.5
 
 hush

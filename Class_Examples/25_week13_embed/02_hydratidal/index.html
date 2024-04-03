@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="utf-8">
+  <script src="./WebDirt.js"></script>
+  <script src="./Graph.js"></script>
+  <script src="./SampleBank.js"></script>
+  <script src='./pattern.js'></script>
+  <script src='./peg-parse-query.js'></script>
+  <script src='./hydratidal.js'></script>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #000">
+  <div id="text" style="color: white; left: 20px; top: 20px; font-size: 32px; position: absolute;" >Click to start sound</div>
+  <script src="https://unpkg.com/hydra-synth"></script>
+  <script>
+    window.onload = function() {
+      const hydra = new Hydra({
+        detectAudio: false,
+        enableStreamCapture: false,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+
+      speed = 0.5
+
+      counter = 0
+      update = () => {
+        tidal[0].sound("feel:6(3,8)", 1 + (time % 1))
+        tidal[1].sound("feel:1*8", 1, Math.random() * .4 + .6)
+        if (tidal[2].pat("1(3,8)") == 1)
+          counter = (counter + 1) % 3
+      }
+
+      window.addEventListener("click", function(event) {
+        audiogoing = true;
+        document.getElementById("text").style.visibility = "hidden";
+      })
+
+      shape(() => counter + 3).rotate(() => (Math.cos(time) + 1) * .5 * 6.28).scale(1, () => height / width).out()
+
+    }
+  </script>
+</body>
+
+</html>

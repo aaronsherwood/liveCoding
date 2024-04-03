@@ -1,0 +1,2 @@
+d1 $ ccv (segment 128 (slow 2 (range 0 127 saw))) # ccn 0 # s "midi"
+d2 $ slow 2 $ s "808bd:1(5,16)" # krush 10 # speed (range 8 2 saw) # room 0.5 # gain (range 1 0.7 saw)

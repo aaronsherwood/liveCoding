@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="utf-8">
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #000">
+  <div></div>
+  <script src="https://unpkg.com/hydra-synth"></script>
+  <script>
+    window.onload = function() {
+      const hydra = new Hydra({
+        detectAudio: false,
+        enableStreamCapture: false,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+
+      osc(200,.01,1).rotate(1).layer(osc(30,0,1).luma(0.2,.2).color(0,0,0,1)).layer(osc(30,0,1).luma(0.5,0.1)).modulate(noise(3,.1)).out();
+
+    }
+  </script>
+</body>
+
+</html>

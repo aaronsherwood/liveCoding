@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="utf-8">
+  <script src="./WebDirt.js"></script>
+  <script src="./Graph.js"></script>
+  <script src="./SampleBank.js"></script>
+  <script src='./pattern.js'></script>
+  <script src='./peg-parse-query.js'></script>
+  <script src='./hydratidal.js'></script>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #000">
+  <div id="text" style="left: 20px; top: 20px; font-size: 32px; position: absolute;">Click to start sound</div>
+  <script src="https://unpkg.com/hydra-synth"></script>
+  <script>
+    window.onload = function() {
+      const hydra = new Hydra({
+        detectAudio: false,
+        enableStreamCapture: false,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+
+      window.addEventListener("click", function(event) {
+        audiogoing = true;
+        document.getElementById("text").style.visibility = "hidden";
+      });
+
+      speed = 0.5
+
+      mod0 = 0.2
+      mod1 = 0.5
+
+      update = () => {
+        if (audiogoing) {
+          m0 = tidal[0].pat('0.5 [0.3 0.9] 1. 0.2');
+          if (m0 != null)
+            mod0 = m0
+          m1 = tidal[1].pat('0 1 0 3 ')
+          if (m1 != null)
+            mod1 = m1
+          tidal[2].sound("feel:6 [feel:6 feel:6] feel:6 feel:6", tidal[3].pat('2 [5.2 3.6] 4 7 '))
+          tidal[4].sound("feel:2*4", tidal[5].pat('8 4 8 3'))
+        }
+      }
+
+      osc(200, 0.01, 1)
+        .rotate(1)
+        .layer(osc(30, 0, 1).luma(0.2, 0.2).color(0, 0, 0, 1))
+        .layer(osc(30, 0, 1).luma(() => mod0), 0.1)
+        .modulate(noise(() => mod1))
+        .out();
+    }
+  </script>
+</body>
+
+</html>
