@@ -3,7 +3,7 @@ Web-based P2P collaborative editor for live coding music and graphics from here:
 
 ## Requirements
 
-Flok is written in TypeScript and Nodejs. You will need to have installed Node versions 10+. The LTS version (currently 14) is recommended.
+Flok is written in TypeScript and Nodejs. You will need to have installed Node versions 10+.
 
 Go  [here](https://nodejs.org/)  to download Node.
 
@@ -11,7 +11,7 @@ Go  [here](https://nodejs.org/)  to download Node.
 
 Do the following on the command line:
 
-`sudo npm i -g flok-repl@1.0.0-alpha.10 flok-web`
+`npm install -g flok-web@latest flok-repl@latest` ~`sudo npm i -g flok-repl@1.0.0-alpha.10 flok-web`~
 
 Then try the following to test if install happened properly. It should print out the flok version you installed:
 
@@ -23,7 +23,7 @@ Then try the following to test if install happened properly. It should print out
 
 When working in a group one person will need to start a server and share the url. There is a flok server on our class site:
 
-[https://www.flok.livecoding.nyuadim.com:3000/](https://www.flok.livecoding.nyuadim.com:3000/)
+[https://www.flok.livecoding.nyuadim.com](https://www.flok.livecoding.nyuadim.com)
 
 Or you can use: [https://next.flok.cc/](https://next.flok.cc/) *(you will need to enable midi for hydra on this one, see near the end of this document for instructions)*
 
