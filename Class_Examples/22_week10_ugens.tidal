@@ -1,0 +1,32 @@
+-- braids is a macro osscilator, changes sounds with # model
+d1 $ s "braids*16" # note (scale "majPent" "0..7") # model 0 # sustain 0.5
+-- try random models
+d1 $ s "braids*16" # note (scale "majPent" "0..7") # model (irand 48) # sustain 0.5
+
+-- timbre
+d1 $ s "braids*16" # note (scale "majPent" "0..7") # model 14 # sustain 0.5 # timbre (slow 2 saw)
+-- color
+d1 $ s "braids*16" # note (scale "majPent" "0..7") # model 14 # sustain 0.5 # color rand
+-- both
+d1 $ s "braids*16" # note (scale "majPent" "0..7") # model 14 # sustain 0.5 # timbre (slow 2 saw) # color rand
+
+-- plaits was succesor to braids, but without distinct models, but separate engines with more control for sound synthesis
+d1 $ s "plaits*16" # note (scale "majPent" "0..7") # sustain 0.5 # engine (irand 16) # timbre (slow 3 sine) # harm (slow 4 saw) # morph (slow 9 saw)
+
+-- rings (physical modeling effect)
+d1 $ struct "t*8" $ s "<bd hh cp arpy>"
+  # ringsmodel "<0@4 1@4>"
+  # ringsfreq "32.703 65.406 130.813"
+  # ringsstruct "<1 0.75 0.5 0>"
+  # ringsbright (slow 2 (range 0.4 0.8 saw))
+  # ringsdamp 0.7
+  # ringspos (slow 4 isaw)
+  # ringsinternal "[0,1]"
+
+-- clouds: real time granular effect
+-- params are:
+-- clouds p s d t = # cloudspos p # cloudssize s # cloudsdens d # cloudstex t
+-- cloudsblend w s f r =  cloudswet w # cloudsspread s # cloudsfb f # cloudsrvb r
+d1 $ s "arpy*16" # n (run 16)
+  # clouds 0.5 0.5 0.05 0.1
+  # cloudsblend 1 0.2 0.33 0.8
