@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<head>
+  <link rel="shortcut icon" type="image/png"
+      href="https://cdn.glitch.com/597fe374-3d18-46a5-b99c-ceff1f8ffd79%2Ffavicon.png?1530891352785" />
+
+  <script src="https://unpkg.com/@strudel/web@latest"></script>
+
+  <script type="module">
+
+    let latestOptions;
+    let hydra;
+
+    export async function initHydra(options = {}) {
+      // reset if options have changed since last init
+      if (latestOptions && JSON.stringify(latestOptions) !== JSON.stringify(options)) {
+        document.getElementById('hydra-canvas')?.remove();
+      }
+      latestOptions = options;
+      //load and init hydra
+      if (!document.getElementById('hydra-canvas')) {
+        const {
+          src = 'https://unpkg.com/hydra-synth',
+          contextType = 'webgl',
+          ...hydraConfig
+        } = {
+          detectAudio: false,
+          ...options,
+        };
+        await import(/* @vite-ignore */ src);
+        hydra = new Hydra(hydraConfig);
+      }
+      setTime(() => getAudioContext().currentTime*0.5)
+    }
+    export function clearHydra() {
+      if (hydra) {
+        hydra.hush();
+      }
+      globalThis.s0?.clear();
+      document.getElementById('hydra-canvas')?.remove();
+    }
+    export const H = (p) => () => reify(p).queryArc(getTime(), getTime())[0].value;
+
+    initStrudel({
+        prebake: () => samples({
+            feel: ['feel/BD 04 d.wav',
+                'feel/HH 003b.wav',
+                'feel/hihat029a.wav',
+                'feel/Sd 139.wav',
+                'feel/Sd 180.wav',
+                'feel/Sd 223.wav',
+                'feel/sub.wav'],
+        }, 'https://raw.githubusercontent.com/tidalcycles/Dirt-Samples/master/'),
+    });
+
+    await initHydra();
+
+    document.addEventListener('click', () =>{
+        stack(
+          sound("feel:6(3,8)").speed(saw.range(1,2)),
+          sound("feel:1*8").gain(rand.range(0.4,1))
+        ).play();
+        document.getElementById("text").style.visibility = "hidden";
+
+      }
+    );
+
+
+
+    // setTime(() => getAudioContext().currentTime*0.5)
+
+    let pattern0 = "3 4 5"
+    let pattern1 = sine.range(6.28,0).slow(4)
+
+    shape(H(pattern0)).rotate(H(pattern1)).scale(1, () => height / width).out()
+  </script>
+
+  <style>
+    body {
+      background: #000;
+      margin: 0px;
+      color: white;
+      font-size: 32px;
+    }
+    #text{
+      left: 20px;
+      top: 20px;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<div id="text">Click to start sound</div>
+</body>
