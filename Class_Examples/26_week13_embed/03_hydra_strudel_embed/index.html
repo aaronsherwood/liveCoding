@@ -60,14 +60,18 @@
         sound("casio*16").speed(saw.range(1, 1.5).slow(4)).gain(rand).room("0.9").size("0.5").note(30)
       ).cpm(23.75*2).play();
       document.getElementById("text").style.visibility = "hidden";
+      let pattern = saw.range(3,0).cpm(23.75*2)
 
+      osc(200,0.01,1).rotate(1).layer(osc(30,0,1).luma(0.2,.2).color(0,0,0,1))
+        .layer(osc(30,0,1).luma(0.5,0.01))
+        .modulate(noise(H(pattern),.1)).out(o0)
     });
-
-    let pattern = saw.range(3,0).cpm(23.75*2)
 
     osc(200,0.01,1).rotate(1).layer(osc(30,0,1).luma(0.2,.2).color(0,0,0,1))
       .layer(osc(30,0,1).luma(0.5,0.01))
-      .modulate(noise(H(pattern),.1)).out(o0)
+      .modulate(noise(0.5,.1)).out(o0)
+
+
   </script>
 
   <style>

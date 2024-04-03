@@ -59,13 +59,14 @@
         sound("feel:1*8").gain(rand.range(0.4, 1))
       ).play();
       document.getElementById("text").style.visibility = "hidden";
+      let pattern0 = "3 4 5"
+      let pattern1 = sine.range(0, 6.28).slow(4)
 
+      shape(H(pattern0)).rotate(H(pattern1)).scale(1, () => height / width).out()
     });
 
-    let pattern0 = "3 4 5"
-    let pattern1 = sine.range(0, 6.28).slow(4)
+    shape(3).rotate(0,0.1).scale(1, () => height / width).out()
 
-    shape(H(pattern0)).rotate(H(pattern1)).scale(1, () => height / width).out()
   </script>
 
   <style>
