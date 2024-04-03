@@ -27,16 +27,16 @@ d1 $ s "bd arpy sd hh"
 -- params are:
 -- clouds p s d t = # cloudspos p # cloudssize s # cloudsdens d # cloudstex t
 -- cloudsblend w s f r =  cloudswet w # cloudsspread s # cloudsfb f # cloudsrvb r
-d1 $ s "bd arpy sd hh"
+d1 $ s "bd arpy sd hh" # up "-5"
   # clouds 0.01 perlin 0.72 perlin
   # cloudsblend 0.4 0.75 0.66 0.175
 
-d1 $ s "arpy*16" # n (run 16)
+d1 $ s "arpy*16" # n (run 16) # up "-5"
   # clouds 0.5 0.5 0.05 0.1
   # cloudsblend 1 0.2 0.33 0.8
 
 -- alternate modes (there are four modes: 0-3 https://web.archive.org/web/20210617075747/https://mutable-instruments.net/modules/clouds/alternate_modes/)
-d1 $ s "bd arpy sd hh"
+d1 $ s "bd arpy sd hh" # up "-5"
   # clouds perlin perlin perlin 0.5
   # cloudsblend 1 0.75 0.66 0.4
   # cloudsmode 2 --"<0 1 2 3>"
