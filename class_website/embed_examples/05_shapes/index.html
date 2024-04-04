@@ -22,6 +22,8 @@
             ...hydraConfig
         } = {
           detectAudio: false,
+          width: window.innerWidth,
+          height: window.innerHeight,
           ...options,
         };
         await import( /* @vite-ignore */ src);
