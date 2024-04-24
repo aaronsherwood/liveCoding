@@ -110,7 +110,7 @@ shape(()=>counter+3).rotate(()=>(Math.cos(time)+1)*.5*6.28).scale(1,()=>height/w
 // WAY TO BE SURE OF IMAGE LOAD IN FLOK
 image = document.createElement('img')
 image.crossOrigin="anonymous"
-image.src = "https://blog.livecoding.nyuadim.com/wp-content/uploads/photo-1711873317754-11f6de89f7ae-scaled.jpg"
+image.src = "https://i.imgur.com/Yowvz16.png"
 
 loaded = ()=>{
   s0.init({src: image})
