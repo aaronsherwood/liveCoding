@@ -42,8 +42,9 @@ document.querySelector( 'head' ).appendChild( s )
 // Loading shaders online
 // You can use github to store your shader files
 // Get the raw version of the file and use that URL
+// NOTE: p5 WEBGL mode in flok should be lowercase (webgl) but in pulsar should be upper case
 
-p5 = new P5({width: window.innerWidth, height:window.innerHeight, mode: 'WEBGL'})
+p5 = new P5({width: window.innerWidth, height:window.innerHeight, mode: 'webgl'})
 shader = p5.loadShader("https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/Class_Examples/shaders/basic.vert", "https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/Class_Examples/shaders/ocean.frag");
 p5.hide() // REMEMBER TO DO HIDE!
 
@@ -105,3 +106,36 @@ update = ()=>{
 }
 
 shape(()=>counter+3).rotate(()=>(Math.cos(time)+1)*.5*6.28).scale(1,()=>height/width).out()
+
+// WAY TO BE SURE OF IMAGE LOAD IN FLOK
+image = document.createElement('img')
+image.crossOrigin="anonymous"
+image.src = "https://blog.livecoding.nyuadim.com/wp-content/uploads/photo-1711873317754-11f6de89f7ae-scaled.jpg"
+
+loaded = ()=>{
+  s0.init({src: image})
+  src(s0).out()
+  console.log("Image loaded");
+}
+
+if (image.complete) {
+  loaded()
+} else {
+  image.addEventListener('load', loaded)
+}
+
+/*
+TIDALCYCLES load custom BootTidal.hs in flok:
+
+add this to the end of your script to paste in the terminal:
+
+--extra '{ "bootScript": "/path/to/BootTidal.hs"}'
+
+need to put a \ at the end of the previous line for it to work
+
+npx flok-repl@latest -H wss://www.flok.livecoding.nyuadim.com:3000 \
+  -s lost-scarlet-wombat-8ed1b8d5 \
+  -t tidal \
+  -T user:aaron \
+	--extra '{ "bootScript": "/Users/ags419/Documents/Code/tidalscripts/BootTidal.hs"}'
+*/

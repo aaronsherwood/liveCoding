@@ -19,10 +19,9 @@ setFunction({
 simpleShader().out()
 
 setFunction({
-    name: 'two_sides',
-    type: 'src',
-    inputs: [
-    {
+  name: 'two_sides',
+  type: 'src',
+  inputs: [{
       type: 'sampler2D',
       name: 'tex0',
       default: NaN,
@@ -32,8 +31,8 @@ setFunction({
       name: 'tex1',
       default: NaN,
     }
-    ],
-    glsl: `
+  ],
+  glsl: `
     vec4 a = texture2D(tex0, _st);
     vec4 b = texture2D(tex1, _st);
     vec4 combined;
@@ -45,8 +44,8 @@ setFunction({
     `
 })
 voronoi().out(o1)
-osc(30,0.1,0.7).out(o2)
-two_sides(o1,o2).out()
+osc(30, 0.1, 0.7).out(o2)
+two_sides(o1, o2).out()
 
 // glow circle
 setFunction({
@@ -166,26 +165,32 @@ src(o0).mosaic(1, 20, 2, 0.5).out(o1)
 
 render()
 
-src(o0).mosaic(()=>cc[0], 20, 2, ()=>cc[1]).out(o1)
+src(o0).mosaic(() => cc[0], 20, 2, () => cc[1]).out(o1)
 
 ///// SHADERS in P5js \\\\\
 
 // NEED TO COPY AND PASTE THIS INTO CONSOLE OR LOAD IN SEPARATE SCRIPT
-p5 = new P5({width: window.innerWidth, height:window.innerHeight, mode: 'WEBGL'})
+p5 = new P5({
+  width: window.innerWidth,
+  height: window.innerHeight,
+  mode: 'WEBGL'
+})
 shader = p5.loadShader("/Users/ags419/Documents/Code/liveCoding/Class_Examples/shaders/basic.vert", "/Users/ags419/Documents/Code/liveCoding/Class_Examples/shaders/ocean.frag");
 
 
 // need to set the pixel density
 p5.pixelDensity(1);
-p5.draw = ()=>{
-    shader.setUniform("time", time*0.3);
-    shader.setUniform("resolution", [width, height]);
-    shader.setUniform("mouse",[p5.mouseX, p5.mouseY]);
-    p5.shader(shader);
-    p5.rect(0, 0, width, height);
+p5.draw = () => {
+  shader.setUniform("time", time * 0.3);
+  shader.setUniform("resolution", [width, height]);
+  shader.setUniform("mouse", [p5.mouseX, p5.mouseY]);
+  p5.shader(shader);
+  p5.rect(0, 0, width, height);
 }
 p5.hide();
-s0.init({src: p5.canvas})
+s0.init({
+  src: p5.canvas
+})
 src(s0).out()
 render(o0)
 
