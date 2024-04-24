@@ -30,3 +30,6 @@ If there is a void VR function delete it.
 
 ### iChannel
 We need to do something with iChannel, either we will pass in some sort of texture, or we will figure out a way to not use it.
+
+### gl_FragCoord
+Sometimes you may need to be explicit and say `gl_FragCoord.xy` even though it is already a vec2. If you get an error on a line with `gl_FragCoord` then try adding `.xy` to the end of `gl_FragCoord`.
