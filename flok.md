@@ -40,7 +40,7 @@ You can press the REPLs button in the upper right corner to copy the script to c
 
 We need the code we copied to connect to Supercollider:
 
- 1. First, quit Pulsar to make sure you're Supercollider is not connected
+ 1. First, quit Pulsar to make sure your Supercollider is not connected
     to that Tidal instance.
  2. Next (you might not need to do this), restart the Supercoliider server.
  3. **If you want a custom BootTidal.hs file:** Take the code you copied before and paste this at the end of it `--extra '{ "bootScript": "~/Documents/Code/tidalscripts/BootTidal.hs" }'`
