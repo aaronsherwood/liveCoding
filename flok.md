@@ -27,11 +27,7 @@ When working in a group one person will need to start a server and share the url
 
 Or you can use: [https://flok.cc/](https://flok.cc/) *(you will need to enable midi for hydra on this one, see near the end of this document for instructions)*
 
-Type in *tidal, hydra* when prompted to enable both of those for use:
-
-![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok1.png)
-
-Click Save Changes, then copy the url and share with your collaborators:
+Copy the url and share with your collaborators:
 
 ![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok2.png)
 
