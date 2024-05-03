@@ -63,7 +63,7 @@ You can change the flok-repl code to automatically load the correct BootTidal.hs
 
 ### MIDI
 
-You can evaluate the following lines of code on the hydra side in flok to enable midi:
+MIDI is enabled by default in our class flok instance. If you are using a different flok you can evaluate the following lines of code on the hydra side in flok to enable midi:
 
 ```
 // enable WebMidi
