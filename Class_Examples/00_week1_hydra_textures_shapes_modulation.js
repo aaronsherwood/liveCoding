@@ -23,7 +23,7 @@ osc(40,.1,.75).thresh().kaleid(3).scale(1,()=>window.innerHeight/window.innerWid
 
 //triangles grid on screen
 //number of divisions (will be 4 X 4)
-let n = 4
+var n = 4
 //create a function that repeats the triangle 4x4 and has a random rotation for that whole grid
 a = () => shape(3, .4).rotate(Math.random()*100,Math.random()*3-1.75).repeat(n,n)
 //add in the same grid to itself, but slightly offest by using scroll
@@ -70,7 +70,7 @@ src(o1).mult(shape(3,0.2,0.3)).out(o2)
 src(o0).modulate(src(o2),0.15).out(o3)
 
 //modulateRotate
-src(o0).modulateRotate(shape(99,0.2,0.7).mult(osc(1,.3).brightness(-0.5)),3).out(o3)
+src(o0).modulateRotate(shape(99,0.2,0.7).mult(osc(1,.3)),3).out(o3)
 
 //modulate pixelate
 //doesn't seem very pixelated!
