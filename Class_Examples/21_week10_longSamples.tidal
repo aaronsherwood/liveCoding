@@ -21,7 +21,7 @@ d1 $ striate 16 $ sound "bev" # cut 1
 -- difference between striate and chop
 d1 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
 d1 $ chop 4 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
-d1 $ striate 1024 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
+d1 $ striate 4 $ sound "numbers:0 numbers:1 numbers:2 numbers:3"
 
 -- striateBy
 d1 $ slow 32 $ striateBy 32 (1/4) $ sound "bev" # cut 1

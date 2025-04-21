@@ -9,7 +9,7 @@ loadScript("https://cdn.rawgit.com/aaronsherwood/liveCoding/main/test.js")
 // or locally in pulsar
 loadScript("/Users/ags419/Documents/Code/liveCoding/test.js")
 
-// you will most likely not have this in your local flok instances (it won't work at all in atom either)
+// you will most likely not have this in your local flok instances
 // in your local flok you can make the function by pasting this into the console:
 window.loadScript = (url = "") => {
 	const p = new Promise((res, rej) => {

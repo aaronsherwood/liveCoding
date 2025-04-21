@@ -28,12 +28,13 @@ vids[2].currentTime=0
 // gets you the duration of a video
 vids[2].duration
 
+// choosing different frames in the same video
 s0.init({src: vids[2]})
 src(s0).out()
 let whichStamp=0
 update = () =>{
   // need to change the timestamp only if it is different
-  // otherwise it doesn't work
+  // otherwise it doesn't work (it will keep just choosing same frame and no tplay )
   let messageFromTidal = cc[0]*vids[2].duration
   if (messageFromTidal != whichStamp){
     whichStamp = messageFromTidal;

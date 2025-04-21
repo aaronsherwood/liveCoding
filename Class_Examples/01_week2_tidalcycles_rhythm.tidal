@@ -90,10 +90,14 @@ d2 $ s "[808sd:7*3, 808bd:2*4]" # room "0.25"
 d2 $ s "[808sd:7*2, 808bd:2*3]" # room "0.25"
 d2 $ s "[808sd:7*4, 808bd:2*6]" # room "0.25"
 -- 4 against 5 is also common
-d2 $ s "[808sd:7*4, 808bd:2*5]" # room "0.25" 
+d2 $ s "[808sd:7*4, 808bd:2*5]" # room "0.25"
 
 -- % wraps a particular pattern around in the division after the %
 d2 $ s "{808bd:0 808sd:7 808bd:2}%16" # room "0.25"
+
+-- 808bd:0 808sd:7 808bd:2 808bd:0 808sd:7 808bd:2 808bd:0 808sd:7 808bd:2 808bd:0 808sd:7 808bd:2 808bd:0 808sd:7 808bd:2 808bd:0
+-- 808sd:7 808bd:2 808bd:0 808sd:7 808bd:2 808bd:0 808sd:7 808bd:2 808bd:0 808sd:7 808bd:2 808bd:0 808sd:7 808bd:2 808bd:0 808sd:7
+-- 808bd:2 808bd:0 808sd:7 808bd:2 808bd:0 808sd:7 808bd:2 808bd:0 808sd:7 808bd:2 808bd:0 808sd:7 808bd:2 808bd:0 808sd:7 808bd:2
 
 -- add bit crush
 d2 $ s "{808bd:0 808sd:7 808bd:2}%16" # room "0.25" # crush "3"

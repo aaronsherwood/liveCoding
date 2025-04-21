@@ -40,9 +40,11 @@ src(o0).modulateHue(src(o0).scale(1.01), 10).layer(src(o1).luma(0.1)).out(o0)
 
 // with layer and mask
 
-// we were doing mult, which makes a black bakckground
+// we were doing mult, which makes a black background
 // mask will make a transparent background
 osc(24,0.01,.7).mask(shape(3,0.3,0.01).rotate(0,.1).scale(1,()=>window.innerHeight/window.innerWidth)).out(o1)
+
+render()
 
 src(o0)
   .modulate(
@@ -60,7 +62,7 @@ src(o0)
 // use diff and scale (we've seen this before)
 src(o1).diff(src(o0).scale(.9)).out()
 
-// blend it in with the output, orverdrive the blend
+// blend it in with the output, overdrive the blend
 src(o0).blend(src(o1).diff(o0).scale(1.01),1.01).out(o0)
 
 // layer the original ontop
@@ -82,7 +84,7 @@ src(s0).blend( src(o0).diff(s0).scale(1.01),[0,2]).out(o0);
 // multiply it by 0.5 to make it go half as fast
 vid.playbackRate = vid.duration*0.5
 
-// if you want ot get the start of the video to sink up you can use update
+// if you want to get the start of the video to sink up you can use update
 let prevTime = 0;
 update =()=>{
   if (time%2 < prevTime)
