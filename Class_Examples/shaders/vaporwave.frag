@@ -9,7 +9,7 @@ uniform vec2 mouse;
 //#define AA 2
 //#define VAPORWAVE
 //#define stereo 1. // -1. for cross-eyed (defaults to parallel view)
-#define speed 10.
+#define speed 5.
 #define wave_thing
 //#define city
 
@@ -79,7 +79,7 @@ float hash(vec2 uv){
 float edgeMin(float dx,vec2 da, vec2 db,vec2 uv){
     uv.x+=5.;
     vec3 inputVec = vec3(uv.x, uv.x + uv.y, 1.0);
-    vec3 roundedVec = floor(inputVec + vec3(0.5));
+    vec3 roundedVec = floor(inputVec);
     vec3 c = fract(roundedVec*(vec3(0,1,2)+0.61803398875));
     float a1 = 1.;
     float a2 = 1.;
