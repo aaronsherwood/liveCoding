@@ -1,6 +1,6 @@
 //from https://www.shadertoy.com/view/tsScRK
 
-precision mediump float;
+precision highp float;
 
 uniform float time;
 uniform vec2 resolution;
@@ -210,7 +210,6 @@ void main( void)
     vec2 uv = (2.*(gl_FragCoord.xy+vec2(x,y))-resolution.xy)/resolution.y;
 
     const float shutter_speed = .25; // for motion blur
-	//float dt = fract(texture(iChannel0,float(AA)*(gl_FragCoord.xy+vec2(x,y))/iChannelResolution[0].xy).r+time)*shutter_speed;
     float dt = fract(hash21(float(AA)*(gl_FragCoord.xy+vec2(x,y)))+time)*shutter_speed;
     jTime = mod(time,4000.);
     vec3 ro = vec3(0.,1,(-20000.+jTime*speed));
