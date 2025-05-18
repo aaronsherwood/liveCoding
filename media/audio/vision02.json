@@ -1,7 +1,7 @@
 {
-  "_base": "https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/audio//",
+  "_base": "https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/audio/",
   "asareh": ["00000601-AUDIO-2025-04-22-16-30-17.m4a"],
-  "waves": ["waves0.mp3"],
+  "waves": ["/waves0.mp3"],
   "piano": {
     "A0": "piano/A0v8.mp3",
     "C1": "piano/C1v8.mp3",
