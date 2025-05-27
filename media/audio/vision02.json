@@ -2,6 +2,7 @@
   "_base": "https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/audio/",
   "asareh": ["00000601-AUDIO-2025-04-22-16-30-17.m4a"],
   "seen_unseen": ["seenunseen.wav"],
+  "beat00": ["No_distort.wav"],
   "waves": ["/waves0.mp3"],
   "piano": {
     "A0": "piano/A0v8.mp3",
