@@ -42,4 +42,22 @@ update = () =>{
   }
 }
 
+// play movie with sound
+s0.initVideo("/Users/ags419/Documents/Code/liveCoding/media/jefferygibsonesque.mp4")
+
+// only if you want to trigger it to play from the start
+s0.src.loop = false
+s0.src.autoplay = false
+
+// turn on the sound
+s0.src.muted = false
+
+src(s0).out()
+
+// play and pause
+s0.src.play()
+s0.src.pause()
+
 solid().out()
+
+render()
