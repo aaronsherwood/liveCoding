@@ -23,10 +23,10 @@ update = () =>{
 }
 
 //seek certain time stamp in video
-vids[2].currentTime=0
+s0.src.currentTime=0.0
 
 // gets you the duration of a video
-vids[2].duration
+console.log( s0.src.duration )
 
 // choosing different frames in the same video
 s0.init({src: vids[2]})
@@ -38,7 +38,7 @@ update = () =>{
   let messageFromTidal = cc[0]*vids[2].duration
   if (messageFromTidal != whichStamp){
     whichStamp = messageFromTidal;
-    vids[2].currentTime=whichStamp
+    s0.src.currentTime=whichStamp
   }
 }
 
@@ -49,14 +49,15 @@ s0.initVideo("/Users/ags419/Documents/Code/liveCoding/media/jefferygibsonesque.m
 s0.src.loop = false
 s0.src.autoplay = false
 
-// turn on the sound
+// turn on the sound (if you want louder, you need to adjust the audio in the file. html video volume is between 0 & 1)
 s0.src.muted = false
-
-src(s0).out()
 
 // play and pause
 s0.src.play()
 s0.src.pause()
+
+// remove the video
+s0.src.src = '';
 
 solid().out()
 

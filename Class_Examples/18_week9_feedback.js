@@ -70,25 +70,23 @@ src(o0).blend( src(o1).diff(o0).scale(1.01),1.05).layer(o1).out(o0);
 
 // video's have intersting effects with feedback
 // COPY AND PASTE INTO CONSOLE OR LOAD SEPARATELY
-vid = document.createElement('video')
-vid.autoplay = true
-vid.loop = true
-vid.src = "https://blog.livecoding.nyuadim.com/wp-content/uploads/stylegan.mp4"
-vid.crossOrigin="anonymous"
-s0.init({src: vid})
+
+s0.src.src = "https://blog.livecoding.nyuadim.com/wp-content/uploads/stylegan.mp4"
+
+s0.initVideo("https://blog.livecoding.nyuadim.com/wp-content/uploads/stylegan.mp4")
 
 src(s0).out()
 src(s0).blend( src(o0).diff(s0).scale(1.01),[0,2]).out(o0);
 
 // sink playback rate with hydra's rate
 // multiply it by 0.5 to make it go half as fast
-vid.playbackRate = vid.duration*0.5
+s0.src.playbackRate = s0.src.duration*0.5
 
 // if you want to get the start of the video to sink up you can use update
 let prevTime = 0;
 update =()=>{
   if (time%2 < prevTime)
-    vid.currentTime=0
+    s0.src.currentTime=0
   prevTime = time%2
 }
 

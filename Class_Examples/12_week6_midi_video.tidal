@@ -5,8 +5,8 @@ playSynth = do {
   d1 $ struct "t(3,8)" $ ccv "1 1 4"  # ccn "0" # s "midi";
   -- the rest is for sound
   d2 $ stack[
-    fast 2 $ s "sine" >| note (arp "updown" (scale "major" ("[0,2,4,6]"+"<0 0 2 3>") + "c5")) # gain 0.7,
-    s "sine" >| note (scale "major" ("[<-7 -5 -3 -1>,0,2](3,8)") + "c5") # gain 0.7
+    fast 2 $ s "simplesine" >| note (arp "updown" (scale "major" ("[0,2,4,6]"+"<0 0 2 3>") + "c5")) # gain 0.7,
+    s "simplesine" >| note (scale "major" ("[<-7 -5 -3 -1>,0,2](3,8)") + "c5") # gain 0.7
   ];
   d3 silence;
   d4 $ ccv "0*8" # ccn "1" # s "midi"
@@ -33,3 +33,7 @@ hush
 -- choose timestamp in video example
 d5 $ ccv "0 100" # ccn "0" # s "midi"
 d6 $ s "[[808bd:1] feel:4, <feel:1*16 [feel:1!7 [feel:1*6]]>]" # room 0.4 # krush 15 # speed (slow "<2 3>" (range 4 0.5 saw))
+
+-- random places in a video with sound
+d5  $ ccv "0 50 30 80 10 90 120@2" # ccn "0" # s "midi"
+d6 $ s "bd bd sd ~"

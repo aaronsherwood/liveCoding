@@ -1,5 +1,5 @@
 drop_it = do
-  -- this midi will select the video
+  -- this midi will select the visual
   d1 $ ccv "<[1 ~ ~ 0 ~  ~ 2 ~] [~ 4 3 ~  <0 4> <2 ~> ~ <0 ~>]>" # ccn "0" # s "midi"
   -- the rest is for sound
   d2 $ s "~ cp" # gain 1.2 # room 0.5
