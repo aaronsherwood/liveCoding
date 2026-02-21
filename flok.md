@@ -1,5 +1,5 @@
 # Flok
-Web-based P2P collaborative editor for live coding music and graphics from here: [https://github.com/munshkr/flok](https://codeberg.org/munshkr/flok)
+Web-based P2P collaborative editor for live coding music and graphics from here: [https://codeberg.org/munshkr/flok](https://codeberg.org/munshkr/flok)
 
 ## Requirements
 
