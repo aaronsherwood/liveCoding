@@ -59,11 +59,28 @@ Paste the code you copied from the site (with the addition of the custom boot fi
 
 To load the custom BootTidal.hs without having to paste that extra bit on at the end, use a wrapper for that exact npx command in your ~/.zshrc file (on OSX). Make sure to use the complete path to the file where it is on YOUR computer:
 ```
-floktidal() {
-  local boot="/Users/ags419/Documents/Code/tidalscripts/BootTidal.hs"
-  local extra
-  extra=$(printf '{"bootScript":"%s"}' "$boot")
-  npx flok-repl@latest "$@" --extra "$extra"
+npx() {
+  # Only intercept flok-repl calls
+  if [[ "$1" == "flok-repl@latest" || "$1" == "flok-repl" ]]; then
+    local boot="/Users/ags419/Documents/Code/tidalscripts/BootTidal.hs"
+    local extra
+    local has_extra=0
+    extra=$(printf '{"bootScript":"%s"}' "$boot")
+
+    for arg in "$@"; do
+      [[ "$arg" == --extra* ]] && has_extra=1
+    done
+
+    if (( has_extra )); then
+      command npx "$@"
+    else
+      command npx "$@" --extra "$extra"
+    fi
+    return
+  fi
+
+  # All other npx commands unchanged
+  command npx "$@"
 }
 ```
 Reload shell:
