@@ -1,7 +1,7 @@
 // an array for the video names, use complete file path
 // you need to change the base path (and names) for your own videos!
-basePath = "/Users/ags419/Documents/Code/liveCoding/media/"
-// basePath = "https://blog.livecoding.nyuadim.com/wp-content/uploads/" //online
+// basePath = "/Users/ags419/Documents/Code/liveCoding/media/"
+basePath = "https://blog.livecoding.nyuadim.com/wp-content/uploads/" //online
 videoNames = [basePath+"0.mp4", basePath+"1.mp4", basePath+"2.mp4", basePath+"3.mp4", basePath+"4.mp4"] //"https://media2.giphy.com/media/ny7UCd6JETnmE/giphy.mp4"
 vids = []
 allLoaded = false
