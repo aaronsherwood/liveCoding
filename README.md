@@ -40,4 +40,4 @@ To reset everything to be just like the repo online:
 * `git reset --hard origin/master`
 
 ### Discard Local Changes to the Repo Using Github Desktop
-![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/discardRepoChanges.png)
+![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/discard.png)
