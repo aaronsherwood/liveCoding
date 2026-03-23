@@ -38,3 +38,6 @@ To remove all stashes: `git stash clear`
 To reset everything to be just like the repo online:
 * `git fetch origin`
 * `git reset --hard origin/master`
+
+### Discard Local Changes to the Repo Using Github Desktop
+![enter image description here](https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/media/flok2.png)
