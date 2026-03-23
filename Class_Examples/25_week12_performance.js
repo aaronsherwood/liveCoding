@@ -4,7 +4,7 @@
 // https://cdn.jsdelivr.net/gh/user/repo@version/file
 
 // you can use this in flok to load scripts:
-loadScript("https://cdn.rawgit.com/aaronsherwood/liveCoding/main/test.js")
+loadScript("https://cdn.jsdelivr.net/gh/aaronsherwood/liveCoding@main/test.js")
 
 // or locally in pulsar
 loadScript("/Users/ags419/Documents/Code/liveCoding/test.js")
@@ -34,7 +34,7 @@ visuals[0]()
 
 // to load midi:
 const s = document.createElement( 'script' )
-s.src = 'https://cdn.rawgit.com/aaronsherwood/liveCoding/main/midi.js'
+s.src = 'https://cdn.jsdelivr.net/gh/aaronsherwood/liveCoding@main/midi.js'
 document.querySelector( 'head' ).appendChild( s )
 
 // then do the loadScript call as at top in hydra after pasting that
@@ -44,18 +44,25 @@ document.querySelector( 'head' ).appendChild( s )
 // Get the raw version of the file and use that URL
 // NOTE: p5 WEBGL mode in flok should be lowercase (webgl) but in pulsar should be upper case
 
-p5 = new P5({width: window.innerWidth, height:window.innerHeight, mode: 'webgl'})
-shader = p5.loadShader("https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/Class_Examples/shaders/basic.vert", "https://raw.githubusercontent.com/aaronsherwood/liveCoding/main/Class_Examples/shaders/ocean.frag");
-p5.hide() // REMEMBER TO DO HIDE!
-
-p5.draw = ()=>{
-  shader.setUniform("time", time);
-  shader.setUniform("resolution", [p5.width, p5.height]);
-  shader.setUniform("mouse",[p5.mouseX, p5.mouseY]);
-  p5.shader(shader);
-  p5.rect(0, 0, width, height);
-}
-s0.init({src: p5.canvas})
+p5 = new P5({
+  width: window.innerWidth,
+  height: window.innerHeight,
+  mode: 'webgl'
+})
+p5.hide()
+p5.loadShader(
+  "https://cdn.jsdelivr.net/gh/aaronsherwood/liveCoding@main/Class_Examples/shaders/basic.vert",
+  "https://cdn.jsdelivr.net/gh/aaronsherwood/liveCoding@main/Class_Examples/shaders/ocean.frag"
+).then((sh) => {
+  p5.draw = () => {
+    p5.shader(sh)
+    sh.setUniform("time", time)
+    sh.setUniform("resolution", [p5.width, p5.height])
+    sh.setUniform("mouse", [p5.mouseX, p5.mouseY])
+    p5.rect(0, 0, p5.width, p5.height)
+  }
+})
+s0.init({ src: p5.canvas })
 src(s0).out()
 
 p5.remove() // REMEMBER TO REMOVE P5!

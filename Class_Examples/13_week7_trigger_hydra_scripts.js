@@ -1,13 +1,17 @@
 // change the blend amount between 0 and 1 to switch in different hydra scripts
-shape(3).blend(osc(),1).out()
+shape(3).blend(osc(),0).out()
 
 // look at the script in this file
-loadScript('/Users/ags419/Documents/Code/liveCoding/Class_Examples/14_week7_trigger_hydra_scripts _loadThisScript.js')
+loadScript('/Users/ags419/Documents/Code/liveCoding/Class_Examples/14_week7_trigger_hydra_scripts_loadThisScript.js')
+
+// OR if in flok:
+// loadScript("https://cdn.jsdelivr.net/gh/aaronsherwood/liveCoding@main/Class_Examples/14_week7_trigger_hydra_scripts_loadThisScript.js")
 
 visuals[0]()
 
+visuals[whichVisual]()
+
 // can use update and switch case with midi:
-var whichVisual = 0
 update = () =>{
   // very important! only change source once, when necessary
   if (whichVisual != ccActual[0]){
