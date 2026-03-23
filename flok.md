@@ -1,5 +1,5 @@
 # Flok
-Web-based P2P collaborative editor for live coding music and graphics from here: [https://github.com/munshkr/flok](https://github.com/munshkr/flok)
+Web-based P2P collaborative editor for live coding music and graphics from here: [https://codeberg.org/munshkr/flok](https://codeberg.org/munshkr/flok)
 
 ## Requirements
 
@@ -11,7 +11,7 @@ Go  [here](https://nodejs.org/)  to download Node.
 
 Do the following on the command line:
 
-`npm install -g flok-web@latest flok-repl@latest` ~`sudo npm i -g flok-repl@1.0.0-alpha.10 flok-web`~
+`npm install -g flok-repl@latest` 
 
 Then try the following to test if install happened properly. It should print out the flok version you installed:
 
@@ -43,23 +43,51 @@ We need the code we copied to connect to Supercollider:
  1. First, quit Pulsar to make sure your Supercollider is not connected
     to that Tidal instance.
  2. Next (you might not need to do this), restart the Supercoliider server.
- 3. **If you want a custom BootTidal.hs file:** Take the code you copied before and paste this at the end of it `--extra '{ "bootScript": "~/Documents/Code/tidalscripts/BootTidal.hs" }'`
+ 3. **If you want a custom BootTidal.hs file:** Take the code you copied before and paste this at the end of it. Make sure to use the complete path to the file where it is on YOUR computer:
+    ```
+  	--extra '{ "bootScript": "/Users/ags419/Documents/Code/tidalscripts/BootTidal.hs" }'
+  	```
  	The complete code will look something like this: (replace the [TOKEN} part):
 
 	`npx flok-repl@1.0.0-alpha.10 -H wss://www.flok.livecoding.nyuadim.com:3000 \
     -s varying-salmon-blackbird-ed20ba61 \
     -t tidal \
     -T user:aaron \
-    --extra '{ "bootScript": "~/Documents/Code/tidalscripts/BootTidal.hs" }'`
+    --extra '{ "bootScript": "/Users/ags419/Documents/Code/tidalscripts/BootTidal.hs" }'`
 
 Paste the code you copied from the site (with the addition of the custom boot file or not) into the command line (a different window from the server window) to connect to Supercollider.
 
-You can change the flok-repl code to automatically load the correct BootTidal.hs without having to paste that extra bit on at the end:
- 1. Find out where flok-repl is: `which flok-repl`
- 2. `cd` to that directory (aka `cd /usr/local/bin/`)
- 3. Right click on flok-repl and select "Show Original" (for Mac, it should be something similar on Windows)
- 4. Go up a directory level and then open *lib/repl/tidal.js* in Atom or another text editor
- 5. Search for the defaultBootScript() function and change the function to return your correct BootTidal.hs file location: `return '~/Documents/Code/tidalscripts/BootTidal.hs'// path.join(this.dataDir(), 'BootTidal.hs');` (the original part code is left there but commented out
+To load the custom BootTidal.hs without having to paste that extra bit on at the end, use a wrapper for that exact npx command in your ~/.zshrc file (on OSX). Make sure to use the complete path to the file where it is on YOUR computer:
+```
+npx() {
+  # Only intercept flok-repl calls
+  if [[ "$1" == "flok-repl@latest" || "$1" == "flok-repl" ]]; then
+    local boot="/Users/ags419/Documents/Code/tidalscripts/BootTidal.hs"
+    local extra
+    local has_extra=0
+    extra=$(printf '{"bootScript":"%s"}' "$boot")
+
+    for arg in "$@"; do
+      [[ "$arg" == --extra* ]] && has_extra=1
+    done
+
+    if (( has_extra )); then
+      command npx "$@"
+    else
+      command npx "$@" --extra "$extra"
+    fi
+    return
+  fi
+
+  # All other npx commands unchanged
+  command npx "$@"
+}
+```
+Reload shell:
+
+```
+source ~/.zshrc
+```
 
 ### MIDI
 
