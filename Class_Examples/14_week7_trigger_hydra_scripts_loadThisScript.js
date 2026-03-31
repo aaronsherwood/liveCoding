@@ -16,4 +16,4 @@ visuals = [
       }
 ]
 
-whichVisual = 0
+whichVisual = 3

@@ -24,3 +24,13 @@ update = () =>{
 hush()
 // OR (without stopping visuals all together)
 update = ()=> {}
+
+// if you want to load a remote URL in pulsar you can use this function:
+
+window.loadRemoteScript = (url) => {
+  return fetch(url)
+    .then((r) => r.text())
+    .then((code) => window.eval(`${code}\n//# sourceURL=${url}`))
+}
+
+loadRemoteScript("https://cdn.jsdelivr.net/gh/aaronsherwood/liveCoding@main/test.js")
