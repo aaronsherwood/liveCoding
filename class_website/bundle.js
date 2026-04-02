@@ -810,6 +810,9 @@ class Gallery {
     } else {
       // this.setRandomSketch()
       // console.log("example "+this.exampleIndex)
+      const max = 8;
+      const randomInt = Math.floor(Math.random() * max);
+      let whichSketch = randomInt;//0;
       this.exampleIndex = whichSketch;
       this.setSketch(this.examples[this.exampleIndex])
     }

@@ -64,37 +64,61 @@
         width: window.innerWidth,
         height: window.innerHeight,
       });
-      if (typeof p1 !== "undefined") {
-        p1.remove()
-      }
-      p1 = new P5()
+      // if (typeof p1 !== "undefined") {
+      //   p1.remove()
+      // }
+      // p1 = new P5()
+      //
+      // s0.init({
+      //   src: p1.canvas
+      // })
+      //
+      // p1.noStroke()
+      // p1.fill(100, 80, 200)
+      // p1.hide()
+      // p1.draw = () => {
+      //   p1.clear()
+      //   p1.textSize(50)
+      //   p1.textAlign(p1.CENTER);
+      //   p1.text("LIVE CODING", p1.width / 2, p1.height / 2)
+      // }
+      //
+      // src(s0)
+      //   .add(o0, 0.9)
+      //   .modulate(o0, () => mouse.x * 0.0001)
+      //   .blend(o0)
+      //   .modulate(noise(({
+      //     time
+      //   }) => ((Math.sin(time * .1) + 1) * .5) * 5))
+      //   .blend(o0)
+      //   .blend(o0)
+      //   .scale(1.1)
+      //   .hue(0.04)
+      //   .out()
 
-      s0.init({
-        src: p1.canvas
-      })
 
-      p1.noStroke()
-      p1.fill(100, 80, 200)
-      p1.hide()
-      p1.draw = () => {
-        p1.clear()
-        p1.textSize(50)
-        p1.textAlign(p1.CENTER);
-        p1.text("LIVE CODING", p1.width / 2, p1.height / 2)
-      }
+      //
+      // const portrait = window.matchMedia("(orientation: portrait)");
+      // portrait.addEventListener("change", (e) => {
+      //     if (e.matches) {
+      //         console.log("Switched to Portrait");
+      //         src(o2).rotate(1.57).out(o3)
+      //     } else {
+      //         console.log("Switched to Landscape");
+      //         src(o2).out(o3)
+      //     }
+      // });
 
-      src(s0)
-        .add(o0, 0.9)
-        .modulate(o0, () => mouse.x * 0.0001)
-        .blend(o0)
-        .modulate(noise(({
-          time
-        }) => ((Math.sin(time * .1) + 1) * .5) * 5))
-        .blend(o0)
-        .blend(o0)
-        .scale(1.1)
-        .hue(0.04)
-        .out()
+
+      shape(2,0.001,()=>0.244*0.5).out(o0)
+
+      setTimeout(() => {
+        shape(2,0.001,()=>0.244*0.5).mult(src(o1)).out(o0)
+        src(o2).modulateHue(src(o2).rotate(()=>1.57),5).blend(o1,()=>0.244*0.5).modulate(noise(3,0),()=>0.001).out(o2)
+        src(o0).blend(o1,()=>0.244).colorama(()=>127*0.01).add(src(o1),0.5).out(o1)
+        src(o2).rotate(1.57).out(o3)
+        render(o3)
+      }, 50)
     }
   </script>
 

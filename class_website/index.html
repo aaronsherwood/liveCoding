@@ -14,7 +14,9 @@
       examples = data;
     }
     loadJson();
-    let whichSketch = 0;
+    const max = 8;
+    const randomInt = Math.floor(Math.random() * max);
+    let whichSketch = randomInt;//0;
   </script>
   <script src="./bundle.js"></script>
   <script src="./WebDirt.js"></script>
