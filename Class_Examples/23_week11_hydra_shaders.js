@@ -47,6 +47,57 @@ voronoi().out(o1)
 osc(30, 0.1, 0.7).out(o2)
 two_sides(o1, o2).out()
 
+setFunction({
+  name: 'four_images',
+  type: 'src',
+  inputs: [{
+      type: 'sampler2D',
+      name: 'tex0',
+      default: NaN,
+    },
+    {
+      type: 'sampler2D',
+      name: 'tex1',
+      default: NaN,
+    },
+    {
+        type: 'sampler2D',
+        name: 'tex2',
+        default: NaN,
+    },
+    {
+        type: 'sampler2D',
+        name: 'tex3',
+        default: NaN,
+    }
+  ],
+  glsl: `
+    vec4 a = texture2D(tex0, _st);
+    vec4 b = texture2D(tex1, _st);
+    vec4 c = texture2D(tex2, _st);
+    vec4 d = texture2D(tex3, _st);
+    vec4 combined;
+  if (_st.x<0.5 && _st.y<0.5)
+		combined = a;
+  else if (_st.x<0.5 && _st.y>=0.5)
+		combined = b;
+  else if (_st.x>=0.5 && _st.y<0.5)
+    combined = c;
+  else if (_st.x>=0.5 && _st.y>=0.5)
+    combined = d;
+  return combined;
+    `
+})
+voronoi().out(o1)
+osc(30, 0.1, 0.7).out(o2)
+four_images(o1, o2, o2, o1).out()
+
+src(o0)
+  .modulate(
+    osc(6,0,1.5).modulate(noise(3),1).brightness(-0.5)
+  ,0.003)
+  .blend(four_images(o1, o2, o2, o1),0.025).out()
+
 // glow circle
 setFunction({
   name: 'glowCircle',
@@ -194,7 +245,33 @@ s0.init({
 src(s0).out()
 render(o0)
 
-hush()
+// Loading shaders online
+// You can use github to store your shader files
+// Get the raw version of the file and use that URL
+// NOTE: p5 WEBGL mode in flok should be lowercase (webgl) but in pulsar should be upper case
+
+p5 = new P5({
+  width: window.innerWidth,
+  height: window.innerHeight,
+  mode: 'webgl'
+})
+p5.hide()
+p5.loadShader(
+  "https://cdn.jsdelivr.net/gh/aaronsherwood/liveCoding@main/Class_Examples/shaders/basic.vert",
+  "https://cdn.jsdelivr.net/gh/aaronsherwood/liveCoding@main/Class_Examples/shaders/ocean.frag"
+).then((sh) => {
+  p5.draw = () => {
+    p5.shader(sh)
+    sh.setUniform("time", time)
+    sh.setUniform("resolution", [p5.width, p5.height])
+    sh.setUniform("mouse", [p5.mouseX, p5.mouseY])
+    p5.rect(0, 0, p5.width, p5.height)
+  }
+})
+s0.init({ src: p5.canvas })
+src(s0).out()
+
+p5.remove() // REMEMBER TO REMOVE P5!
 
 
 // try to port this one together this: https://www.shadertoy.com/view/lscczl

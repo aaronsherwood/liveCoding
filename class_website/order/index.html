@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>LIVE CODING</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="LIVE CODING">
+
+  <link href="https://fonts.googleapis.com/css?family=Chivo:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="../css/fontawesome.css">
+  <link rel="stylesheet" href="../css/codemirror.css">
+  <link rel="stylesheet" href="../css/tomorrow-night-eighties.css">
+  <link rel="stylesheet" href="../css/show-hint.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/modal.css">
+  <link rel="shortcut icon" type="image/png" href="https://cdn.glitch.com/597fe374-3d18-46a5-b99c-ceff1f8ffd79%2Ffavicon.png?1530891352785" />
+  <style>
+    html,
+    body {
+      border: 0px;
+      margin: 0px;
+      padding: 0px;
+    }
+    canvas {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="info-container" class="hidden">
+    <div id="modal">
+      <div id="modal-header">
+        <div>
+        </div>
+        <div style="border-radius: 6px; margin-right: 10px;">
+          <span class="links" id="home" style="color: #ff6ec7;">home</span>
+          <span class="links" id="schedule">schedule</span>
+          <span class="links" id="syllabus">syllabus</span>
+          <span class="links" id="github">github</span>
+          <span class="links" id="blog">blog</span>
+          <i id="run-icon" class="fas fa-play-circle icon" title="Run all code (ctrl+shift+enter)" hidden="true" style="opacity:0; cursor:auto"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div></div>
+  <script src='./p5.min.js'></script>
+  <script src='./p5-wrapper.js'></script>
+  <script src='./hydra-synth.js'></script>
+  <script>
+    let hydra, hydraCanvas;
+    window.onload = function() {
+      const hydra = new Hydra({
+        detectAudio: false,
+        enableStreamCapture: false,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+      const params = new URLSearchParams(window.location.search);
+      const namesString = params.get('names');
+      const seed = params.get('seed');
+      const groups = params.get('groups');
+      const names = namesString ? namesString.split(',') : [];
+
+      //&names=name0,name1&seed=030426
+
+      if(typeof p1 !== "undefined"){p1.remove()}
+      p1 = new P5()
+
+      s0.init({src: p1.canvas})
+
+      p1.noStroke()
+      p1.fill(255)
+      p1.hide()
+      p1.randomSeed(seed);
+      let j = 1;
+      let nums = [];
+      while (j<names.length){
+      	let num = Math.floor(p1.random(names.length));
+      	if (nums.length == 0 )
+        		nums.push(num);
+      	else {
+        		var present = false;
+       		for (let i=0; i<nums.length; i++){
+         			if (num == nums[i]){
+           			present = true;
+              	}
+       		}
+        		if (!present){
+          		nums.push(num);
+          		j++;
+        		}
+          }
+      }
+
+
+      for (let i=0;i<names.length; i++){
+        	console.log(names[nums[i]])
+        }
+
+      p1.draw = () => {
+        p1.background(0)
+        p1.textSize(p1.height/(names.length+1))
+        p1.textAlign(p1.CENTER);
+        for (let i=0;i<names.length; i++){
+        	p1.text(names[nums[i]],p1.width/2, p1.height/names.length+ (p1.height/(names.length+1))*i)
+        }
+      }
+
+      feedbackAmount = 1
+
+      osc(2,.5,.4).out(o1)
+      src(o0).blend( src(o1).mult(o0).scale(1.05),() => feedbackAmount).add(src(s0)).out(o0);
+    }
+  </script>
+
+  <script>
+    this.homeButton = document.getElementById("home")
+    this.scheduleButton = document.getElementById("schedule")
+    this.syllabusButton = document.getElementById("syllabus")
+    this.githubButton= document.getElementById("github")
+    this.blogButton= document.getElementById("blog")
+
+    this.homeButton.onclick = () => {
+      window.location.href = "../";
+    }
+
+    this.scheduleButton.onclick = () => {
+      window.location.href = "../schedule";
+    }
+
+    this.syllabusButton.onclick = () => {
+      window.location.href = "../syllabus";
+    }
+
+    this.githubButton.onclick = () => {
+      // window.location.href = "https://github.com/aaronsherwood/liveCoding";
+      window.open(
+        'https://github.com/aaronsherwood/liveCoding',
+        '_blank' // <- This is what makes it open in a new window.
+      );
+    }
+
+    this.blogButton.onclick = () => {
+      window.location.href = "https://blog.livecoding.nyuadim.com/category/spring-25/";
+    }
+
+  </script>
+</body>
+
+</html>
