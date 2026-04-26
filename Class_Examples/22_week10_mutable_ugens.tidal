@@ -42,5 +42,5 @@ d1 $ s "bd arpy sd hh" # up "-5"
   # cloudsmode 2 --"<0 1 2 3>"
   # cloudsgain "2"
 
--- midi control of hydra
-d2 $ ccv (segment 128 (slow 2 (range 0 127 saw))) # ccn 0 # s "midi"
+-- verb w t d h = verbgain 1 # verbwet w # verbtime t # verbdamp d # verbhp h
+d1 $ s "bd arpy sd hh" # up "-5" # verb 1 0.7 0.7 0.2 # verbgain 5
