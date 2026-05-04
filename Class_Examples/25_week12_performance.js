@@ -72,7 +72,7 @@ hush()
 // you can load gifs from giphy as mp4s
 
 // steps:
-// 1. find soemthing on giphy you like: https://giphy.com/stories/10-funtastic-gifs-from-bangla-cinema-7ad51806-6880
+// 1. find something on giphy you like: https://giphy.com/stories/10-funtastic-gifs-from-bangla-cinema-7ad51806-6880
 // 2. rightclick on it, open image in new tab you then might get this: https://media4.giphy.com/media/ydyPHV9Fw79TplUhMq/giphy.webp
 // 3. find the file extension (in this case, .webp), change to .mp4 (right in browser): https://media4.giphy.com/media/ydyPHV9Fw79TplUhMq/giphy.mp4
 // 4. now load in hydra:
